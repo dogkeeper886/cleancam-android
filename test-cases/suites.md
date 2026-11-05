@@ -1,9 +1,9 @@
 - Where the phone connects
   - Start the receiver with the phone on USB
   - Start the receiver with the app closed and the phone on USB
-  - Start the receiver with no iproxy, podman or docker and the phone on USB
-  - Start the receiver with iproxy in a container and the phone on USB
-  - Replug the phone with iproxy in a container and the receiver running
+  - Start the receiver with no adb and the phone on USB
+  - Start the receiver with USB debugging unauthorized and the phone on USB
+  - Replug the phone with the receiver running
   - Start the receiver with the phone's IP on WiFi
   - Start the receiver with the app closed and the phone on WiFi
 - Webcam device at start
@@ -13,10 +13,14 @@
   - Start the receiver with OBS's v4l2loopback loaded and no v4l2loopback-ctl
 - Camera access
   - Open the app with camera access allowed
+  - Open the app with camera access allowed only this time
+  - Reopen the app with camera access allowed only this time before
   - Open the app with camera access denied
   - Open the app with camera access denied and the receiver connected
+  - Open the app with camera access denied twice
 - Microphone access
   - Open the app with microphone access allowed
+  - Open the app with microphone access allowed only this time
   - Open the app with microphone access denied
 - Video viewers
   - Open the app with no receiver connected
@@ -47,7 +51,7 @@
   - Pause and resume the call's sound with the CleanCam speaker picked
   - Send the speaker sound with a sample split across two packets
   - Play the call's sound with no python3 on the PC and the CleanCam speaker picked
-  - Plug headphones into the phone with the CleanCam speaker playing
+  - Connect Bluetooth headphones to the phone with the CleanCam speaker playing
   - Take a phone call with the CleanCam speaker playing
 - Phone orientation
   - Turn the phone sideways with its top to the left
@@ -86,7 +90,7 @@
   - Turn the screen off with the stream running
   - Tap the screen with the screen off
   - Leave the app with the screen off
-  - Leave the phone untouched with the app open past the auto-lock time
+  - Leave the phone untouched with the app open past the screen timeout
 - Preset
   - Open the app with no preset picked before
   - Stream the video with the room dark and the Call preset
@@ -149,7 +153,7 @@
   - Heat the phone with the last heat change under a minute ago
   - Overheat the phone with the stream running
 - App on screen
-  - Open the control center with the stream running
+  - Pull down the notification shade with the stream running
   - Lock the phone with the stream running
   - Switch to another app with the stream running
   - Return to the app with the receiver waiting
@@ -158,4 +162,4 @@
 - Receiver stop
   - Stop the receiver with PipeWire as the sound server
   - Stop the receiver with PulseAudio as the sound server
-  - Stop the receiver with iproxy in a container
+  - Stop the receiver with adb forwarding the ports
