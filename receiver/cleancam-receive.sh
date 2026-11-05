@@ -1,0 +1,229 @@
+#!/usr/bin/env bash
+# Receives the CleanCam stream and shows it as a webcam named "CleanCam" (/dev/video10),
+# the phone's microphone as a microphone named "CleanCam", and plays a speaker named "CleanCam" on the phone.
+#   cleancam-receive.sh             phone on USB (needs adb, with USB debugging allowed on the phone)
+#   cleancam-receive.sh PHONE_IP    phone on the same WiFi
+# Needs ffmpeg and the v4l2loopback kernel module; the microphone and the speaker need PipeWire (pw-cli)
+# or PulseAudio (pactl and parec).
+set -euo pipefail
+
+PORT=${PORT:-5000}                  # TCP port the app sends video on
+AUDIO_PORT=${AUDIO_PORT:-5001}      # TCP port the app sends microphone audio on
+SPEAKER_PORT=${SPEAKER_PORT:-5002}  # TCP port the app plays speaker audio from
+DEBUG_PORT=${DEBUG_PORT:-5003}      # TCP port of the app's debug stats and commands; the receiver only forwards it
+VIDEO_NR=${VIDEO_NR:-10}            # webcam device number: /dev/video$VIDEO_NR
+VAAPI_DEVICE=${VAAPI_DEVICE-/dev/dri/renderD128}  # GPU that decodes the video through VAAPI; empty decodes on the CPU
+VIDEO=/dev/video$VIDEO_NR
+HOST=${1:-}
+
+# Stop what this script started in the background: the adb forwarding, the CleanCam microphone and speaker, and the
+# audio loops. PulseAudio keeps the modules it loaded until they are unloaded, and adb keeps its forwards until removed.
+PULSE_MODULES=()
+FORWARDING=
+cleanup() {
+  pkill -P $$ 2>/dev/null || true
+  for module in "${PULSE_MODULES[@]}"; do pactl unload-module "$module" || true; done
+  if [[ $FORWARDING ]]; then
+    for port in "$PORT" "$AUDIO_PORT" "$SPEAKER_PORT" "$DEBUG_PORT"; do adb forward --remove "tcp:$port" 2>/dev/null || true; done
+  fi
+}
+trap cleanup EXIT
+
+if [[ ! -e $VIDEO ]]; then
+  # exclusive_caps=1 lets Chrome and other WebRTC apps list the device as a camera.
+  if [[ ! -d /sys/module/v4l2loopback ]]; then
+    sudo modprobe v4l2loopback video_nr="$VIDEO_NR" card_label=CleanCam exclusive_caps=1
+  # Another app, such as OBS for its virtual camera, loaded the module without this device, and modprobe changes nothing
+  # on a loaded module; v4l2loopback-ctl, from v4l2loopback 0.12.5 on, adds the device to it.
+  elif ! sudo v4l2loopback-ctl add -n CleanCam -x 1 "$VIDEO" >/dev/null; then
+    echo "v4l2loopback is loaded without $VIDEO. Install v4l2loopback-ctl, or close the app that loaded it, such as OBS," \
+      "and run: sudo modprobe -r v4l2loopback" >&2
+    exit 1
+  fi
+fi
+
+if [[ -z $HOST ]]; then
+  if ! command -v adb >/dev/null; then
+    echo "adb not found: run .claude/skills/developing-cleancam-android/one-time-setup.sh, or put the Android SDK's" \
+      "platform-tools on PATH." >&2
+    exit 1
+  fi
+  # adb forward connects each localhost port to the app's port on the phone through the USB cable. adb drops its forwards
+  # when the phone is unplugged, so the loop sets them again once a second while the phone is attached; ANDROID_SERIAL
+  # picks one of several phones.
+  FORWARDING=1
+  forward_ports() {
+    local warned=
+    while true; do
+      case $(adb get-state 2>&1) in
+        device)
+          if [[ $(adb forward --list 2>/dev/null) != *"tcp:$PORT tcp:$PORT"* ]]; then
+            for port in "$PORT" "$AUDIO_PORT" "$SPEAKER_PORT" "$DEBUG_PORT"; do adb forward "tcp:$port" "tcp:$port" >/dev/null; done
+          fi
+          warned= ;;
+        *unauthorized*)
+          [[ $warned ]] || echo "The phone has not allowed USB debugging from this PC: unlock it and tap Allow." >&2
+          warned=1 ;;
+      esac
+      sleep 1
+    done
+  }
+  forward_ports &
+  HOST=127.0.0.1
+fi
+
+# Loads PipeWire's pipe-tunnel module: a device named "CleanCam" that exchanges raw audio through a FIFO.
+# A source (microphone) reads the FIFO, playing silence while nothing arrives and matching its rate to the phone's clock;
+# a sink (speaker) writes what apps play into it. always-process keeps the device running while no app uses it,
+# so audio never piles up. node.latency holds PipeWire's cycle at 512 samples, so the speaker writes its sound in
+# 10.7 ms pieces; an app that asks for 100 ms, as pw-play does, otherwise makes it 43 ms pieces, too coarse for the
+# phone's 80 ms queue, which then cuts the sound into a buzz.
+pipe_tunnel() {  # MODE FIFO NODE_NAME
+  pw-cli -m load-module libpipewire-module-pipe-tunnel "{ tunnel.mode = $1 pipe.filename = \"$2\"
+    audio.format = S16LE audio.rate = 48000 audio.channels = 1 audio.position = [ MONO ]
+    stream.props = { node.name = $3 node.description = CleanCam node.always-process = true
+      node.latency = 512/48000 } }" >/dev/null &
+}
+
+# Loads a PulseAudio module and keeps its number for the cleanup.
+pulse_load() {  # MODULE ARGUMENT...
+  local module
+  if module=$(pactl load-module "$@"); then PULSE_MODULES+=("$module"); fi
+}
+
+MIC_FIFO=${XDG_RUNTIME_DIR:-/tmp}/cleancam-mic-$AUDIO_PORT.fifo
+SPEAKER_FIFO=${XDG_RUNTIME_DIR:-/tmp}/cleancam-speaker-$SPEAKER_PORT.fifo
+# PulseAudio names itself "pulseaudio"; PipeWire's PulseAudio service names itself "PulseAudio (on PipeWire ...)".
+if [[ $(pactl info 2>/dev/null || true) == *"Server Name: pulseaudio"* ]]; then
+  SOUND=pulseaudio
+  # The microphone is a pipe source, which reads the FIFO. The speaker is a null sink, which keeps the system
+  # clock's pace, and parec hands its sound on every 10 ms. PulseAudio's pipe sink writes 43 ms at once instead,
+  # too coarse for the phone's 80 ms queue, which then cuts and gaps the sound into a buzz.
+  rm -f "$MIC_FIFO"  # the pipe source makes the FIFO itself
+  pulse_load module-pipe-source source_name=cleancam-mic file="$MIC_FIFO" format=s16le rate=48000 channels=1 \
+    channel_map=mono source_properties=device.description=CleanCam
+  pulse_load module-null-sink sink_name=cleancam-speaker format=s16le rate=48000 channels=1 channel_map=mono \
+    sink_properties=device.description=CleanCam
+elif command -v pw-cli >/dev/null; then
+  SOUND=pipewire
+  pipe_tunnel source "$MIC_FIFO" cleancam-mic
+  pipe_tunnel sink "$SPEAKER_FIFO" cleancam-speaker
+else
+  SOUND=
+  echo "Neither PipeWire (pw-cli) nor PulseAudio found: video only." >&2
+fi
+
+# Sends standard input to the phone's speaker port as it arrives. bash's /dev/tcp leaves Nagle's algorithm on, which
+# holds each 10 ms write until the previous one is acknowledged, so the sound reached the phone in 40 ms clumps and
+# stuttered; python3 turns it off. Without python3, /dev/tcp still plays, with the stutter.
+send_speaker() {
+  if command -v python3 >/dev/null; then
+    python3 -I -c '
+import socket, sys
+connection = socket.create_connection((sys.argv[1], int(sys.argv[2])))
+connection.setsockopt(socket.IPPROTO_TCP, socket.TCP_NODELAY, 1)
+read = sys.stdin.buffer.raw.read
+while True:
+    data = read(65536)
+    if not data:
+        break
+    connection.sendall(data)
+' "$HOST" "$SPEAKER_PORT"
+  else
+    cat >"/dev/tcp/$HOST/$SPEAKER_PORT"
+  fi
+}
+
+if [[ $SOUND == pulseaudio ]]; then
+  # PulseAudio suspends a source no app records from; the phone's sound then piles up in the FIFO and the TCP buffers
+  # and reaches the next app as tens of seconds of old sound. A reader that never stops keeps the microphone live,
+  # as always-process does for PipeWire.
+  while true; do
+    parec -d cleancam-mic --format=s16le --rate=48000 --channels=1 --raw >/dev/null || true
+    sleep 1  # the microphone is starting; try again
+  done 2>/dev/null &
+fi
+
+# While the app is closed, the loops below fail to open its stream once a second. grep drops those lines, which
+# ffmpeg 7.1 prints as "Error opening input" and "Connection to tcp://... failed", and 4.4 as "tcp://...: <reason>".
+OPEN_FAILED='Error opening input|Connection to tcp://|^tcp://'
+
+if [[ $SOUND ]]; then
+  while true; do
+    # ffmpeg writes whole samples, so a reconnect never shifts the bytes out of order. Over USB, a closed app's
+    # connection opens and ends empty, and ffmpeg warns three times about it; -loglevel error keeps only errors.
+    if [[ -p $MIC_FIFO ]]; then
+      ffmpeg -hide_banner -loglevel error \
+        -f s16le -ar 48000 -ac 1 -i "tcp://$HOST:$AUDIO_PORT" -f s16le -y "$MIC_FIFO" \
+        2> >(grep -Ev --line-buffered "$OPEN_FAILED" >&2) || true
+    fi
+    sleep 1  # the app is closed or not reachable yet, or the microphone is starting; try again
+  done &
+  while true; do
+    if [[ $SOUND == pulseaudio ]]; then
+      parec -d cleancam-speaker.monitor --latency-msec=10 --format=s16le --rate=48000 --channels=1 --raw \
+        | send_speaker || true
+    elif [[ -p $SPEAKER_FIFO ]]; then
+      # The tunnel writes whole samples, so every read is too.
+      send_speaker <"$SPEAKER_FIFO" || true
+    fi
+    sleep 1  # the app is closed or not reachable yet, or the speaker is starting; try again
+  done 2>/dev/null &
+fi
+
+# ffmpeg 5.1 renamed -vsync to -fps_mode; older ones, such as ffmpeg 4.4 on RHEL 8, know only -vsync.
+FPS_MODE=-vsync
+[[ $(ffmpeg -hide_banner -h full 2>/dev/null) == *"-fps_mode"* ]] && FPS_MODE=-fps_mode
+
+# The phone's H.264 or HEVC names no frame rate. ffmpeg 6.0 and older take it from -framerate, but 6.1 (libavformat
+# 60.16) and newer give each frame 1 tick of 1/1200000 s, so every frame lands on timestamp 0 and ffmpeg warns on each
+# one. -r on the input spaces the frames at the frame rate again.
+FRAME_RATE=(-framerate 30)
+LAVF_VERSION='libavformat +([0-9]+)\. *([0-9]+)'
+if [[ $(ffmpeg -hide_banner -version 2>/dev/null) =~ $LAVF_VERSION ]] &&
+  (( BASH_REMATCH[1] > 60 || (BASH_REMATCH[1] == 60 && BASH_REMATCH[2] >= 16) )); then
+  FRAME_RATE+=(-r 30)
+fi
+
+# A GPU with a working VAAPI driver decodes the video: 1080p30 H.264 took 18% of a 2014 Intel i5's core instead of 58%
+# in software. hwdownload copies each frame back from the GPU. A GPU that lacks the stream's codec, as Haswell lacks
+# HEVC, makes ffmpeg print "Failed setup for format vaapi" and stop, because the frames it then decodes in software
+# can't pass hwdownload; the loop connects again at once in software, and tries the GPU on the next connection.
+GPU_INPUT=() GPU_OUTPUT=()
+if [[ $VAAPI_DEVICE ]] && ffmpeg -hide_banner -loglevel quiet -init_hw_device "vaapi=va:$VAAPI_DEVICE" \
+  -f lavfi -i nullsrc=s=64x64 -frames:v 1 -f null - >/dev/null 2>&1; then
+  GPU_INPUT=(-hwaccel vaapi -hwaccel_device "$VAAPI_DEVICE" -hwaccel_output_format vaapi)
+  GPU_OUTPUT=(-vf hwdownload,format=nv12)
+fi
+# libva and Intel's i965 driver print each driver they try at every start.
+DRIVER_NOISE='libva: |hybrid_drv_video'
+
+MESSAGE="Writing the CleanCam stream from $HOST:$PORT to $VIDEO"
+[[ ${GPU_INPUT[*]} ]] && MESSAGE+=", decoded on the GPU"
+[[ $SOUND ]] && MESSAGE+=", its sound to the CleanCam microphone, and the CleanCam speaker to the phone"
+echo "$MESSAGE. Open CleanCam on the phone; Ctrl-C to stop."
+# ffmpeg detects H.264 or HEVC as it connects; the app drops the connection when the codec changes, and the loop
+# connects again. ffmpeg analyzes the stream's start before it decodes: -fflags nobuffer dropped the frames it
+# analyzed, 2 s with ffmpeg 7.1 and 5 s with 4.4, and an HEVC stream then started at frames whose references were gone.
+# A 0.1 s analysis keeps every frame and shows the first one about 0.1 s after the connection.
+use_gpu=${GPU_INPUT[*]}
+while true; do
+  decode_input=() decode_output=()
+  [[ $use_gpu ]] && decode_input=("${GPU_INPUT[@]}") decode_output=("${GPU_OUTPUT[@]}")
+  gpu_failed= open_failed=
+  while IFS= read -r line; do
+    [[ $line =~ $OPEN_FAILED ]] && open_failed=1 && continue
+    [[ $line =~ $DRIVER_NOISE ]] && continue
+    [[ $use_gpu && $line == *"No support for codec"* ]] && continue  # the GPU lacks the codec; the next line says so
+    [[ $line == *"Failed setup for format vaapi"* ]] && gpu_failed=1 && echo "The GPU can't decode this stream; decoding it on the CPU." >&2
+    [[ $gpu_failed ]] || echo "$line" >&2  # after the failure, ffmpeg only reports why it stops
+  done < <(ffmpeg -hide_banner -loglevel warning \
+    -analyzeduration 100000 -flags low_delay "${FRAME_RATE[@]}" "${decode_input[@]}" -i "tcp://$HOST:$PORT" \
+    "${decode_output[@]}" "$FPS_MODE" passthrough -pix_fmt yuv420p -f v4l2 "$VIDEO" 2>&1)
+  if [[ $gpu_failed ]]; then
+    use_gpu=
+    continue
+  fi
+  [[ $open_failed ]] || use_gpu=${GPU_INPUT[*]}  # a stream that played and ended goes back to the GPU
+  sleep 1  # the app is closed or not reachable yet, or its stream ended; try again
+done
