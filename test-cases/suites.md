@@ -1,0 +1,161 @@
+- Where the phone connects
+  - Start the receiver with the phone on USB
+  - Start the receiver with the app closed and the phone on USB
+  - Start the receiver with no iproxy, podman or docker and the phone on USB
+  - Start the receiver with iproxy in a container and the phone on USB
+  - Replug the phone with iproxy in a container and the receiver running
+  - Start the receiver with the phone's IP on WiFi
+  - Start the receiver with the app closed and the phone on WiFi
+- Webcam device at start
+  - Start the receiver with no v4l2loopback module loaded
+  - Start the receiver with the CleanCam device already present
+  - Start the receiver with OBS's v4l2loopback loaded and v4l2loopback-ctl installed
+  - Start the receiver with OBS's v4l2loopback loaded and no v4l2loopback-ctl
+- Camera access
+  - Open the app with camera access allowed
+  - Open the app with camera access denied
+  - Open the app with camera access denied and the receiver connected
+- Microphone access
+  - Open the app with microphone access allowed
+  - Open the app with microphone access denied
+- Video viewers
+  - Open the app with no receiver connected
+  - Disconnect the receiver with the app streaming
+  - Connect the receiver with the app open
+  - Reconnect the receiver with the app open after a disconnect
+  - Connect a second viewer with the receiver watching
+- Link throughput
+  - Stream the video with a link that keeps up
+  - Stream the video with a link slower than the bitrate
+  - Stream the video with a slow link long enough to reach the bitrate's floor
+  - Restore the link with the bitrate stepped down
+  - Stall a viewer with more than 30 sends queued and a second viewer watching
+- Sound check
+  - Check the sound with the receiver and the app running
+  - Check the sound with a 10 s length and the receiver running
+  - Check the sound with the receiver stopped
+  - Replay a sound check with an earlier recording
+- CleanCam device in use
+  - Pick the CleanCam camera with a browser video call
+  - Pick the CleanCam camera with OBS
+  - Pick the CleanCam microphone with the phone's microphone running
+  - Pick the CleanCam microphone with it unused for a minute before
+  - Pick the CleanCam microphone with the app closed
+  - Play the call's sound with the CleanCam speaker picked
+  - Talk into the phone with the CleanCam speaker playing
+  - Play a burst of sound with the CleanCam speaker picked
+  - Pause and resume the call's sound with the CleanCam speaker picked
+  - Send the speaker sound with a sample split across two packets
+  - Play the call's sound with no python3 on the PC and the CleanCam speaker picked
+  - Plug headphones into the phone with the CleanCam speaker playing
+  - Take a phone call with the CleanCam speaker playing
+- Phone orientation
+  - Turn the phone sideways with its top to the left
+  - Turn the phone sideways with its top to the right
+  - Turn the phone upright with the 1080p stream running
+  - Turn the phone upright with the 4K preset
+  - Lay the phone flat with the stream running
+  - Turn the phone upside down with the stream running
+- Zoom
+  - Drag the zoom slider with the zoom inside the lossless range
+  - Drag the zoom slider with the zoom past the lossless range
+  - Drag the zoom slider with the zoom at its top
+  - Tap a lens chip with the Auto lens on a several-lens phone
+  - Open the app with a one-lens phone
+- Focus target
+  - Show a face with no tap held
+  - Show two faces with no tap held
+  - Move a face with a step under a tenth of the frame and focus on it
+  - Move a face with a step over a tenth of the frame and focus on it
+  - Hide the face with focus on it for 2 s
+  - Tap the preview with Lock off
+  - Tap the preview with Lock on
+  - Show a face with a tapped point held
+  - Open the app with no face in view
+  - Long-press the preview with a tapped point held
+  - Long-press the preview with Lock on
+- Picture lock
+  - Lock the picture with auto white balance
+  - Lock the picture with a fixed white balance
+  - Unlock the picture with the stream running
+  - Hold another lens with Lock on
+- Microphone mute
+  - Mute the microphone with the CleanCam microphone in use
+  - Unmute the microphone with the CleanCam microphone in use
+- Screen
+  - Turn the screen off with the stream running
+  - Tap the screen with the screen off
+  - Leave the app with the screen off
+  - Leave the phone untouched with the app open past the auto-lock time
+- Preset
+  - Open the app with no preset picked before
+  - Stream the video with the room dark and the Call preset
+  - Stream the video with the room dark and the Low light preset
+  - Stream the video with the room bright and the Low light preset
+  - Pick the OBS preset with a 60 fps camera mode
+  - Pick the OBS preset with no 60 fps camera mode
+  - Pick the WiFi preset with an HEVC encoder and the receiver connected
+  - Pick the WiFi preset with no HEVC encoder
+  - Pick the WiFi preset with a GPU that lacks HEVC
+  - Leave the WiFi preset with a GPU that lacks HEVC
+  - Pick the 4K preset with the video app open
+  - Pick the 4K preset with no 4K camera mode
+  - Leave the 4K preset with the video app open
+- Lens
+  - Pick the Auto lens with a several-lens phone
+  - Open the settings with a one-lens phone
+  - Hold the ultra-wide lens with the stream running
+  - Hold the wide lens with the stream running
+  - Hold the tele lens with the stream running
+  - Hold another lens with a tapped point held
+- Stabilization
+  - Hold the phone still with Auto stabilization for 5 s
+  - Shake the phone with Auto stabilization for 5 s
+  - Shake the phone with Auto stabilization and the OBS preset for 5 s
+  - Shake the phone with Auto stabilization for under 5 s
+  - Shake the phone with Auto stabilization within a minute of its last change
+  - Turn stabilization off with the phone shaking
+  - Pick Standard stabilization with the phone shaking
+  - Pick Cinematic stabilization with a camera mode that has it
+  - Pick Cinematic stabilization with a camera mode that lacks it
+- Exposure
+  - Set the exposure back to 0 EV with a shift applied
+  - Shift the exposure with +2 EV, the top of the slider
+  - Shift the exposure with -2 EV, the bottom of the slider
+- White balance
+  - Turn auto white balance on with one lens held and a fixed white balance
+  - Open the white balance with the Auto lens on a several-lens phone
+  - Pick the Auto lens with a fixed white balance
+  - Turn auto white balance off with one lens held
+  - Fix the white balance with 2500 K and one lens held
+  - Fix the white balance with 8000 K and one lens held
+  - Fix the white balance with a one-lens phone
+  - Hold one lens again with a fixed white balance kept
+- Near focus
+  - Turn near focus on with a subject close to the camera
+  - Turn near focus off with a subject close to the camera
+- Max bitrate
+  - Remove the bitrate cap with the Call preset
+  - Cap the bitrate with 3 Mbps and the Call preset
+  - Cap the bitrate with 20 Mbps and the Call preset
+  - Cap the bitrate with 20 Mbps and the 4K preset
+  - Cap the bitrate with 10 Mbps and the phone too hot
+- Power and heat
+  - Stream the video with the phone charging and cool
+  - Stream the video with the phone warm but not hot and charging
+  - Unplug the phone with the OBS preset
+  - Plug the phone back in with the last heat change under a minute ago
+  - Heat the phone with the 4K preset
+  - Heat the phone with the last heat change under a minute ago
+  - Overheat the phone with the stream running
+- App on screen
+  - Open the control center with the stream running
+  - Lock the phone with the stream running
+  - Switch to another app with the stream running
+  - Return to the app with the receiver waiting
+  - Reopen the app with a preset picked
+  - Reopen the app with camera options changed
+- Receiver stop
+  - Stop the receiver with PipeWire as the sound server
+  - Stop the receiver with PulseAudio as the sound server
+  - Stop the receiver with iproxy in a container

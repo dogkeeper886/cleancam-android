@@ -1,0 +1,334 @@
+## Call user
+
+- Install the app on the phone
+  - Which app the phone runs [setup]
+    - CleanCam, on iOS 15 or later
+    - CleanCamLegacy, on a 32-bit phone on iOS 10
+  - Where the IPA comes from [setup]
+    - The latest release
+    - A Build workflow run's artifact
+    - tools/build-legacy.sh on the PC
+  - How plumesign runs [setup]
+    - Natively, on glibc 2.38 or later
+    - In podman or docker, on an older glibc
+    - Not found, which stops with a hint
+  - Apple ID session [setup]
+    - Logged in
+    - Logged out or expired, so log in with the password and 2FA code
+  - Trust on the phone [setup]
+    - Developer Mode, then trust the developer, on iOS 16 or later
+    - Trust the developer only, on iOS 15 or iOS 10
+  - Back camera [setup]
+    - Several lenses, switched by a multi-lens camera
+    - One lens
+- then → Ready the PC
+  - Sound server [setup]
+    - PipeWire with pw-cli
+    - PulseAudio with pactl and parec
+    - Neither, so the receiver runs video only
+  - Speaker sender [setup]
+    - python3, with Nagle's algorithm off
+    - bash's /dev/tcp, without python3
+  - Video decoder [setup]
+    - The GPU through VAAPI
+    - The CPU, where no VAAPI driver loads
+    - The CPU, with VAAPI_DEVICE set empty
+  - ffmpeg version [setup]
+    - 4.4 to 5.0, with -vsync
+    - 5.1 to 6.0, with -fps_mode
+    - 6.1 or newer, also with -r 30 on the input
+  - Where iproxy runs [setup]
+    - On the host
+    - In a podman or docker container
+  - Receiver settings [setup]
+    - The defaults, ports 5000 to 5003 and /dev/video10
+    - PORT, AUDIO_PORT, SPEAKER_PORT, DEBUG_PORT or VIDEO_NR changed
+- each call → Start the receiver
+  - Where the phone connects [user]
+    - USB cable
+      - Start the receiver with the phone on USB
+      - Start the receiver with the app closed and the phone on USB
+      - Start the receiver with no iproxy, podman or docker and the phone on USB
+      - Start the receiver with iproxy in a container and the phone on USB
+      - Replug the phone with iproxy in a container and the receiver running
+    - WiFi, by the phone's IP
+      - Start the receiver with the phone's IP on WiFi
+      - Start the receiver with the app closed and the phone on WiFi
+  - Webcam device at start [user]
+    - No v4l2loopback module loaded
+      - Start the receiver with no v4l2loopback module loaded
+    - The module loaded with the CleanCam device
+      - Start the receiver with the CleanCam device already present
+    - The module loaded by another app without the device
+      - Start the receiver with OBS's v4l2loopback loaded and v4l2loopback-ctl installed
+      - Start the receiver with OBS's v4l2loopback loaded and no v4l2loopback-ctl
+- then → Open the app
+  - Camera access [user]
+    - Allowed
+      - Open the app with camera access allowed
+    - Denied
+      - Open the app with camera access denied
+      - Open the app with camera access denied and the receiver connected
+  - Microphone access [user]
+    - Allowed
+      - Open the app with microphone access allowed
+    - Denied
+      - Open the app with microphone access denied
+- receiver connects → Stream to the PC
+  - Video viewers [user]
+    - None
+      - Open the app with no receiver connected
+      - Disconnect the receiver with the app streaming
+    - One
+      - Connect the receiver with the app open
+      - Reconnect the receiver with the app open after a disconnect
+    - Several
+      - Connect a second viewer with the receiver watching
+  - Link throughput [user]
+    - Keeps up
+      - Stream the video with a link that keeps up
+    - Falls behind
+      - Stream the video with a link slower than the bitrate
+      - Stream the video with a slow link long enough to reach the bitrate's floor
+      - Restore the link with the bitrate stepped down
+    - Stalls one viewer
+      - Stall a viewer with more than 30 sends queued and a second viewer watching
+- optional → Check the sound
+  - Sound check [user]
+    - Record and play back
+      - Check the sound with the receiver and the app running
+      - Check the sound with a 10 s length and the receiver running
+      - Check the sound with the receiver stopped
+    - Play an earlier recording again
+      - Replay a sound check with an earlier recording
+- then → Use the stream in a video app
+  - CleanCam device in use [user]
+    - Camera
+      - Pick the CleanCam camera with a browser video call
+      - Pick the CleanCam camera with OBS
+    - Microphone
+      - Pick the CleanCam microphone with the phone's microphone running
+      - Pick the CleanCam microphone with it unused for a minute before
+      - Pick the CleanCam microphone with the app closed
+    - Speaker
+      - Play the call's sound with the CleanCam speaker picked
+      - Talk into the phone with the CleanCam speaker playing
+      - Play a burst of sound with the CleanCam speaker picked
+      - Pause and resume the call's sound with the CleanCam speaker picked
+      - Send the speaker sound with a sample split across two packets
+      - Play the call's sound with no python3 on the PC and the CleanCam speaker picked
+      - Plug headphones into the phone with the CleanCam speaker playing
+      - Take a phone call with the CleanCam speaker playing
+- during the call → Control the picture
+  - Phone orientation [user]
+    - Sideways
+      - Turn the phone sideways with its top to the left
+      - Turn the phone sideways with its top to the right
+    - Upright
+      - Turn the phone upright with the 1080p stream running
+      - Turn the phone upright with the 4K preset
+    - Flat or upside down
+      - Lay the phone flat with the stream running
+      - Turn the phone upside down with the stream running
+  - Zoom [user]
+    - Slider
+      - Drag the zoom slider with the zoom inside the lossless range
+      - Drag the zoom slider with the zoom past the lossless range
+      - Drag the zoom slider with the zoom at its top
+    - Lens chip
+      - Tap a lens chip with the Auto lens on a several-lens phone
+      - Open the app with a one-lens phone
+  - Focus target [user]
+    - Face
+      - Show a face with no tap held
+      - Show two faces with no tap held
+      - Move a face with a step under a tenth of the frame and focus on it
+      - Move a face with a step over a tenth of the frame and focus on it
+      - Hide the face with focus on it for 2 s
+    - Tapped point
+      - Tap the preview with Lock off
+      - Tap the preview with Lock on
+      - Show a face with a tapped point held
+    - Center
+      - Open the app with no face in view
+      - Long-press the preview with a tapped point held
+      - Long-press the preview with Lock on
+  - Picture lock [user]
+    - Locked
+      - Lock the picture with auto white balance
+      - Lock the picture with a fixed white balance
+    - Unlocked
+      - Unlock the picture with the stream running
+      - Hold another lens with Lock on
+  - Microphone mute [user]
+    - Muted
+      - Mute the microphone with the CleanCam microphone in use
+    - Unmuted
+      - Unmute the microphone with the CleanCam microphone in use
+  - Screen [user]
+    - Off
+      - Turn the screen off with the stream running
+    - On
+      - Tap the screen with the screen off
+      - Leave the app with the screen off
+      - Leave the phone untouched with the app open past the auto-lock time
+- settings button → Change the settings
+  - Preset [user]
+    - Call
+      - Open the app with no preset picked before
+      - Stream the video with the room dark and the Call preset
+    - Low light
+      - Stream the video with the room dark and the Low light preset
+      - Stream the video with the room bright and the Low light preset
+    - OBS
+      - Pick the OBS preset with a 60 fps camera mode
+      - Pick the OBS preset with no 60 fps camera mode
+    - WiFi
+      - Pick the WiFi preset with an HEVC encoder and the receiver connected
+      - Pick the WiFi preset with no HEVC encoder
+      - Pick the WiFi preset with a GPU that lacks HEVC
+      - Leave the WiFi preset with a GPU that lacks HEVC
+    - 4K
+      - Pick the 4K preset with the video app open
+      - Pick the 4K preset with no 4K camera mode
+      - Leave the 4K preset with the video app open
+  - Lens [user]
+    - Auto
+      - Pick the Auto lens with a several-lens phone
+      - Open the settings with a one-lens phone
+    - Ultra wide
+      - Hold the ultra-wide lens with the stream running
+    - Wide
+      - Hold the wide lens with the stream running
+    - Tele
+      - Hold the tele lens with the stream running
+      - Hold another lens with a tapped point held
+  - Stabilization [user]
+    - Auto
+      - Hold the phone still with Auto stabilization for 5 s
+      - Shake the phone with Auto stabilization for 5 s
+      - Shake the phone with Auto stabilization and the OBS preset for 5 s
+      - Shake the phone with Auto stabilization for under 5 s
+      - Shake the phone with Auto stabilization within a minute of its last change
+    - Off
+      - Turn stabilization off with the phone shaking
+    - Standard
+      - Pick Standard stabilization with the phone shaking
+    - Cinematic
+      - Pick Cinematic stabilization with a camera mode that has it
+      - Pick Cinematic stabilization with a camera mode that lacks it
+  - Exposure [user]
+    - 0 EV
+      - Set the exposure back to 0 EV with a shift applied
+    - Shifted
+      - Shift the exposure with +2 EV, the top of the slider
+      - Shift the exposure with -2 EV, the bottom of the slider
+  - White balance [user]
+    - Auto
+      - Turn auto white balance on with one lens held and a fixed white balance
+      - Open the white balance with the Auto lens on a several-lens phone
+      - Pick the Auto lens with a fixed white balance
+    - Fixed
+      - Turn auto white balance off with one lens held
+      - Fix the white balance with 2500 K and one lens held
+      - Fix the white balance with 8000 K and one lens held
+      - Fix the white balance with a one-lens phone
+      - Hold one lens again with a fixed white balance kept
+  - Near focus [user]
+    - On
+      - Turn near focus on with a subject close to the camera
+    - Off
+      - Turn near focus off with a subject close to the camera
+  - Max bitrate [user]
+    - No limit
+      - Remove the bitrate cap with the Call preset
+    - A cap
+      - Cap the bitrate with 3 Mbps and the Call preset
+      - Cap the bitrate with 20 Mbps and the Call preset
+      - Cap the bitrate with 20 Mbps and the 4K preset
+      - Cap the bitrate with 10 Mbps and the phone too hot
+- off the charger or hot → Run on battery or heat
+  - Power and heat [user]
+    - Charging and cool
+      - Stream the video with the phone charging and cool
+      - Stream the video with the phone warm but not hot and charging
+    - On battery
+      - Unplug the phone with the OBS preset
+      - Plug the phone back in with the last heat change under a minute ago
+    - Hot
+      - Heat the phone with the 4K preset
+      - Heat the phone with the last heat change under a minute ago
+    - Too hot
+      - Overheat the phone with the stream running
+- leaves the screen → Leave the app
+  - App on screen [user]
+    - Covered by a system panel
+      - Open the control center with the stream running
+    - In the background
+      - Lock the phone with the stream running
+      - Switch to another app with the stream running
+      - Return to the app with the receiver waiting
+    - Closed and reopened
+      - Reopen the app with a preset picked
+      - Reopen the app with camera options changed
+- Ctrl-C → Stop the receiver
+  - Receiver stop [user]
+    - Ctrl-C
+      - Stop the receiver with PipeWire as the sound server
+      - Stop the receiver with PulseAudio as the sound server
+      - Stop the receiver with iproxy in a container
+- on day 7 → Renew the signature
+  - Signature [setup]
+    - Within 7 days, so renew early to restart the clock
+    - Expired, so the app won't open and the receiver waits
+    - Session expired, so log in again before signing
+
+## Maintainer
+
+- Change the app
+  - Which code changes [build]
+    - CleanCam's Swift code, within iOS 15
+    - CleanCamLegacy's Objective-C code, within iOS 10
+    - Both, porting a Swift change to CleanCamLegacy
+- push → Build the IPAs
+  - Build trigger [build]
+    - A push or a pull request
+    - A manual workflow dispatch
+  - Main app build [build]
+    - XcodeGen and xcodebuild on a macOS runner
+  - Legacy app build [build]
+    - tools/build-legacy.sh on the PC
+    - tools/build-legacy.sh on a Linux runner, with the toolchain cached
+  - Legacy toolchain [build]
+    - Already in build/legacy-tools
+    - Downloaded, and its checksum matches
+    - Downloaded, and its checksum fails, which stops the build
+  - Container runtime [build]
+    - podman
+    - docker
+    - Neither, which stops the build
+  - Legacy binary check [build]
+    - Holds no build paths
+    - Holds a build path, which fails the job
+- then → Debug the stream
+  - Debug port command [build]
+    - bitrate N, from 1 to 100000000
+    - auto
+    - keyframe
+    - preset NAME
+    - lens, stab, ev, wb, near or maxbitrate
+    - thermal or battery, and auto to hand them back
+    - camera
+    - Anything else, answered with ok false
+  - Debug client input [build]
+    - Lines ending in a newline
+    - Over 1024 bytes with no newline, which is dropped
+  - Test scene [build]
+    - tools/test-pattern.html at full screen
+    - A live scene
+- v* tag → Release
+  - Release trigger [build]
+    - A v* tag, which attaches both IPAs and their SHA-256 sums
+    - Any other push, which keeps the IPAs as run artifacts
+  - Version [build]
+    - Raised in project.yml and CleanCamLegacy/Info.plist first
