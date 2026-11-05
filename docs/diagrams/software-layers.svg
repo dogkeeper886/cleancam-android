@@ -1,0 +1,137 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1380" height="680" viewBox="0 0 1380 680" font-family="DejaVu Sans">
+  <defs>
+    <marker id="head" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="#475569"/>
+    </marker>
+    <marker id="tail" viewBox="0 0 10 10" refX="1" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M10,0 L0,5 L10,10 z" fill="#475569"/>
+    </marker>
+  </defs>
+  <rect width="1380" height="680" fill="#ffffff"/>
+  <text x="40" y="38" font-size="20" font-weight="bold" fill="#111827">cleancam-android: software layers</text>
+
+  <!-- Column headers -->
+  <text x="210" y="80" font-size="16" font-weight="bold" fill="#334155" text-anchor="middle">Build — Linux PC</text>
+  <text x="690" y="80" font-size="16" font-weight="bold" fill="#047857" text-anchor="middle">Phone — Pixel 8</text>
+  <text x="1170" y="80" font-size="16" font-weight="bold" fill="#334155" text-anchor="middle">Receive — Linux PC</text>
+
+  <!-- Build column -->
+  <rect x="40" y="100" width="340" height="70" rx="8" fill="#fff7ed" stroke="#c2410c" stroke-width="2" stroke-dasharray="7 5"/>
+  <text x="210" y="126" font-size="14" font-weight="bold" fill="#111827" text-anchor="middle">APK</text>
+  <text x="210" y="148" font-size="12" fill="#374151" text-anchor="middle">CleanCam for Android, debug build</text>
+
+  <rect x="40" y="240" width="340" height="70" rx="8" fill="#f1f5f9" stroke="#334155" stroke-width="2"/>
+  <text x="210" y="266" font-size="14" font-weight="bold" fill="#111827" text-anchor="middle">Gradle 9.6.0 + AGP 9.5</text>
+  <text x="210" y="288" font-size="12" fill="#374151" text-anchor="middle">Kotlin built in · Gradle wrapper</text>
+
+  <rect x="40" y="380" width="160" height="70" rx="8" fill="#f1f5f9" stroke="#334155" stroke-width="2"/>
+  <text x="120" y="406" font-size="14" font-weight="bold" fill="#111827" text-anchor="middle">JDK 17</text>
+  <text x="120" y="428" font-size="12" fill="#374151" text-anchor="middle">javac 17.0.21</text>
+
+  <rect x="220" y="380" width="160" height="70" rx="8" fill="#f1f5f9" stroke="#334155" stroke-width="2"/>
+  <text x="300" y="406" font-size="14" font-weight="bold" fill="#111827" text-anchor="middle">Android SDK</text>
+  <text x="300" y="425" font-size="12" fill="#374151" text-anchor="middle">android-37.0</text>
+  <text x="300" y="441" font-size="12" fill="#374151" text-anchor="middle">build-tools 36.0.0</text>
+
+  <rect x="40" y="520" width="340" height="70" rx="8" fill="#f1f5f9" stroke="#334155" stroke-width="2"/>
+  <text x="210" y="546" font-size="14" font-weight="bold" fill="#111827" text-anchor="middle">Rocky Linux 9.8</text>
+  <text x="210" y="568" font-size="12" fill="#374151" text-anchor="middle">x86_64 PC</text>
+
+  <line x1="210" y1="240" x2="210" y2="172" stroke="#475569" stroke-width="1.6" marker-end="url(#head)"/>
+  <text x="216" y="210" font-size="11" fill="#374151">builds</text>
+  <line x1="120" y1="310" x2="120" y2="378" stroke="#475569" stroke-width="1.6" marker-end="url(#head)"/>
+  <text x="126" y="349" font-size="11" fill="#374151">runs on</text>
+  <line x1="300" y1="310" x2="300" y2="378" stroke="#475569" stroke-width="1.6" marker-end="url(#head)"/>
+  <text x="306" y="349" font-size="11" fill="#374151">compiles against</text>
+  <line x1="120" y1="450" x2="120" y2="518" stroke="#475569" stroke-width="1.6" marker-end="url(#head)"/>
+  <text x="126" y="489" font-size="11" fill="#374151">installed by dnf</text>
+  <line x1="300" y1="450" x2="300" y2="518" stroke="#475569" stroke-width="1.6" marker-end="url(#head)"/>
+  <text x="306" y="489" font-size="11" fill="#374151">unpacked in ~/Android/Sdk</text>
+
+  <!-- Phone column -->
+  <rect x="520" y="100" width="340" height="70" rx="8" fill="#fff7ed" stroke="#c2410c" stroke-width="2" stroke-dasharray="7 5"/>
+  <text x="690" y="126" font-size="14" font-weight="bold" fill="#111827" text-anchor="middle">CleanCam app</text>
+  <text x="690" y="148" font-size="12" fill="#374151" text-anchor="middle">serves TCP 5000–5003</text>
+
+  <rect x="510" y="232" width="360" height="86" rx="10" fill="#f8fafc" stroke="#94a3b8" stroke-width="1.2"/>
+  <rect x="520" y="240" width="106" height="70" rx="8" fill="#ecfdf5" stroke="#047857" stroke-width="2"/>
+  <text x="573" y="266" font-size="14" font-weight="bold" fill="#111827" text-anchor="middle">Camera2</text>
+  <text x="573" y="285" font-size="12" fill="#374151" text-anchor="middle">logical back</text>
+  <text x="573" y="301" font-size="12" fill="#374151" text-anchor="middle">camera</text>
+  <rect x="637" y="240" width="106" height="70" rx="8" fill="#ecfdf5" stroke="#047857" stroke-width="2"/>
+  <text x="690" y="266" font-size="14" font-weight="bold" fill="#111827" text-anchor="middle">MediaCodec</text>
+  <text x="690" y="288" font-size="12" fill="#374151" text-anchor="middle">H.264 · HEVC</text>
+  <rect x="754" y="240" width="106" height="70" rx="8" fill="#ecfdf5" stroke="#047857" stroke-width="2"/>
+  <text x="807" y="266" font-size="14" font-weight="bold" fill="#111827" text-anchor="middle">Audio</text>
+  <text x="807" y="285" font-size="12" fill="#374151" text-anchor="middle">mic and</text>
+  <text x="807" y="301" font-size="12" fill="#374151" text-anchor="middle">loudspeaker</text>
+
+  <rect x="520" y="380" width="340" height="70" rx="8" fill="#ecfdf5" stroke="#047857" stroke-width="2"/>
+  <text x="690" y="406" font-size="14" font-weight="bold" fill="#111827" text-anchor="middle">Android 17 (API 37)</text>
+  <text x="690" y="428" font-size="12" fill="#374151" text-anchor="middle">camera service · Codec2 · adbd</text>
+
+  <rect x="520" y="520" width="340" height="70" rx="8" fill="#ecfdf5" stroke="#047857" stroke-width="2"/>
+  <text x="690" y="542" font-size="14" font-weight="bold" fill="#111827" text-anchor="middle">Pixel 8 · Tensor G3</text>
+  <text x="690" y="561" font-size="12" fill="#374151" text-anchor="middle">wide + ultra-wide, up to 60 fps</text>
+  <text x="690" y="578" font-size="12" fill="#374151" text-anchor="middle">c2.exynos H.264/HEVC encoders · USB-C</text>
+
+  <line x1="573" y1="170" x2="573" y2="238" stroke="#475569" stroke-width="1.6" marker-end="url(#head)"/>
+  <text x="579" y="209" font-size="11" fill="#374151">captures</text>
+  <line x1="690" y1="170" x2="690" y2="238" stroke="#475569" stroke-width="1.6" marker-end="url(#head)"/>
+  <text x="696" y="209" font-size="11" fill="#374151">encodes</text>
+  <line x1="807" y1="170" x2="807" y2="238" stroke="#475569" stroke-width="1.6" marker-end="url(#head)"/>
+  <text x="813" y="209" font-size="11" fill="#374151">records · plays</text>
+  <line x1="690" y1="318" x2="690" y2="378" stroke="#475569" stroke-width="1.6" marker-end="url(#head)"/>
+  <text x="696" y="353" font-size="11" fill="#374151">run on</text>
+  <line x1="690" y1="450" x2="690" y2="518" stroke="#475569" stroke-width="1.6" marker-end="url(#head)"/>
+  <text x="696" y="489" font-size="11" fill="#374151">drives</text>
+
+  <!-- Receive column -->
+  <rect x="1000" y="100" width="340" height="70" rx="8" fill="#f1f5f9" stroke="#334155" stroke-width="2"/>
+  <text x="1170" y="126" font-size="14" font-weight="bold" fill="#111827" text-anchor="middle">Video apps</text>
+  <text x="1170" y="148" font-size="12" fill="#374151" text-anchor="middle">Zoom · OBS · browser</text>
+
+  <rect x="1000" y="240" width="160" height="70" rx="8" fill="#f1f5f9" stroke="#334155" stroke-width="2"/>
+  <text x="1080" y="266" font-size="14" font-weight="bold" fill="#111827" text-anchor="middle">CleanCam webcam</text>
+  <text x="1080" y="285" font-size="12" fill="#374151" text-anchor="middle">v4l2loopback 0.15.1</text>
+  <text x="1080" y="301" font-size="12" fill="#374151" text-anchor="middle">/dev/video10</text>
+
+  <rect x="1180" y="240" width="160" height="70" rx="8" fill="#f1f5f9" stroke="#334155" stroke-width="2"/>
+  <text x="1260" y="266" font-size="14" font-weight="bold" fill="#111827" text-anchor="middle">CleanCam audio</text>
+  <text x="1260" y="285" font-size="12" fill="#374151" text-anchor="middle">mic + speaker</text>
+  <text x="1260" y="301" font-size="12" fill="#374151" text-anchor="middle">PipeWire pipe-tunnel</text>
+
+  <rect x="1000" y="380" width="340" height="70" rx="8" fill="#fff7ed" stroke="#c2410c" stroke-width="2" stroke-dasharray="7 5"/>
+  <text x="1170" y="406" font-size="14" font-weight="bold" fill="#111827" text-anchor="middle">cleancam-receive.sh</text>
+  <text x="1170" y="428" font-size="12" fill="#374151" text-anchor="middle">ffmpeg decodes H.264/HEVC · python3 speaker</text>
+
+  <rect x="1000" y="520" width="340" height="70" rx="8" fill="#f1f5f9" stroke="#334155" stroke-width="2"/>
+  <text x="1170" y="542" font-size="14" font-weight="bold" fill="#111827" text-anchor="middle">adb 37.0.1 (SDK)</text>
+  <text x="1170" y="561" font-size="12" fill="#374151" text-anchor="middle">forward tcp:5000–5003</text>
+  <text x="1170" y="578" font-size="12" fill="#374151" text-anchor="middle">udev uaccess rule · PATH ahead of adb 33</text>
+
+  <line x1="1080" y1="170" x2="1080" y2="238" stroke="#475569" stroke-width="1.6" marker-end="url(#head)"/>
+  <text x="1086" y="209" font-size="11" fill="#374151">opens</text>
+  <line x1="1260" y1="170" x2="1260" y2="238" stroke="#475569" stroke-width="1.6" marker-end="url(#head)"/>
+  <text x="1254" y="209" font-size="11" fill="#374151" text-anchor="end">records · plays</text>
+  <line x1="1080" y1="380" x2="1080" y2="312" stroke="#475569" stroke-width="1.6" marker-end="url(#head)"/>
+  <text x="1086" y="349" font-size="11" fill="#374151">writes frames</text>
+  <line x1="1260" y1="380" x2="1260" y2="312" stroke="#475569" stroke-width="1.6" marker-end="url(#head)"/>
+  <text x="1254" y="349" font-size="11" fill="#374151" text-anchor="end">feeds sound</text>
+  <line x1="1170" y1="520" x2="1170" y2="452" stroke="#475569" stroke-width="1.6" marker-end="url(#head)"/>
+  <text x="1176" y="489" font-size="11" fill="#374151">forwards ports</text>
+
+  <!-- Cross-column links -->
+  <line x1="380" y1="135" x2="518" y2="135" stroke="#475569" stroke-width="1.6" marker-end="url(#head)"/>
+  <text x="450" y="126" font-size="11" fill="#374151" text-anchor="middle">installs over adb</text>
+  <line x1="862" y1="555" x2="998" y2="555" stroke="#475569" stroke-width="1.6" marker-start="url(#tail)" marker-end="url(#head)"/>
+  <text x="930" y="546" font-size="11" fill="#374151" text-anchor="middle">forwards 5000–5003</text>
+  <text x="930" y="572" font-size="11" fill="#374151" text-anchor="middle">over the USB cable</text>
+
+  <!-- Legend -->
+  <rect x="40" y="622" width="44" height="24" rx="6" fill="#f1f5f9" stroke="#334155" stroke-width="2"/>
+  <text x="94" y="639" font-size="12" fill="#374151">installed or found on this PC and phone</text>
+  <rect x="400" y="622" width="44" height="24" rx="6" fill="#fff7ed" stroke="#c2410c" stroke-width="2" stroke-dasharray="7 5"/>
+  <text x="454" y="639" font-size="12" fill="#374151">to build, or to change for Android, in issue #1</text>
+  <text x="820" y="639" font-size="12" fill="#64748b">Read each arrow as tail, label, head: Gradle builds the APK.</text>
+</svg>
