@@ -1,575 +1,511 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1625" height="3536" viewBox="0 0 1625 3536">
+<svg xmlns="http://www.w3.org/2000/svg" width="1625" height="3118" viewBox="0 0 1625 3118">
 <defs><marker id="head" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#475569"/></marker><marker id="trunk" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#3730a3"/></marker></defs>
-<rect width="1625" height="3536" fill="#ffffff"/>
+<rect width="1625" height="3118" fill="#ffffff"/>
 <text x="40" y="36" font-family="DejaVu Sans" font-size="20" font-weight="bold" fill="#111827">Decision tree</text>
 <text x="40.0" y="70.0" font-family="DejaVu Sans" font-size="18" font-weight="bold" text-anchor="start" fill="#111827">Call user</text>
-<line x1="310.0" y1="113.0" x2="420.0" y2="113.0" stroke="#94a3b8" stroke-width="1.6"/>
-<rect x="420.0" y="94.0" width="255.9" height="38.0" rx="6" fill="#f1f5f9" stroke="#64748b" stroke-width="1.5"/>
-<text x="548.0" y="118.0" font-family="DejaVu Sans" font-size="13" font-weight="bold" text-anchor="middle" fill="#1f2937">Which app the phone runs</text>
-<rect x="711.9" y="96.0" width="597.4" height="34.0" rx="8" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.5"/>
-<line x1="675.9" y1="113.0" x2="709.9" y2="113.0" stroke="#475569" stroke-width="1.6" marker-end="url(#head)"/>
-<rect x="719.9" y="100.0" width="231.2" height="26.0" rx="12" fill="#e2e8f0" stroke="#64748b" stroke-width="1.2"/>
-<text x="835.5" y="117.5" font-family="DejaVu Sans" font-size="13" font-weight="normal" text-anchor="middle" fill="#334155">CleanCam, on iOS 15 or later</text>
-<rect x="959.1" y="100.0" width="342.2" height="26.0" rx="12" fill="#e2e8f0" stroke="#64748b" stroke-width="1.2"/>
-<text x="1130.2" y="117.5" font-family="DejaVu Sans" font-size="13" font-weight="normal" text-anchor="middle" fill="#334155">CleanCamLegacy, on a 32-bit phone on iOS 10</text>
-<line x1="310.0" y1="161.0" x2="420.0" y2="161.0" stroke="#94a3b8" stroke-width="1.6"/>
-<rect x="420.0" y="142.0" width="255.9" height="38.0" rx="6" fill="#f1f5f9" stroke="#64748b" stroke-width="1.5"/>
-<text x="548.0" y="166.0" font-family="DejaVu Sans" font-size="13" font-weight="bold" text-anchor="middle" fill="#1f2937">Where the IPA comes from</text>
-<rect x="711.9" y="144.0" width="696.0" height="34.0" rx="8" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.5"/>
-<line x1="675.9" y1="161.0" x2="709.9" y2="161.0" stroke="#475569" stroke-width="1.6" marker-end="url(#head)"/>
-<rect x="719.9" y="148.0" width="157.2" height="26.0" rx="12" fill="#e2e8f0" stroke="#64748b" stroke-width="1.2"/>
-<text x="798.5" y="165.5" font-family="DejaVu Sans" font-size="13" font-weight="normal" text-anchor="middle" fill="#334155">The latest release</text>
-<rect x="885.1" y="148.0" width="253.4" height="26.0" rx="12" fill="#e2e8f0" stroke="#64748b" stroke-width="1.2"/>
-<text x="1011.8" y="165.5" font-family="DejaVu Sans" font-size="13" font-weight="normal" text-anchor="middle" fill="#334155">A Build workflow run's artifact</text>
-<rect x="1146.5" y="148.0" width="253.4" height="26.0" rx="12" fill="#e2e8f0" stroke="#64748b" stroke-width="1.2"/>
-<text x="1273.2" y="165.5" font-family="DejaVu Sans" font-size="13" font-weight="normal" text-anchor="middle" fill="#334155">tools/build-legacy.sh on the PC</text>
-<line x1="310.0" y1="209.0" x2="420.0" y2="209.0" stroke="#94a3b8" stroke-width="1.6"/>
-<rect x="420.0" y="190.0" width="255.9" height="38.0" rx="6" fill="#f1f5f9" stroke="#64748b" stroke-width="1.5"/>
-<text x="548.0" y="214.0" font-family="DejaVu Sans" font-size="13" font-weight="bold" text-anchor="middle" fill="#1f2937">How plumesign runs</text>
-<rect x="711.9" y="192.0" width="873.6" height="34.0" rx="8" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.5"/>
-<line x1="675.9" y1="209.0" x2="709.9" y2="209.0" stroke="#475569" stroke-width="1.6" marker-end="url(#head)"/>
-<rect x="719.9" y="196.0" width="260.8" height="26.0" rx="12" fill="#e2e8f0" stroke="#64748b" stroke-width="1.2"/>
-<text x="850.3" y="213.5" font-family="DejaVu Sans" font-size="13" font-weight="normal" text-anchor="middle" fill="#334155">Natively, on glibc 2.38 or later</text>
-<rect x="988.7" y="196.0" width="305.2" height="26.0" rx="12" fill="#e2e8f0" stroke="#64748b" stroke-width="1.2"/>
-<text x="1141.3" y="213.5" font-family="DejaVu Sans" font-size="13" font-weight="normal" text-anchor="middle" fill="#334155">In podman or docker, on an older glibc</text>
-<rect x="1301.9" y="196.0" width="275.6" height="26.0" rx="12" fill="#e2e8f0" stroke="#64748b" stroke-width="1.2"/>
-<text x="1439.7" y="213.5" font-family="DejaVu Sans" font-size="13" font-weight="normal" text-anchor="middle" fill="#334155">Not found, which stops with a hint</text>
-<line x1="310.0" y1="257.0" x2="420.0" y2="257.0" stroke="#94a3b8" stroke-width="1.6"/>
-<rect x="420.0" y="238.0" width="255.9" height="38.0" rx="6" fill="#f1f5f9" stroke="#64748b" stroke-width="1.5"/>
-<text x="548.0" y="262.0" font-family="DejaVu Sans" font-size="13" font-weight="bold" text-anchor="middle" fill="#1f2937">Apple ID session</text>
-<rect x="711.9" y="240.0" width="604.8" height="34.0" rx="8" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.5"/>
-<line x1="675.9" y1="257.0" x2="709.9" y2="257.0" stroke="#475569" stroke-width="1.6" marker-end="url(#head)"/>
-<rect x="719.9" y="244.0" width="90.6" height="26.0" rx="12" fill="#e2e8f0" stroke="#64748b" stroke-width="1.2"/>
-<text x="765.2" y="261.5" font-family="DejaVu Sans" font-size="13" font-weight="normal" text-anchor="middle" fill="#334155">Logged in</text>
-<rect x="818.5" y="244.0" width="490.2" height="26.0" rx="12" fill="#e2e8f0" stroke="#64748b" stroke-width="1.2"/>
-<text x="1063.6" y="261.5" font-family="DejaVu Sans" font-size="13" font-weight="normal" text-anchor="middle" fill="#334155">Logged out or expired, so log in with the password and 2FA code</text>
-<line x1="310.0" y1="305.0" x2="420.0" y2="305.0" stroke="#94a3b8" stroke-width="1.6"/>
-<rect x="420.0" y="286.0" width="255.9" height="38.0" rx="6" fill="#f1f5f9" stroke="#64748b" stroke-width="1.5"/>
-<text x="548.0" y="310.0" font-family="DejaVu Sans" font-size="13" font-weight="bold" text-anchor="middle" fill="#1f2937">Trust on the phone</text>
-<rect x="711.9" y="288.0" width="849.0" height="34.0" rx="8" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.5"/>
-<line x1="675.9" y1="305.0" x2="709.9" y2="305.0" stroke="#475569" stroke-width="1.6" marker-end="url(#head)"/>
-<rect x="719.9" y="292.0" width="468.0" height="26.0" rx="12" fill="#e2e8f0" stroke="#64748b" stroke-width="1.2"/>
-<text x="953.9" y="309.5" font-family="DejaVu Sans" font-size="13" font-weight="normal" text-anchor="middle" fill="#334155">Developer Mode, then trust the developer, on iOS 16 or later</text>
-<rect x="1195.9" y="292.0" width="357.0" height="26.0" rx="12" fill="#e2e8f0" stroke="#64748b" stroke-width="1.2"/>
-<text x="1374.4" y="309.5" font-family="DejaVu Sans" font-size="13" font-weight="normal" text-anchor="middle" fill="#334155">Trust the developer only, on iOS 15 or iOS 10</text>
-<line x1="310.0" y1="353.0" x2="420.0" y2="353.0" stroke="#94a3b8" stroke-width="1.6"/>
-<rect x="420.0" y="334.0" width="255.9" height="38.0" rx="6" fill="#f1f5f9" stroke="#64748b" stroke-width="1.5"/>
-<text x="548.0" y="358.0" font-family="DejaVu Sans" font-size="13" font-weight="bold" text-anchor="middle" fill="#1f2937">Back camera</text>
-<rect x="711.9" y="336.0" width="479.0" height="34.0" rx="8" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.5"/>
-<line x1="675.9" y1="353.0" x2="709.9" y2="353.0" stroke="#475569" stroke-width="1.6" marker-end="url(#head)"/>
-<rect x="719.9" y="340.0" width="371.8" height="26.0" rx="12" fill="#e2e8f0" stroke="#64748b" stroke-width="1.2"/>
-<text x="905.8" y="357.5" font-family="DejaVu Sans" font-size="13" font-weight="normal" text-anchor="middle" fill="#334155">Several lenses, switched by a multi-lens camera</text>
-<rect x="1099.7" y="340.0" width="83.2" height="26.0" rx="12" fill="#e2e8f0" stroke="#64748b" stroke-width="1.2"/>
-<text x="1141.3" y="357.5" font-family="DejaVu Sans" font-size="13" font-weight="normal" text-anchor="middle" fill="#334155">One lens</text>
-<rect x="40.0" y="94.0" width="270.0" height="278.0" rx="8" fill="#e0e7ff" stroke="#3730a3" stroke-width="2"/>
-<text x="175.0" y="238.0" font-family="DejaVu Sans" font-size="14" font-weight="bold" text-anchor="middle" fill="#1e1b4b">Install the app on the phone</text>
-<line x1="310.0" y1="447.0" x2="420.0" y2="447.0" stroke="#94a3b8" stroke-width="1.6"/>
-<rect x="420.0" y="428.0" width="255.9" height="38.0" rx="6" fill="#f1f5f9" stroke="#64748b" stroke-width="1.5"/>
-<text x="548.0" y="452.0" font-family="DejaVu Sans" font-size="13" font-weight="bold" text-anchor="middle" fill="#1f2937">Sound server</text>
-<rect x="711.9" y="430.0" width="777.4" height="34.0" rx="8" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.5"/>
-<line x1="675.9" y1="447.0" x2="709.9" y2="447.0" stroke="#475569" stroke-width="1.6" marker-end="url(#head)"/>
-<rect x="719.9" y="434.0" width="172.0" height="26.0" rx="12" fill="#e2e8f0" stroke="#64748b" stroke-width="1.2"/>
-<text x="805.9" y="451.5" font-family="DejaVu Sans" font-size="13" font-weight="normal" text-anchor="middle" fill="#334155">PipeWire with pw-cli</text>
-<rect x="899.9" y="434.0" width="253.4" height="26.0" rx="12" fill="#e2e8f0" stroke="#64748b" stroke-width="1.2"/>
-<text x="1026.6" y="451.5" font-family="DejaVu Sans" font-size="13" font-weight="normal" text-anchor="middle" fill="#334155">PulseAudio with pactl and parec</text>
-<rect x="1161.3" y="434.0" width="320.0" height="26.0" rx="12" fill="#e2e8f0" stroke="#64748b" stroke-width="1.2"/>
-<text x="1321.3" y="451.5" font-family="DejaVu Sans" font-size="13" font-weight="normal" text-anchor="middle" fill="#334155">Neither, so the receiver runs video only</text>
-<line x1="310.0" y1="495.0" x2="420.0" y2="495.0" stroke="#94a3b8" stroke-width="1.6"/>
-<rect x="420.0" y="476.0" width="255.9" height="38.0" rx="6" fill="#f1f5f9" stroke="#64748b" stroke-width="1.5"/>
-<text x="548.0" y="500.0" font-family="DejaVu Sans" font-size="13" font-weight="bold" text-anchor="middle" fill="#1f2937">Speaker sender</text>
-<rect x="711.9" y="478.0" width="567.8" height="34.0" rx="8" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.5"/>
-<line x1="675.9" y1="495.0" x2="709.9" y2="495.0" stroke="#475569" stroke-width="1.6" marker-end="url(#head)"/>
-<rect x="719.9" y="482.0" width="283.0" height="26.0" rx="12" fill="#e2e8f0" stroke="#64748b" stroke-width="1.2"/>
-<text x="861.4" y="499.5" font-family="DejaVu Sans" font-size="13" font-weight="normal" text-anchor="middle" fill="#334155">python3, with Nagle's algorithm off</text>
-<rect x="1010.9" y="482.0" width="260.8" height="26.0" rx="12" fill="#e2e8f0" stroke="#64748b" stroke-width="1.2"/>
-<text x="1141.3" y="499.5" font-family="DejaVu Sans" font-size="13" font-weight="normal" text-anchor="middle" fill="#334155">bash's /dev/tcp, without python3</text>
-<line x1="310.0" y1="543.0" x2="420.0" y2="543.0" stroke="#94a3b8" stroke-width="1.6"/>
-<rect x="420.0" y="524.0" width="255.9" height="38.0" rx="6" fill="#f1f5f9" stroke="#64748b" stroke-width="1.5"/>
-<text x="548.0" y="548.0" font-family="DejaVu Sans" font-size="13" font-weight="bold" text-anchor="middle" fill="#1f2937">Video decoder</text>
-<rect x="711.9" y="526.0" width="792.2" height="34.0" rx="8" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.5"/>
-<line x1="675.9" y1="543.0" x2="709.9" y2="543.0" stroke="#475569" stroke-width="1.6" marker-end="url(#head)"/>
-<rect x="719.9" y="530.0" width="179.4" height="26.0" rx="12" fill="#e2e8f0" stroke="#64748b" stroke-width="1.2"/>
-<text x="809.6" y="547.5" font-family="DejaVu Sans" font-size="13" font-weight="normal" text-anchor="middle" fill="#334155">The GPU through VAAPI</text>
-<rect x="907.3" y="530.0" width="290.4" height="26.0" rx="12" fill="#e2e8f0" stroke="#64748b" stroke-width="1.2"/>
-<text x="1052.5" y="547.5" font-family="DejaVu Sans" font-size="13" font-weight="normal" text-anchor="middle" fill="#334155">The CPU, where no VAAPI driver loads</text>
-<rect x="1205.7" y="530.0" width="290.4" height="26.0" rx="12" fill="#e2e8f0" stroke="#64748b" stroke-width="1.2"/>
-<text x="1350.9" y="547.5" font-family="DejaVu Sans" font-size="13" font-weight="normal" text-anchor="middle" fill="#334155">The CPU, with VAAPI_DEVICE set empty</text>
-<line x1="310.0" y1="591.0" x2="420.0" y2="591.0" stroke="#94a3b8" stroke-width="1.6"/>
-<rect x="420.0" y="572.0" width="255.9" height="38.0" rx="6" fill="#f1f5f9" stroke="#64748b" stroke-width="1.5"/>
-<text x="548.0" y="596.0" font-family="DejaVu Sans" font-size="13" font-weight="bold" text-anchor="middle" fill="#1f2937">ffmpeg version</text>
-<rect x="711.9" y="574.0" width="777.4" height="34.0" rx="8" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.5"/>
-<line x1="675.9" y1="591.0" x2="709.9" y2="591.0" stroke="#475569" stroke-width="1.6" marker-end="url(#head)"/>
-<rect x="719.9" y="578.0" width="194.2" height="26.0" rx="12" fill="#e2e8f0" stroke="#64748b" stroke-width="1.2"/>
-<text x="817.0" y="595.5" font-family="DejaVu Sans" font-size="13" font-weight="normal" text-anchor="middle" fill="#334155">4.4 to 5.0, with -vsync</text>
-<rect x="922.1" y="578.0" width="216.4" height="26.0" rx="12" fill="#e2e8f0" stroke="#64748b" stroke-width="1.2"/>
-<text x="1030.3" y="595.5" font-family="DejaVu Sans" font-size="13" font-weight="normal" text-anchor="middle" fill="#334155">5.1 to 6.0, with -fps_mode</text>
-<rect x="1146.5" y="578.0" width="334.8" height="26.0" rx="12" fill="#e2e8f0" stroke="#64748b" stroke-width="1.2"/>
-<text x="1313.9" y="595.5" font-family="DejaVu Sans" font-size="13" font-weight="normal" text-anchor="middle" fill="#334155">6.1 or newer, also with -r 30 on the input</text>
-<line x1="310.0" y1="639.0" x2="420.0" y2="639.0" stroke="#94a3b8" stroke-width="1.6"/>
-<rect x="420.0" y="620.0" width="255.9" height="38.0" rx="6" fill="#f1f5f9" stroke="#64748b" stroke-width="1.5"/>
-<text x="548.0" y="644.0" font-family="DejaVu Sans" font-size="13" font-weight="bold" text-anchor="middle" fill="#1f2937">Where iproxy runs</text>
-<rect x="711.9" y="622.0" width="382.8" height="34.0" rx="8" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.5"/>
-<line x1="675.9" y1="639.0" x2="709.9" y2="639.0" stroke="#475569" stroke-width="1.6" marker-end="url(#head)"/>
-<rect x="719.9" y="626.0" width="105.4" height="26.0" rx="12" fill="#e2e8f0" stroke="#64748b" stroke-width="1.2"/>
-<text x="772.6" y="643.5" font-family="DejaVu Sans" font-size="13" font-weight="normal" text-anchor="middle" fill="#334155">On the host</text>
-<rect x="833.3" y="626.0" width="253.4" height="26.0" rx="12" fill="#e2e8f0" stroke="#64748b" stroke-width="1.2"/>
-<text x="960.0" y="643.5" font-family="DejaVu Sans" font-size="13" font-weight="normal" text-anchor="middle" fill="#334155">In a podman or docker container</text>
-<line x1="310.0" y1="701.0" x2="420.0" y2="701.0" stroke="#94a3b8" stroke-width="1.6"/>
-<rect x="420.0" y="682.0" width="255.9" height="38.0" rx="6" fill="#f1f5f9" stroke="#64748b" stroke-width="1.5"/>
-<text x="548.0" y="706.0" font-family="DejaVu Sans" font-size="13" font-weight="bold" text-anchor="middle" fill="#1f2937">Receiver settings</text>
-<rect x="711.9" y="668.0" width="498.8" height="66.0" rx="8" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.5"/>
-<line x1="675.9" y1="701.0" x2="709.9" y2="701.0" stroke="#475569" stroke-width="1.6" marker-end="url(#head)"/>
-<rect x="719.9" y="672.0" width="386.6" height="26.0" rx="12" fill="#e2e8f0" stroke="#64748b" stroke-width="1.2"/>
-<text x="913.2" y="689.5" font-family="DejaVu Sans" font-size="13" font-weight="normal" text-anchor="middle" fill="#334155">The defaults, ports 5000 to 5003 and /dev/video10</text>
-<rect x="719.9" y="704.0" width="482.8" height="26.0" rx="12" fill="#e2e8f0" stroke="#64748b" stroke-width="1.2"/>
-<text x="961.3" y="721.5" font-family="DejaVu Sans" font-size="13" font-weight="normal" text-anchor="middle" fill="#334155">PORT, AUDIO_PORT, SPEAKER_PORT, DEBUG_PORT or VIDEO_NR changed</text>
-<rect x="40.0" y="428.0" width="270.0" height="306.0" rx="8" fill="#e0e7ff" stroke="#3730a3" stroke-width="2"/>
-<text x="175.0" y="586.0" font-family="DejaVu Sans" font-size="14" font-weight="bold" text-anchor="middle" fill="#1e1b4b">Ready the PC</text>
-<line x1="310.0" y1="809.0" x2="420.0" y2="809.0" stroke="#94a3b8" stroke-width="1.6"/>
-<rect x="420.0" y="790.0" width="255.9" height="38.0" rx="6" fill="#ffffff" stroke="#3730a3" stroke-width="1.5"/>
-<text x="548.0" y="814.0" font-family="DejaVu Sans" font-size="13" font-weight="bold" text-anchor="middle" fill="#1f2937">Where the phone connects (7)</text>
-<rect x="711.9" y="792.0" width="368.0" height="34.0" rx="8" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.5"/>
-<line x1="675.9" y1="809.0" x2="709.9" y2="809.0" stroke="#475569" stroke-width="1.6" marker-end="url(#head)"/>
-<rect x="719.9" y="796.0" width="120.2" height="26.0" rx="12" fill="#dbeafe" stroke="#2563eb" stroke-width="1.2"/>
-<text x="780.0" y="813.5" font-family="DejaVu Sans" font-size="13" font-weight="normal" text-anchor="middle" fill="#1e3a8a">USB cable (5)</text>
-<rect x="848.1" y="796.0" width="223.8" height="26.0" rx="12" fill="#dbeafe" stroke="#2563eb" stroke-width="1.2"/>
-<text x="960.0" y="813.5" font-family="DejaVu Sans" font-size="13" font-weight="normal" text-anchor="middle" fill="#1e3a8a">WiFi, by the phone's IP (2)</text>
-<line x1="310.0" y1="871.0" x2="420.0" y2="871.0" stroke="#94a3b8" stroke-width="1.6"/>
-<rect x="420.0" y="852.0" width="255.9" height="38.0" rx="6" fill="#ffffff" stroke="#3730a3" stroke-width="1.5"/>
-<text x="548.0" y="876.0" font-family="DejaVu Sans" font-size="13" font-weight="bold" text-anchor="middle" fill="#1f2937">Webcam device at start (4)</text>
-<rect x="711.9" y="838.0" width="656.6" height="66.0" rx="8" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.5"/>
-<line x1="675.9" y1="871.0" x2="709.9" y2="871.0" stroke="#475569" stroke-width="1.6" marker-end="url(#head)"/>
-<rect x="719.9" y="842.0" width="268.2" height="26.0" rx="12" fill="#dbeafe" stroke="#2563eb" stroke-width="1.2"/>
-<text x="854.0" y="859.5" font-family="DejaVu Sans" font-size="13" font-weight="normal" text-anchor="middle" fill="#1e3a8a">No v4l2loopback module loaded (1)</text>
-<rect x="996.1" y="842.0" width="364.4" height="26.0" rx="12" fill="#dbeafe" stroke="#2563eb" stroke-width="1.2"/>
-<text x="1178.3" y="859.5" font-family="DejaVu Sans" font-size="13" font-weight="normal" text-anchor="middle" fill="#1e3a8a">The module loaded with the CleanCam device (1)</text>
-<rect x="719.9" y="874.0" width="431.0" height="26.0" rx="12" fill="#dbeafe" stroke="#2563eb" stroke-width="1.2"/>
-<text x="935.4" y="891.5" font-family="DejaVu Sans" font-size="13" font-weight="normal" text-anchor="middle" fill="#1e3a8a">The module loaded by another app without the device (2)</text>
-<rect x="40.0" y="790.0" width="270.0" height="114.0" rx="8" fill="#e0e7ff" stroke="#3730a3" stroke-width="2"/>
-<text x="175.0" y="852.0" font-family="DejaVu Sans" font-size="14" font-weight="bold" text-anchor="middle" fill="#1e1b4b">Start the receiver</text>
-<line x1="310.0" y1="979.0" x2="420.0" y2="979.0" stroke="#94a3b8" stroke-width="1.6"/>
-<rect x="420.0" y="960.0" width="255.9" height="38.0" rx="6" fill="#ffffff" stroke="#3730a3" stroke-width="1.5"/>
-<text x="548.0" y="984.0" font-family="DejaVu Sans" font-size="13" font-weight="bold" text-anchor="middle" fill="#1f2937">Camera access (3)</text>
-<rect x="711.9" y="962.0" width="227.4" height="34.0" rx="8" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.5"/>
-<line x1="675.9" y1="979.0" x2="709.9" y2="979.0" stroke="#475569" stroke-width="1.6" marker-end="url(#head)"/>
-<rect x="719.9" y="966.0" width="105.4" height="26.0" rx="12" fill="#dbeafe" stroke="#2563eb" stroke-width="1.2"/>
-<text x="772.6" y="983.5" font-family="DejaVu Sans" font-size="13" font-weight="normal" text-anchor="middle" fill="#1e3a8a">Allowed (1)</text>
-<rect x="833.3" y="966.0" width="98.0" height="26.0" rx="12" fill="#dbeafe" stroke="#2563eb" stroke-width="1.2"/>
-<text x="882.3" y="983.5" font-family="DejaVu Sans" font-size="13" font-weight="normal" text-anchor="middle" fill="#1e3a8a">Denied (2)</text>
-<line x1="310.0" y1="1027.0" x2="420.0" y2="1027.0" stroke="#94a3b8" stroke-width="1.6"/>
-<rect x="420.0" y="1008.0" width="255.9" height="38.0" rx="6" fill="#ffffff" stroke="#3730a3" stroke-width="1.5"/>
-<text x="548.0" y="1032.0" font-family="DejaVu Sans" font-size="13" font-weight="bold" text-anchor="middle" fill="#1f2937">Microphone access (2)</text>
-<rect x="711.9" y="1010.0" width="227.4" height="34.0" rx="8" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.5"/>
-<line x1="675.9" y1="1027.0" x2="709.9" y2="1027.0" stroke="#475569" stroke-width="1.6" marker-end="url(#head)"/>
-<rect x="719.9" y="1014.0" width="105.4" height="26.0" rx="12" fill="#dbeafe" stroke="#2563eb" stroke-width="1.2"/>
-<text x="772.6" y="1031.5" font-family="DejaVu Sans" font-size="13" font-weight="normal" text-anchor="middle" fill="#1e3a8a">Allowed (1)</text>
-<rect x="833.3" y="1014.0" width="98.0" height="26.0" rx="12" fill="#dbeafe" stroke="#2563eb" stroke-width="1.2"/>
-<text x="882.3" y="1031.5" font-family="DejaVu Sans" font-size="13" font-weight="normal" text-anchor="middle" fill="#1e3a8a">Denied (1)</text>
-<rect x="40.0" y="960.0" width="270.0" height="86.0" rx="8" fill="#e0e7ff" stroke="#3730a3" stroke-width="2"/>
-<text x="175.0" y="1008.0" font-family="DejaVu Sans" font-size="14" font-weight="bold" text-anchor="middle" fill="#1e1b4b">Open the app</text>
-<line x1="310.0" y1="1121.0" x2="420.0" y2="1121.0" stroke="#94a3b8" stroke-width="1.6"/>
-<rect x="420.0" y="1102.0" width="255.9" height="38.0" rx="6" fill="#ffffff" stroke="#3730a3" stroke-width="1.5"/>
-<text x="548.0" y="1126.0" font-family="DejaVu Sans" font-size="13" font-weight="bold" text-anchor="middle" fill="#1f2937">Video viewers (5)</text>
-<rect x="711.9" y="1104.0" width="296.4" height="34.0" rx="8" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.5"/>
-<line x1="675.9" y1="1121.0" x2="709.9" y2="1121.0" stroke="#475569" stroke-width="1.6" marker-end="url(#head)"/>
-<rect x="719.9" y="1108.0" width="83.2" height="26.0" rx="12" fill="#dbeafe" stroke="#2563eb" stroke-width="1.2"/>
-<text x="761.5" y="1125.5" font-family="DejaVu Sans" font-size="13" font-weight="normal" text-anchor="middle" fill="#1e3a8a">None (2)</text>
-<rect x="811.1" y="1108.0" width="75.8" height="26.0" rx="12" fill="#dbeafe" stroke="#2563eb" stroke-width="1.2"/>
-<text x="849.0" y="1125.5" font-family="DejaVu Sans" font-size="13" font-weight="normal" text-anchor="middle" fill="#1e3a8a">One (2)</text>
-<rect x="894.9" y="1108.0" width="105.4" height="26.0" rx="12" fill="#dbeafe" stroke="#2563eb" stroke-width="1.2"/>
-<text x="947.6" y="1125.5" font-family="DejaVu Sans" font-size="13" font-weight="normal" text-anchor="middle" fill="#1e3a8a">Several (1)</text>
-<line x1="310.0" y1="1169.0" x2="420.0" y2="1169.0" stroke="#94a3b8" stroke-width="1.6"/>
-<rect x="420.0" y="1150.0" width="255.9" height="38.0" rx="6" fill="#ffffff" stroke="#3730a3" stroke-width="1.5"/>
-<text x="548.0" y="1174.0" font-family="DejaVu Sans" font-size="13" font-weight="bold" text-anchor="middle" fill="#1f2937">Link throughput (5)</text>
-<rect x="711.9" y="1152.0" width="466.6" height="34.0" rx="8" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.5"/>
-<line x1="675.9" y1="1169.0" x2="709.9" y2="1169.0" stroke="#475569" stroke-width="1.6" marker-end="url(#head)"/>
-<rect x="719.9" y="1156.0" width="112.8" height="26.0" rx="12" fill="#dbeafe" stroke="#2563eb" stroke-width="1.2"/>
-<text x="776.3" y="1173.5" font-family="DejaVu Sans" font-size="13" font-weight="normal" text-anchor="middle" fill="#1e3a8a">Keeps up (1)</text>
-<rect x="840.7" y="1156.0" width="142.4" height="26.0" rx="12" fill="#dbeafe" stroke="#2563eb" stroke-width="1.2"/>
-<text x="911.9" y="1173.5" font-family="DejaVu Sans" font-size="13" font-weight="normal" text-anchor="middle" fill="#1e3a8a">Falls behind (3)</text>
-<rect x="991.1" y="1156.0" width="179.4" height="26.0" rx="12" fill="#dbeafe" stroke="#2563eb" stroke-width="1.2"/>
-<text x="1080.8" y="1173.5" font-family="DejaVu Sans" font-size="13" font-weight="normal" text-anchor="middle" fill="#1e3a8a">Stalls one viewer (1)</text>
-<rect x="40.0" y="1102.0" width="270.0" height="86.0" rx="8" fill="#e0e7ff" stroke="#3730a3" stroke-width="2"/>
-<text x="175.0" y="1150.0" font-family="DejaVu Sans" font-size="14" font-weight="bold" text-anchor="middle" fill="#1e1b4b">Stream to the PC</text>
-<line x1="310.0" y1="1263.0" x2="420.0" y2="1263.0" stroke="#94a3b8" stroke-width="1.6"/>
-<rect x="420.0" y="1244.0" width="255.9" height="38.0" rx="6" fill="#ffffff" stroke="#3730a3" stroke-width="1.5"/>
-<text x="548.0" y="1268.0" font-family="DejaVu Sans" font-size="13" font-weight="bold" text-anchor="middle" fill="#1f2937">Sound check (4)</text>
-<rect x="711.9" y="1246.0" width="508.6" height="34.0" rx="8" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.5"/>
-<line x1="675.9" y1="1263.0" x2="709.9" y2="1263.0" stroke="#475569" stroke-width="1.6" marker-end="url(#head)"/>
-<rect x="719.9" y="1250.0" width="201.6" height="26.0" rx="12" fill="#dbeafe" stroke="#2563eb" stroke-width="1.2"/>
-<text x="820.7" y="1267.5" font-family="DejaVu Sans" font-size="13" font-weight="normal" text-anchor="middle" fill="#1e3a8a">Record and play back (3)</text>
-<rect x="929.5" y="1250.0" width="283.0" height="26.0" rx="12" fill="#dbeafe" stroke="#2563eb" stroke-width="1.2"/>
-<text x="1071.0" y="1267.5" font-family="DejaVu Sans" font-size="13" font-weight="normal" text-anchor="middle" fill="#1e3a8a">Play an earlier recording again (1)</text>
-<rect x="40.0" y="1244.0" width="270.0" height="38.0" rx="8" fill="#e0e7ff" stroke="#3730a3" stroke-width="2"/>
-<text x="175.0" y="1268.0" font-family="DejaVu Sans" font-size="14" font-weight="bold" text-anchor="middle" fill="#1e1b4b">Check the sound</text>
-<line x1="310.0" y1="1357.0" x2="420.0" y2="1357.0" stroke="#94a3b8" stroke-width="1.6"/>
-<rect x="420.0" y="1338.0" width="255.9" height="38.0" rx="6" fill="#ffffff" stroke="#3730a3" stroke-width="1.5"/>
-<text x="548.0" y="1362.0" font-family="DejaVu Sans" font-size="13" font-weight="bold" text-anchor="middle" fill="#1f2937">CleanCam device in use (13)</text>
-<rect x="711.9" y="1340.0" width="363.0" height="34.0" rx="8" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.5"/>
-<line x1="675.9" y1="1357.0" x2="709.9" y2="1357.0" stroke="#475569" stroke-width="1.6" marker-end="url(#head)"/>
-<rect x="719.9" y="1344.0" width="98.0" height="26.0" rx="12" fill="#dbeafe" stroke="#2563eb" stroke-width="1.2"/>
-<text x="768.9" y="1361.5" font-family="DejaVu Sans" font-size="13" font-weight="normal" text-anchor="middle" fill="#1e3a8a">Camera (2)</text>
-<rect x="825.9" y="1344.0" width="127.6" height="26.0" rx="12" fill="#dbeafe" stroke="#2563eb" stroke-width="1.2"/>
-<text x="889.7" y="1361.5" font-family="DejaVu Sans" font-size="13" font-weight="normal" text-anchor="middle" fill="#1e3a8a">Microphone (3)</text>
-<rect x="961.5" y="1344.0" width="105.4" height="26.0" rx="12" fill="#dbeafe" stroke="#2563eb" stroke-width="1.2"/>
-<text x="1014.2" y="1361.5" font-family="DejaVu Sans" font-size="13" font-weight="normal" text-anchor="middle" fill="#1e3a8a">Speaker (8)</text>
-<rect x="40.0" y="1338.0" width="270.0" height="38.0" rx="8" fill="#e0e7ff" stroke="#3730a3" stroke-width="2"/>
-<text x="175.0" y="1362.0" font-family="DejaVu Sans" font-size="14" font-weight="bold" text-anchor="middle" fill="#1e1b4b">Use the stream in a video app</text>
-<line x1="310.0" y1="1451.0" x2="420.0" y2="1451.0" stroke="#94a3b8" stroke-width="1.6"/>
-<rect x="420.0" y="1432.0" width="255.9" height="38.0" rx="6" fill="#ffffff" stroke="#3730a3" stroke-width="1.5"/>
-<text x="548.0" y="1456.0" font-family="DejaVu Sans" font-size="13" font-weight="bold" text-anchor="middle" fill="#1f2937">Phone orientation (6)</text>
-<rect x="711.9" y="1434.0" width="444.4" height="34.0" rx="8" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.5"/>
-<line x1="675.9" y1="1451.0" x2="709.9" y2="1451.0" stroke="#475569" stroke-width="1.6" marker-end="url(#head)"/>
-<rect x="719.9" y="1438.0" width="112.8" height="26.0" rx="12" fill="#dbeafe" stroke="#2563eb" stroke-width="1.2"/>
-<text x="776.3" y="1455.5" font-family="DejaVu Sans" font-size="13" font-weight="normal" text-anchor="middle" fill="#1e3a8a">Sideways (2)</text>
-<rect x="840.7" y="1438.0" width="105.4" height="26.0" rx="12" fill="#dbeafe" stroke="#2563eb" stroke-width="1.2"/>
-<text x="893.4" y="1455.5" font-family="DejaVu Sans" font-size="13" font-weight="normal" text-anchor="middle" fill="#1e3a8a">Upright (2)</text>
-<rect x="954.1" y="1438.0" width="194.2" height="26.0" rx="12" fill="#dbeafe" stroke="#2563eb" stroke-width="1.2"/>
-<text x="1051.2" y="1455.5" font-family="DejaVu Sans" font-size="13" font-weight="normal" text-anchor="middle" fill="#1e3a8a">Flat or upside down (2)</text>
-<line x1="310.0" y1="1499.0" x2="420.0" y2="1499.0" stroke="#94a3b8" stroke-width="1.6"/>
-<rect x="420.0" y="1480.0" width="255.9" height="38.0" rx="6" fill="#ffffff" stroke="#3730a3" stroke-width="1.5"/>
-<text x="548.0" y="1504.0" font-family="DejaVu Sans" font-size="13" font-weight="bold" text-anchor="middle" fill="#1f2937">Zoom (5)</text>
-<rect x="711.9" y="1482.0" width="242.2" height="34.0" rx="8" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.5"/>
-<line x1="675.9" y1="1499.0" x2="709.9" y2="1499.0" stroke="#475569" stroke-width="1.6" marker-end="url(#head)"/>
-<rect x="719.9" y="1486.0" width="98.0" height="26.0" rx="12" fill="#dbeafe" stroke="#2563eb" stroke-width="1.2"/>
-<text x="768.9" y="1503.5" font-family="DejaVu Sans" font-size="13" font-weight="normal" text-anchor="middle" fill="#1e3a8a">Slider (3)</text>
-<rect x="825.9" y="1486.0" width="120.2" height="26.0" rx="12" fill="#dbeafe" stroke="#2563eb" stroke-width="1.2"/>
-<text x="886.0" y="1503.5" font-family="DejaVu Sans" font-size="13" font-weight="normal" text-anchor="middle" fill="#1e3a8a">Lens chip (2)</text>
-<line x1="310.0" y1="1547.0" x2="420.0" y2="1547.0" stroke="#94a3b8" stroke-width="1.6"/>
-<rect x="420.0" y="1528.0" width="255.9" height="38.0" rx="6" fill="#ffffff" stroke="#3730a3" stroke-width="1.5"/>
-<text x="548.0" y="1552.0" font-family="DejaVu Sans" font-size="13" font-weight="bold" text-anchor="middle" fill="#1f2937">Focus target (11)</text>
-<rect x="711.9" y="1530.0" width="355.6" height="34.0" rx="8" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.5"/>
-<line x1="675.9" y1="1547.0" x2="709.9" y2="1547.0" stroke="#475569" stroke-width="1.6" marker-end="url(#head)"/>
-<rect x="719.9" y="1534.0" width="83.2" height="26.0" rx="12" fill="#dbeafe" stroke="#2563eb" stroke-width="1.2"/>
-<text x="761.5" y="1551.5" font-family="DejaVu Sans" font-size="13" font-weight="normal" text-anchor="middle" fill="#1e3a8a">Face (5)</text>
-<rect x="811.1" y="1534.0" width="142.4" height="26.0" rx="12" fill="#dbeafe" stroke="#2563eb" stroke-width="1.2"/>
-<text x="882.3" y="1551.5" font-family="DejaVu Sans" font-size="13" font-weight="normal" text-anchor="middle" fill="#1e3a8a">Tapped point (3)</text>
-<rect x="961.5" y="1534.0" width="98.0" height="26.0" rx="12" fill="#dbeafe" stroke="#2563eb" stroke-width="1.2"/>
-<text x="1010.5" y="1551.5" font-family="DejaVu Sans" font-size="13" font-weight="normal" text-anchor="middle" fill="#1e3a8a">Center (3)</text>
-<line x1="310.0" y1="1595.0" x2="420.0" y2="1595.0" stroke="#94a3b8" stroke-width="1.6"/>
-<rect x="420.0" y="1576.0" width="255.9" height="38.0" rx="6" fill="#ffffff" stroke="#3730a3" stroke-width="1.5"/>
-<text x="548.0" y="1600.0" font-family="DejaVu Sans" font-size="13" font-weight="bold" text-anchor="middle" fill="#1f2937">Picture lock (4)</text>
-<rect x="711.9" y="1578.0" width="234.8" height="34.0" rx="8" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.5"/>
-<line x1="675.9" y1="1595.0" x2="709.9" y2="1595.0" stroke="#475569" stroke-width="1.6" marker-end="url(#head)"/>
-<rect x="719.9" y="1582.0" width="98.0" height="26.0" rx="12" fill="#dbeafe" stroke="#2563eb" stroke-width="1.2"/>
-<text x="768.9" y="1599.5" font-family="DejaVu Sans" font-size="13" font-weight="normal" text-anchor="middle" fill="#1e3a8a">Locked (2)</text>
-<rect x="825.9" y="1582.0" width="112.8" height="26.0" rx="12" fill="#dbeafe" stroke="#2563eb" stroke-width="1.2"/>
-<text x="882.3" y="1599.5" font-family="DejaVu Sans" font-size="13" font-weight="normal" text-anchor="middle" fill="#1e3a8a">Unlocked (2)</text>
-<line x1="310.0" y1="1643.0" x2="420.0" y2="1643.0" stroke="#94a3b8" stroke-width="1.6"/>
-<rect x="420.0" y="1624.0" width="255.9" height="38.0" rx="6" fill="#ffffff" stroke="#3730a3" stroke-width="1.5"/>
-<text x="548.0" y="1648.0" font-family="DejaVu Sans" font-size="13" font-weight="bold" text-anchor="middle" fill="#1f2937">Microphone mute (2)</text>
-<rect x="711.9" y="1626.0" width="220.0" height="34.0" rx="8" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.5"/>
-<line x1="675.9" y1="1643.0" x2="709.9" y2="1643.0" stroke="#475569" stroke-width="1.6" marker-end="url(#head)"/>
-<rect x="719.9" y="1630.0" width="90.6" height="26.0" rx="12" fill="#dbeafe" stroke="#2563eb" stroke-width="1.2"/>
-<text x="765.2" y="1647.5" font-family="DejaVu Sans" font-size="13" font-weight="normal" text-anchor="middle" fill="#1e3a8a">Muted (1)</text>
-<rect x="818.5" y="1630.0" width="105.4" height="26.0" rx="12" fill="#dbeafe" stroke="#2563eb" stroke-width="1.2"/>
-<text x="871.2" y="1647.5" font-family="DejaVu Sans" font-size="13" font-weight="normal" text-anchor="middle" fill="#1e3a8a">Unmuted (1)</text>
-<line x1="310.0" y1="1691.0" x2="420.0" y2="1691.0" stroke="#94a3b8" stroke-width="1.6"/>
-<rect x="420.0" y="1672.0" width="255.9" height="38.0" rx="6" fill="#ffffff" stroke="#3730a3" stroke-width="1.5"/>
-<text x="548.0" y="1696.0" font-family="DejaVu Sans" font-size="13" font-weight="bold" text-anchor="middle" fill="#1f2937">Screen (4)</text>
-<rect x="711.9" y="1674.0" width="168.2" height="34.0" rx="8" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.5"/>
-<line x1="675.9" y1="1691.0" x2="709.9" y2="1691.0" stroke="#475569" stroke-width="1.6" marker-end="url(#head)"/>
-<rect x="719.9" y="1678.0" width="75.8" height="26.0" rx="12" fill="#dbeafe" stroke="#2563eb" stroke-width="1.2"/>
-<text x="757.8" y="1695.5" font-family="DejaVu Sans" font-size="13" font-weight="normal" text-anchor="middle" fill="#1e3a8a">Off (1)</text>
-<rect x="803.7" y="1678.0" width="68.4" height="26.0" rx="12" fill="#dbeafe" stroke="#2563eb" stroke-width="1.2"/>
-<text x="837.9" y="1695.5" font-family="DejaVu Sans" font-size="13" font-weight="normal" text-anchor="middle" fill="#1e3a8a">On (3)</text>
-<rect x="40.0" y="1432.0" width="270.0" height="278.0" rx="8" fill="#e0e7ff" stroke="#3730a3" stroke-width="2"/>
-<text x="175.0" y="1576.0" font-family="DejaVu Sans" font-size="14" font-weight="bold" text-anchor="middle" fill="#1e1b4b">Control the picture</text>
-<line x1="310.0" y1="1785.0" x2="420.0" y2="1785.0" stroke="#94a3b8" stroke-width="1.6"/>
-<rect x="420.0" y="1766.0" width="255.9" height="38.0" rx="6" fill="#ffffff" stroke="#3730a3" stroke-width="1.5"/>
-<text x="548.0" y="1790.0" font-family="DejaVu Sans" font-size="13" font-weight="bold" text-anchor="middle" fill="#1f2937">Preset (13)</text>
-<rect x="711.9" y="1768.0" width="478.8" height="34.0" rx="8" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.5"/>
-<line x1="675.9" y1="1785.0" x2="709.9" y2="1785.0" stroke="#475569" stroke-width="1.6" marker-end="url(#head)"/>
-<rect x="719.9" y="1772.0" width="83.2" height="26.0" rx="12" fill="#dbeafe" stroke="#2563eb" stroke-width="1.2"/>
-<text x="761.5" y="1789.5" font-family="DejaVu Sans" font-size="13" font-weight="normal" text-anchor="middle" fill="#1e3a8a">Call (2)</text>
-<rect x="811.1" y="1772.0" width="120.2" height="26.0" rx="12" fill="#dbeafe" stroke="#2563eb" stroke-width="1.2"/>
-<text x="871.2" y="1789.5" font-family="DejaVu Sans" font-size="13" font-weight="normal" text-anchor="middle" fill="#1e3a8a">Low light (2)</text>
-<rect x="939.3" y="1772.0" width="75.8" height="26.0" rx="12" fill="#dbeafe" stroke="#2563eb" stroke-width="1.2"/>
-<text x="977.2" y="1789.5" font-family="DejaVu Sans" font-size="13" font-weight="normal" text-anchor="middle" fill="#1e3a8a">OBS (2)</text>
-<rect x="1023.1" y="1772.0" width="83.2" height="26.0" rx="12" fill="#dbeafe" stroke="#2563eb" stroke-width="1.2"/>
-<text x="1064.7" y="1789.5" font-family="DejaVu Sans" font-size="13" font-weight="normal" text-anchor="middle" fill="#1e3a8a">WiFi (4)</text>
-<rect x="1114.3" y="1772.0" width="68.4" height="26.0" rx="12" fill="#dbeafe" stroke="#2563eb" stroke-width="1.2"/>
-<text x="1148.5" y="1789.5" font-family="DejaVu Sans" font-size="13" font-weight="normal" text-anchor="middle" fill="#1e3a8a">4K (3)</text>
-<line x1="310.0" y1="1833.0" x2="420.0" y2="1833.0" stroke="#94a3b8" stroke-width="1.6"/>
-<rect x="420.0" y="1814.0" width="255.9" height="38.0" rx="6" fill="#ffffff" stroke="#3730a3" stroke-width="1.5"/>
-<text x="548.0" y="1838.0" font-family="DejaVu Sans" font-size="13" font-weight="bold" text-anchor="middle" fill="#1f2937">Lens (6)</text>
-<rect x="711.9" y="1816.0" width="417.2" height="34.0" rx="8" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.5"/>
-<line x1="675.9" y1="1833.0" x2="709.9" y2="1833.0" stroke="#475569" stroke-width="1.6" marker-end="url(#head)"/>
-<rect x="719.9" y="1820.0" width="83.2" height="26.0" rx="12" fill="#dbeafe" stroke="#2563eb" stroke-width="1.2"/>
-<text x="761.5" y="1837.5" font-family="DejaVu Sans" font-size="13" font-weight="normal" text-anchor="middle" fill="#1e3a8a">Auto (2)</text>
-<rect x="811.1" y="1820.0" width="127.6" height="26.0" rx="12" fill="#dbeafe" stroke="#2563eb" stroke-width="1.2"/>
-<text x="874.9" y="1837.5" font-family="DejaVu Sans" font-size="13" font-weight="normal" text-anchor="middle" fill="#1e3a8a">Ultra wide (1)</text>
-<rect x="946.7" y="1820.0" width="83.2" height="26.0" rx="12" fill="#dbeafe" stroke="#2563eb" stroke-width="1.2"/>
-<text x="988.3" y="1837.5" font-family="DejaVu Sans" font-size="13" font-weight="normal" text-anchor="middle" fill="#1e3a8a">Wide (1)</text>
-<rect x="1037.9" y="1820.0" width="83.2" height="26.0" rx="12" fill="#dbeafe" stroke="#2563eb" stroke-width="1.2"/>
-<text x="1079.5" y="1837.5" font-family="DejaVu Sans" font-size="13" font-weight="normal" text-anchor="middle" fill="#1e3a8a">Tele (2)</text>
-<line x1="310.0" y1="1881.0" x2="420.0" y2="1881.0" stroke="#94a3b8" stroke-width="1.6"/>
-<rect x="420.0" y="1862.0" width="255.9" height="38.0" rx="6" fill="#ffffff" stroke="#3730a3" stroke-width="1.5"/>
-<text x="548.0" y="1886.0" font-family="DejaVu Sans" font-size="13" font-weight="bold" text-anchor="middle" fill="#1f2937">Stabilization (9)</text>
-<rect x="711.9" y="1864.0" width="432.0" height="34.0" rx="8" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.5"/>
-<line x1="675.9" y1="1881.0" x2="709.9" y2="1881.0" stroke="#475569" stroke-width="1.6" marker-end="url(#head)"/>
-<rect x="719.9" y="1868.0" width="83.2" height="26.0" rx="12" fill="#dbeafe" stroke="#2563eb" stroke-width="1.2"/>
-<text x="761.5" y="1885.5" font-family="DejaVu Sans" font-size="13" font-weight="normal" text-anchor="middle" fill="#1e3a8a">Auto (5)</text>
-<rect x="811.1" y="1868.0" width="75.8" height="26.0" rx="12" fill="#dbeafe" stroke="#2563eb" stroke-width="1.2"/>
-<text x="849.0" y="1885.5" font-family="DejaVu Sans" font-size="13" font-weight="normal" text-anchor="middle" fill="#1e3a8a">Off (1)</text>
-<rect x="894.9" y="1868.0" width="112.8" height="26.0" rx="12" fill="#dbeafe" stroke="#2563eb" stroke-width="1.2"/>
-<text x="951.3" y="1885.5" font-family="DejaVu Sans" font-size="13" font-weight="normal" text-anchor="middle" fill="#1e3a8a">Standard (1)</text>
-<rect x="1015.7" y="1868.0" width="120.2" height="26.0" rx="12" fill="#dbeafe" stroke="#2563eb" stroke-width="1.2"/>
-<text x="1075.8" y="1885.5" font-family="DejaVu Sans" font-size="13" font-weight="normal" text-anchor="middle" fill="#1e3a8a">Cinematic (2)</text>
-<line x1="310.0" y1="1929.0" x2="420.0" y2="1929.0" stroke="#94a3b8" stroke-width="1.6"/>
-<rect x="420.0" y="1910.0" width="255.9" height="38.0" rx="6" fill="#ffffff" stroke="#3730a3" stroke-width="1.5"/>
-<text x="548.0" y="1934.0" font-family="DejaVu Sans" font-size="13" font-weight="bold" text-anchor="middle" fill="#1f2937">Exposure (3)</text>
-<rect x="711.9" y="1912.0" width="212.6" height="34.0" rx="8" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.5"/>
-<line x1="675.9" y1="1929.0" x2="709.9" y2="1929.0" stroke="#475569" stroke-width="1.6" marker-end="url(#head)"/>
-<rect x="719.9" y="1916.0" width="83.2" height="26.0" rx="12" fill="#dbeafe" stroke="#2563eb" stroke-width="1.2"/>
-<text x="761.5" y="1933.5" font-family="DejaVu Sans" font-size="13" font-weight="normal" text-anchor="middle" fill="#1e3a8a">0 EV (1)</text>
-<rect x="811.1" y="1916.0" width="105.4" height="26.0" rx="12" fill="#dbeafe" stroke="#2563eb" stroke-width="1.2"/>
-<text x="863.8" y="1933.5" font-family="DejaVu Sans" font-size="13" font-weight="normal" text-anchor="middle" fill="#1e3a8a">Shifted (2)</text>
-<line x1="310.0" y1="1977.0" x2="420.0" y2="1977.0" stroke="#94a3b8" stroke-width="1.6"/>
-<rect x="420.0" y="1958.0" width="255.9" height="38.0" rx="6" fill="#ffffff" stroke="#3730a3" stroke-width="1.5"/>
-<text x="548.0" y="1982.0" font-family="DejaVu Sans" font-size="13" font-weight="bold" text-anchor="middle" fill="#1f2937">White balance (8)</text>
-<rect x="711.9" y="1960.0" width="197.8" height="34.0" rx="8" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.5"/>
-<line x1="675.9" y1="1977.0" x2="709.9" y2="1977.0" stroke="#475569" stroke-width="1.6" marker-end="url(#head)"/>
-<rect x="719.9" y="1964.0" width="83.2" height="26.0" rx="12" fill="#dbeafe" stroke="#2563eb" stroke-width="1.2"/>
-<text x="761.5" y="1981.5" font-family="DejaVu Sans" font-size="13" font-weight="normal" text-anchor="middle" fill="#1e3a8a">Auto (3)</text>
-<rect x="811.1" y="1964.0" width="90.6" height="26.0" rx="12" fill="#dbeafe" stroke="#2563eb" stroke-width="1.2"/>
-<text x="856.4" y="1981.5" font-family="DejaVu Sans" font-size="13" font-weight="normal" text-anchor="middle" fill="#1e3a8a">Fixed (5)</text>
-<line x1="310.0" y1="2025.0" x2="420.0" y2="2025.0" stroke="#94a3b8" stroke-width="1.6"/>
-<rect x="420.0" y="2006.0" width="255.9" height="38.0" rx="6" fill="#ffffff" stroke="#3730a3" stroke-width="1.5"/>
-<text x="548.0" y="2030.0" font-family="DejaVu Sans" font-size="13" font-weight="bold" text-anchor="middle" fill="#1f2937">Near focus (2)</text>
-<rect x="711.9" y="2008.0" width="168.2" height="34.0" rx="8" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.5"/>
-<line x1="675.9" y1="2025.0" x2="709.9" y2="2025.0" stroke="#475569" stroke-width="1.6" marker-end="url(#head)"/>
-<rect x="719.9" y="2012.0" width="68.4" height="26.0" rx="12" fill="#dbeafe" stroke="#2563eb" stroke-width="1.2"/>
-<text x="754.1" y="2029.5" font-family="DejaVu Sans" font-size="13" font-weight="normal" text-anchor="middle" fill="#1e3a8a">On (1)</text>
-<rect x="796.3" y="2012.0" width="75.8" height="26.0" rx="12" fill="#dbeafe" stroke="#2563eb" stroke-width="1.2"/>
-<text x="834.2" y="2029.5" font-family="DejaVu Sans" font-size="13" font-weight="normal" text-anchor="middle" fill="#1e3a8a">Off (1)</text>
-<line x1="310.0" y1="2073.0" x2="420.0" y2="2073.0" stroke="#94a3b8" stroke-width="1.6"/>
-<rect x="420.0" y="2054.0" width="255.9" height="38.0" rx="6" fill="#ffffff" stroke="#3730a3" stroke-width="1.5"/>
-<text x="548.0" y="2078.0" font-family="DejaVu Sans" font-size="13" font-weight="bold" text-anchor="middle" fill="#1f2937">Max bitrate (5)</text>
-<rect x="711.9" y="2056.0" width="227.4" height="34.0" rx="8" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.5"/>
-<line x1="675.9" y1="2073.0" x2="709.9" y2="2073.0" stroke="#475569" stroke-width="1.6" marker-end="url(#head)"/>
-<rect x="719.9" y="2060.0" width="112.8" height="26.0" rx="12" fill="#dbeafe" stroke="#2563eb" stroke-width="1.2"/>
-<text x="776.3" y="2077.5" font-family="DejaVu Sans" font-size="13" font-weight="normal" text-anchor="middle" fill="#1e3a8a">No limit (1)</text>
-<rect x="840.7" y="2060.0" width="90.6" height="26.0" rx="12" fill="#dbeafe" stroke="#2563eb" stroke-width="1.2"/>
-<text x="886.0" y="2077.5" font-family="DejaVu Sans" font-size="13" font-weight="normal" text-anchor="middle" fill="#1e3a8a">A cap (4)</text>
-<rect x="40.0" y="1766.0" width="270.0" height="326.0" rx="8" fill="#e0e7ff" stroke="#3730a3" stroke-width="2"/>
-<text x="175.0" y="1934.0" font-family="DejaVu Sans" font-size="14" font-weight="bold" text-anchor="middle" fill="#1e1b4b">Change the settings</text>
-<line x1="310.0" y1="2167.0" x2="420.0" y2="2167.0" stroke="#94a3b8" stroke-width="1.6"/>
-<rect x="420.0" y="2148.0" width="255.9" height="38.0" rx="6" fill="#ffffff" stroke="#3730a3" stroke-width="1.5"/>
-<text x="548.0" y="2172.0" font-family="DejaVu Sans" font-size="13" font-weight="bold" text-anchor="middle" fill="#1f2937">Power and heat (7)</text>
-<rect x="711.9" y="2150.0" width="528.2" height="34.0" rx="8" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.5"/>
-<line x1="675.9" y1="2167.0" x2="709.9" y2="2167.0" stroke="#475569" stroke-width="1.6" marker-end="url(#head)"/>
-<rect x="719.9" y="2154.0" width="179.4" height="26.0" rx="12" fill="#dbeafe" stroke="#2563eb" stroke-width="1.2"/>
-<text x="809.6" y="2171.5" font-family="DejaVu Sans" font-size="13" font-weight="normal" text-anchor="middle" fill="#1e3a8a">Charging and cool (2)</text>
-<rect x="907.3" y="2154.0" width="127.6" height="26.0" rx="12" fill="#dbeafe" stroke="#2563eb" stroke-width="1.2"/>
-<text x="971.1" y="2171.5" font-family="DejaVu Sans" font-size="13" font-weight="normal" text-anchor="middle" fill="#1e3a8a">On battery (2)</text>
-<rect x="1042.9" y="2154.0" width="75.8" height="26.0" rx="12" fill="#dbeafe" stroke="#2563eb" stroke-width="1.2"/>
-<text x="1080.8" y="2171.5" font-family="DejaVu Sans" font-size="13" font-weight="normal" text-anchor="middle" fill="#1e3a8a">Hot (2)</text>
-<rect x="1126.7" y="2154.0" width="105.4" height="26.0" rx="12" fill="#dbeafe" stroke="#2563eb" stroke-width="1.2"/>
-<text x="1179.4" y="2171.5" font-family="DejaVu Sans" font-size="13" font-weight="normal" text-anchor="middle" fill="#1e3a8a">Too hot (1)</text>
-<rect x="40.0" y="2148.0" width="270.0" height="38.0" rx="8" fill="#e0e7ff" stroke="#3730a3" stroke-width="2"/>
-<text x="175.0" y="2172.0" font-family="DejaVu Sans" font-size="14" font-weight="bold" text-anchor="middle" fill="#1e1b4b">Run on battery or heat</text>
-<line x1="310.0" y1="2261.0" x2="420.0" y2="2261.0" stroke="#94a3b8" stroke-width="1.6"/>
-<rect x="420.0" y="2242.0" width="255.9" height="38.0" rx="6" fill="#ffffff" stroke="#3730a3" stroke-width="1.5"/>
-<text x="548.0" y="2266.0" font-family="DejaVu Sans" font-size="13" font-weight="bold" text-anchor="middle" fill="#1f2937">App on screen (6)</text>
-<rect x="711.9" y="2244.0" width="644.2" height="34.0" rx="8" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.5"/>
-<line x1="675.9" y1="2261.0" x2="709.9" y2="2261.0" stroke="#475569" stroke-width="1.6" marker-end="url(#head)"/>
-<rect x="719.9" y="2248.0" width="238.6" height="26.0" rx="12" fill="#dbeafe" stroke="#2563eb" stroke-width="1.2"/>
-<text x="839.2" y="2265.5" font-family="DejaVu Sans" font-size="13" font-weight="normal" text-anchor="middle" fill="#1e3a8a">Covered by a system panel (1)</text>
-<rect x="966.5" y="2248.0" width="179.4" height="26.0" rx="12" fill="#dbeafe" stroke="#2563eb" stroke-width="1.2"/>
-<text x="1056.2" y="2265.5" font-family="DejaVu Sans" font-size="13" font-weight="normal" text-anchor="middle" fill="#1e3a8a">In the background (3)</text>
-<rect x="1153.9" y="2248.0" width="194.2" height="26.0" rx="12" fill="#dbeafe" stroke="#2563eb" stroke-width="1.2"/>
-<text x="1251.0" y="2265.5" font-family="DejaVu Sans" font-size="13" font-weight="normal" text-anchor="middle" fill="#1e3a8a">Closed and reopened (2)</text>
-<rect x="40.0" y="2242.0" width="270.0" height="38.0" rx="8" fill="#e0e7ff" stroke="#3730a3" stroke-width="2"/>
-<text x="175.0" y="2266.0" font-family="DejaVu Sans" font-size="14" font-weight="bold" text-anchor="middle" fill="#1e1b4b">Leave the app</text>
-<line x1="310.0" y1="2355.0" x2="420.0" y2="2355.0" stroke="#94a3b8" stroke-width="1.6"/>
-<rect x="420.0" y="2336.0" width="255.9" height="38.0" rx="6" fill="#ffffff" stroke="#3730a3" stroke-width="1.5"/>
-<text x="548.0" y="2360.0" font-family="DejaVu Sans" font-size="13" font-weight="bold" text-anchor="middle" fill="#1f2937">Receiver stop (3)</text>
-<rect x="711.9" y="2338.0" width="114.0" height="34.0" rx="8" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.5"/>
-<line x1="675.9" y1="2355.0" x2="709.9" y2="2355.0" stroke="#475569" stroke-width="1.6" marker-end="url(#head)"/>
-<rect x="719.9" y="2342.0" width="98.0" height="26.0" rx="12" fill="#dbeafe" stroke="#2563eb" stroke-width="1.2"/>
-<text x="768.9" y="2359.5" font-family="DejaVu Sans" font-size="13" font-weight="normal" text-anchor="middle" fill="#1e3a8a">Ctrl-C (3)</text>
-<rect x="40.0" y="2336.0" width="270.0" height="38.0" rx="8" fill="#e0e7ff" stroke="#3730a3" stroke-width="2"/>
-<text x="175.0" y="2360.0" font-family="DejaVu Sans" font-size="14" font-weight="bold" text-anchor="middle" fill="#1e1b4b">Stop the receiver</text>
-<line x1="310.0" y1="2463.0" x2="420.0" y2="2463.0" stroke="#94a3b8" stroke-width="1.6"/>
-<rect x="420.0" y="2444.0" width="255.9" height="38.0" rx="6" fill="#f1f5f9" stroke="#64748b" stroke-width="1.5"/>
-<text x="548.0" y="2468.0" font-family="DejaVu Sans" font-size="13" font-weight="bold" text-anchor="middle" fill="#1f2937">Signature</text>
-<rect x="711.9" y="2430.0" width="834.2" height="66.0" rx="8" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.5"/>
-<line x1="675.9" y1="2463.0" x2="709.9" y2="2463.0" stroke="#475569" stroke-width="1.6" marker-end="url(#head)"/>
-<rect x="719.9" y="2434.0" width="394.0" height="26.0" rx="12" fill="#e2e8f0" stroke="#64748b" stroke-width="1.2"/>
-<text x="916.9" y="2451.5" font-family="DejaVu Sans" font-size="13" font-weight="normal" text-anchor="middle" fill="#334155">Within 7 days, so renew early to restart the clock</text>
-<rect x="1121.9" y="2434.0" width="416.2" height="26.0" rx="12" fill="#e2e8f0" stroke="#64748b" stroke-width="1.2"/>
-<text x="1330.0" y="2451.5" font-family="DejaVu Sans" font-size="13" font-weight="normal" text-anchor="middle" fill="#334155">Expired, so the app won't open and the receiver waits</text>
-<rect x="719.9" y="2466.0" width="371.8" height="26.0" rx="12" fill="#e2e8f0" stroke="#64748b" stroke-width="1.2"/>
-<text x="905.8" y="2483.5" font-family="DejaVu Sans" font-size="13" font-weight="normal" text-anchor="middle" fill="#334155">Session expired, so log in again before signing</text>
-<rect x="40.0" y="2430.0" width="270.0" height="66.0" rx="8" fill="#e0e7ff" stroke="#3730a3" stroke-width="2"/>
-<text x="175.0" y="2468.0" font-family="DejaVu Sans" font-size="14" font-weight="bold" text-anchor="middle" fill="#1e1b4b">Renew the signature</text>
-<line x1="175.0" y1="372.0" x2="175.0" y2="426.0" stroke="#3730a3" stroke-width="1.6" marker-end="url(#trunk)"/>
-<text x="185.0" y="404.0" font-family="DejaVu Sans" font-size="12" font-weight="normal" text-anchor="start" fill="#3730a3">then</text>
-<line x1="175.0" y1="734.0" x2="175.0" y2="788.0" stroke="#3730a3" stroke-width="1.6" marker-end="url(#trunk)"/>
-<text x="185.0" y="766.0" font-family="DejaVu Sans" font-size="12" font-weight="normal" text-anchor="start" fill="#3730a3">each call</text>
-<line x1="175.0" y1="904.0" x2="175.0" y2="958.0" stroke="#3730a3" stroke-width="1.6" marker-end="url(#trunk)"/>
-<text x="185.0" y="936.0" font-family="DejaVu Sans" font-size="12" font-weight="normal" text-anchor="start" fill="#3730a3">then</text>
-<line x1="175.0" y1="1046.0" x2="175.0" y2="1100.0" stroke="#3730a3" stroke-width="1.6" marker-end="url(#trunk)"/>
-<text x="185.0" y="1078.0" font-family="DejaVu Sans" font-size="12" font-weight="normal" text-anchor="start" fill="#3730a3">receiver connects</text>
-<line x1="175.0" y1="1188.0" x2="175.0" y2="1242.0" stroke="#3730a3" stroke-width="1.6" marker-end="url(#trunk)"/>
-<text x="185.0" y="1220.0" font-family="DejaVu Sans" font-size="12" font-weight="normal" text-anchor="start" fill="#3730a3">optional</text>
-<line x1="175.0" y1="1282.0" x2="175.0" y2="1336.0" stroke="#3730a3" stroke-width="1.6" marker-end="url(#trunk)"/>
-<text x="185.0" y="1314.0" font-family="DejaVu Sans" font-size="12" font-weight="normal" text-anchor="start" fill="#3730a3">then</text>
-<line x1="175.0" y1="1376.0" x2="175.0" y2="1430.0" stroke="#3730a3" stroke-width="1.6" marker-end="url(#trunk)"/>
-<text x="185.0" y="1408.0" font-family="DejaVu Sans" font-size="12" font-weight="normal" text-anchor="start" fill="#3730a3">during the call</text>
-<line x1="175.0" y1="1710.0" x2="175.0" y2="1764.0" stroke="#3730a3" stroke-width="1.6" marker-end="url(#trunk)"/>
-<text x="185.0" y="1742.0" font-family="DejaVu Sans" font-size="12" font-weight="normal" text-anchor="start" fill="#3730a3">settings button</text>
-<line x1="175.0" y1="2092.0" x2="175.0" y2="2146.0" stroke="#3730a3" stroke-width="1.6" marker-end="url(#trunk)"/>
-<text x="185.0" y="2124.0" font-family="DejaVu Sans" font-size="12" font-weight="normal" text-anchor="start" fill="#3730a3">off the charger or hot</text>
-<line x1="175.0" y1="2186.0" x2="175.0" y2="2240.0" stroke="#3730a3" stroke-width="1.6" marker-end="url(#trunk)"/>
-<text x="185.0" y="2218.0" font-family="DejaVu Sans" font-size="12" font-weight="normal" text-anchor="start" fill="#3730a3">leaves the screen</text>
-<line x1="175.0" y1="2280.0" x2="175.0" y2="2334.0" stroke="#3730a3" stroke-width="1.6" marker-end="url(#trunk)"/>
-<text x="185.0" y="2312.0" font-family="DejaVu Sans" font-size="12" font-weight="normal" text-anchor="start" fill="#3730a3">Ctrl-C</text>
-<line x1="175.0" y1="2374.0" x2="175.0" y2="2428.0" stroke="#3730a3" stroke-width="1.6" marker-end="url(#trunk)"/>
-<text x="185.0" y="2406.0" font-family="DejaVu Sans" font-size="12" font-weight="normal" text-anchor="start" fill="#3730a3">on day 7</text>
-<text x="40.0" y="2566.0" font-family="DejaVu Sans" font-size="18" font-weight="bold" text-anchor="start" fill="#111827">Maintainer</text>
-<line x1="310.0" y1="2623.0" x2="420.0" y2="2623.0" stroke="#94a3b8" stroke-width="1.6"/>
-<rect x="420.0" y="2604.0" width="255.9" height="38.0" rx="6" fill="#fffbeb" stroke="#b45309" stroke-width="1.5" stroke-dasharray="6 4"/>
-<text x="548.0" y="2628.0" font-family="DejaVu Sans" font-size="13" font-weight="bold" text-anchor="middle" fill="#1f2937">Which code changes</text>
-<rect x="711.9" y="2590.0" width="693.6" height="66.0" rx="8" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.5"/>
-<line x1="675.9" y1="2623.0" x2="709.9" y2="2623.0" stroke="#475569" stroke-width="1.6" marker-end="url(#head)"/>
-<rect x="719.9" y="2594.0" width="290.4" height="26.0" rx="12" fill="#fef3c7" stroke="#b45309" stroke-width="1.2"/>
-<text x="865.1" y="2611.5" font-family="DejaVu Sans" font-size="13" font-weight="normal" text-anchor="middle" fill="#78350f">CleanCam's Swift code, within iOS 15</text>
-<rect x="1018.3" y="2594.0" width="379.2" height="26.0" rx="12" fill="#fef3c7" stroke="#b45309" stroke-width="1.2"/>
-<text x="1207.9" y="2611.5" font-family="DejaVu Sans" font-size="13" font-weight="normal" text-anchor="middle" fill="#78350f">CleanCamLegacy's Objective-C code, within iOS 10</text>
-<rect x="719.9" y="2626.0" width="364.4" height="26.0" rx="12" fill="#fef3c7" stroke="#b45309" stroke-width="1.2"/>
-<text x="902.1" y="2643.5" font-family="DejaVu Sans" font-size="13" font-weight="normal" text-anchor="middle" fill="#78350f">Both, porting a Swift change to CleanCamLegacy</text>
-<rect x="40.0" y="2590.0" width="270.0" height="66.0" rx="8" fill="#e0e7ff" stroke="#3730a3" stroke-width="2"/>
-<text x="175.0" y="2628.0" font-family="DejaVu Sans" font-size="14" font-weight="bold" text-anchor="middle" fill="#1e1b4b">Change the app</text>
-<line x1="310.0" y1="2731.0" x2="420.0" y2="2731.0" stroke="#94a3b8" stroke-width="1.6"/>
-<rect x="420.0" y="2712.0" width="255.9" height="38.0" rx="6" fill="#fffbeb" stroke="#b45309" stroke-width="1.5" stroke-dasharray="6 4"/>
-<text x="548.0" y="2736.0" font-family="DejaVu Sans" font-size="13" font-weight="bold" text-anchor="middle" fill="#1f2937">Build trigger</text>
-<rect x="711.9" y="2714.0" width="442.0" height="34.0" rx="8" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.5"/>
-<line x1="675.9" y1="2731.0" x2="709.9" y2="2731.0" stroke="#475569" stroke-width="1.6" marker-end="url(#head)"/>
-<rect x="719.9" y="2718.0" width="201.6" height="26.0" rx="12" fill="#fef3c7" stroke="#b45309" stroke-width="1.2"/>
-<text x="820.7" y="2735.5" font-family="DejaVu Sans" font-size="13" font-weight="normal" text-anchor="middle" fill="#78350f">A push or a pull request</text>
-<rect x="929.5" y="2718.0" width="216.4" height="26.0" rx="12" fill="#fef3c7" stroke="#b45309" stroke-width="1.2"/>
-<text x="1037.7" y="2735.5" font-family="DejaVu Sans" font-size="13" font-weight="normal" text-anchor="middle" fill="#78350f">A manual workflow dispatch</text>
+<line x1="310.0" y1="127.0" x2="420.0" y2="127.0" stroke="#94a3b8" stroke-width="1.6"/>
+<rect x="420.0" y="108.0" width="280.3" height="38.0" rx="6" fill="#f1f5f9" stroke="#64748b" stroke-width="1.5"/>
+<text x="560.2" y="132.0" font-family="DejaVu Sans" font-size="13" font-weight="bold" text-anchor="middle" fill="#1f2937">USB debugging on the phone</text>
+<rect x="736.3" y="94.0" width="782.4" height="66.0" rx="8" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.5"/>
+<line x1="700.3" y1="127.0" x2="734.3" y2="127.0" stroke="#475569" stroke-width="1.6" marker-end="url(#head)"/>
+<rect x="744.3" y="98.0" width="201.6" height="26.0" rx="12" fill="#e2e8f0" stroke="#64748b" stroke-width="1.2"/>
+<text x="845.1" y="115.5" font-family="DejaVu Sans" font-size="13" font-weight="normal" text-anchor="middle" fill="#334155">On, with this PC allowed</text>
+<rect x="953.9" y="98.0" width="556.8" height="26.0" rx="12" fill="#e2e8f0" stroke="#64748b" stroke-width="1.2"/>
+<text x="1232.3" y="115.5" font-family="DejaVu Sans" font-size="13" font-weight="normal" text-anchor="middle" fill="#334155">On, with this PC not yet allowed, so adb lists the phone as unauthorized</text>
+<rect x="744.3" y="130.0" width="216.4" height="26.0" rx="12" fill="#e2e8f0" stroke="#64748b" stroke-width="1.2"/>
+<text x="852.5" y="147.5" font-family="DejaVu Sans" font-size="13" font-weight="normal" text-anchor="middle" fill="#334155">Off, so adb lists no phone</text>
+<line x1="310.0" y1="189.0" x2="420.0" y2="189.0" stroke="#94a3b8" stroke-width="1.6"/>
+<rect x="420.0" y="170.0" width="280.3" height="38.0" rx="6" fill="#f1f5f9" stroke="#64748b" stroke-width="1.5"/>
+<text x="560.2" y="194.0" font-family="DejaVu Sans" font-size="13" font-weight="bold" text-anchor="middle" fill="#1f2937">PC access to the phone over USB</text>
+<rect x="736.3" y="172.0" width="686.2" height="34.0" rx="8" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.5"/>
+<line x1="700.3" y1="189.0" x2="734.3" y2="189.0" stroke="#475569" stroke-width="1.6" marker-end="url(#head)"/>
+<rect x="744.3" y="176.0" width="357.0" height="26.0" rx="12" fill="#e2e8f0" stroke="#64748b" stroke-width="1.2"/>
+<text x="922.8" y="193.5" font-family="DejaVu Sans" font-size="13" font-weight="normal" text-anchor="middle" fill="#334155">A udev rule tags Google's devices for uaccess</text>
+<rect x="1109.3" y="176.0" width="305.2" height="26.0" rx="12" fill="#e2e8f0" stroke="#64748b" stroke-width="1.2"/>
+<text x="1261.9" y="193.5" font-family="DejaVu Sans" font-size="13" font-weight="normal" text-anchor="middle" fill="#334155">No rule, so adb reports no permissions</text>
+<line x1="310.0" y1="237.0" x2="420.0" y2="237.0" stroke="#94a3b8" stroke-width="1.6"/>
+<rect x="420.0" y="218.0" width="280.3" height="38.0" rx="6" fill="#f1f5f9" stroke="#64748b" stroke-width="1.5"/>
+<text x="560.2" y="242.0" font-family="DejaVu Sans" font-size="13" font-weight="bold" text-anchor="middle" fill="#1f2937">How the app gets on the phone</text>
+<rect x="736.3" y="220.0" width="523.4" height="34.0" rx="8" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.5"/>
+<line x1="700.3" y1="237.0" x2="734.3" y2="237.0" stroke="#475569" stroke-width="1.6" marker-end="url(#head)"/>
+<rect x="744.3" y="224.0" width="246.0" height="26.0" rx="12" fill="#e2e8f0" stroke="#64748b" stroke-width="1.2"/>
+<text x="867.3" y="241.5" font-family="DejaVu Sans" font-size="13" font-weight="normal" text-anchor="middle" fill="#334155">Gradle's installDebug over adb</text>
+<rect x="998.3" y="224.0" width="253.4" height="26.0" rx="12" fill="#e2e8f0" stroke="#64748b" stroke-width="1.2"/>
+<text x="1125.0" y="241.5" font-family="DejaVu Sans" font-size="13" font-weight="normal" text-anchor="middle" fill="#334155">adb install of a downloaded APK</text>
+<line x1="310.0" y1="285.0" x2="420.0" y2="285.0" stroke="#94a3b8" stroke-width="1.6"/>
+<rect x="420.0" y="266.0" width="280.3" height="38.0" rx="6" fill="#f1f5f9" stroke="#64748b" stroke-width="1.5"/>
+<text x="560.2" y="290.0" font-family="DejaVu Sans" font-size="13" font-weight="bold" text-anchor="middle" fill="#1f2937">Back camera</text>
+<rect x="736.3" y="268.0" width="479.0" height="34.0" rx="8" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.5"/>
+<line x1="700.3" y1="285.0" x2="734.3" y2="285.0" stroke="#475569" stroke-width="1.6" marker-end="url(#head)"/>
+<rect x="744.3" y="272.0" width="371.8" height="26.0" rx="12" fill="#e2e8f0" stroke="#64748b" stroke-width="1.2"/>
+<text x="930.2" y="289.5" font-family="DejaVu Sans" font-size="13" font-weight="normal" text-anchor="middle" fill="#334155">Several lenses, switched by a multi-lens camera</text>
+<rect x="1124.1" y="272.0" width="83.2" height="26.0" rx="12" fill="#e2e8f0" stroke="#64748b" stroke-width="1.2"/>
+<text x="1165.7" y="289.5" font-family="DejaVu Sans" font-size="13" font-weight="normal" text-anchor="middle" fill="#334155">One lens</text>
+<rect x="40.0" y="94.0" width="270.0" height="210.0" rx="8" fill="#e0e7ff" stroke="#3730a3" stroke-width="2"/>
+<text x="175.0" y="204.0" font-family="DejaVu Sans" font-size="14" font-weight="bold" text-anchor="middle" fill="#1e1b4b">Install the app on the phone</text>
+<line x1="310.0" y1="379.0" x2="420.0" y2="379.0" stroke="#94a3b8" stroke-width="1.6"/>
+<rect x="420.0" y="360.0" width="280.3" height="38.0" rx="6" fill="#f1f5f9" stroke="#64748b" stroke-width="1.5"/>
+<text x="560.2" y="384.0" font-family="DejaVu Sans" font-size="13" font-weight="bold" text-anchor="middle" fill="#1f2937">Sound server</text>
+<rect x="736.3" y="362.0" width="777.4" height="34.0" rx="8" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.5"/>
+<line x1="700.3" y1="379.0" x2="734.3" y2="379.0" stroke="#475569" stroke-width="1.6" marker-end="url(#head)"/>
+<rect x="744.3" y="366.0" width="172.0" height="26.0" rx="12" fill="#e2e8f0" stroke="#64748b" stroke-width="1.2"/>
+<text x="830.3" y="383.5" font-family="DejaVu Sans" font-size="13" font-weight="normal" text-anchor="middle" fill="#334155">PipeWire with pw-cli</text>
+<rect x="924.3" y="366.0" width="253.4" height="26.0" rx="12" fill="#e2e8f0" stroke="#64748b" stroke-width="1.2"/>
+<text x="1051.0" y="383.5" font-family="DejaVu Sans" font-size="13" font-weight="normal" text-anchor="middle" fill="#334155">PulseAudio with pactl and parec</text>
+<rect x="1185.7" y="366.0" width="320.0" height="26.0" rx="12" fill="#e2e8f0" stroke="#64748b" stroke-width="1.2"/>
+<text x="1345.7" y="383.5" font-family="DejaVu Sans" font-size="13" font-weight="normal" text-anchor="middle" fill="#334155">Neither, so the receiver runs video only</text>
+<line x1="310.0" y1="427.0" x2="420.0" y2="427.0" stroke="#94a3b8" stroke-width="1.6"/>
+<rect x="420.0" y="408.0" width="280.3" height="38.0" rx="6" fill="#f1f5f9" stroke="#64748b" stroke-width="1.5"/>
+<text x="560.2" y="432.0" font-family="DejaVu Sans" font-size="13" font-weight="bold" text-anchor="middle" fill="#1f2937">Speaker sender</text>
+<rect x="736.3" y="410.0" width="567.8" height="34.0" rx="8" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.5"/>
+<line x1="700.3" y1="427.0" x2="734.3" y2="427.0" stroke="#475569" stroke-width="1.6" marker-end="url(#head)"/>
+<rect x="744.3" y="414.0" width="283.0" height="26.0" rx="12" fill="#e2e8f0" stroke="#64748b" stroke-width="1.2"/>
+<text x="885.8" y="431.5" font-family="DejaVu Sans" font-size="13" font-weight="normal" text-anchor="middle" fill="#334155">python3, with Nagle's algorithm off</text>
+<rect x="1035.3" y="414.0" width="260.8" height="26.0" rx="12" fill="#e2e8f0" stroke="#64748b" stroke-width="1.2"/>
+<text x="1165.7" y="431.5" font-family="DejaVu Sans" font-size="13" font-weight="normal" text-anchor="middle" fill="#334155">bash's /dev/tcp, without python3</text>
+<line x1="310.0" y1="475.0" x2="420.0" y2="475.0" stroke="#94a3b8" stroke-width="1.6"/>
+<rect x="420.0" y="456.0" width="280.3" height="38.0" rx="6" fill="#f1f5f9" stroke="#64748b" stroke-width="1.5"/>
+<text x="560.2" y="480.0" font-family="DejaVu Sans" font-size="13" font-weight="bold" text-anchor="middle" fill="#1f2937">Video decoder</text>
+<rect x="736.3" y="458.0" width="792.2" height="34.0" rx="8" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.5"/>
+<line x1="700.3" y1="475.0" x2="734.3" y2="475.0" stroke="#475569" stroke-width="1.6" marker-end="url(#head)"/>
+<rect x="744.3" y="462.0" width="179.4" height="26.0" rx="12" fill="#e2e8f0" stroke="#64748b" stroke-width="1.2"/>
+<text x="834.0" y="479.5" font-family="DejaVu Sans" font-size="13" font-weight="normal" text-anchor="middle" fill="#334155">The GPU through VAAPI</text>
+<rect x="931.7" y="462.0" width="290.4" height="26.0" rx="12" fill="#e2e8f0" stroke="#64748b" stroke-width="1.2"/>
+<text x="1076.9" y="479.5" font-family="DejaVu Sans" font-size="13" font-weight="normal" text-anchor="middle" fill="#334155">The CPU, where no VAAPI driver loads</text>
+<rect x="1230.1" y="462.0" width="290.4" height="26.0" rx="12" fill="#e2e8f0" stroke="#64748b" stroke-width="1.2"/>
+<text x="1375.3" y="479.5" font-family="DejaVu Sans" font-size="13" font-weight="normal" text-anchor="middle" fill="#334155">The CPU, with VAAPI_DEVICE set empty</text>
+<line x1="310.0" y1="523.0" x2="420.0" y2="523.0" stroke="#94a3b8" stroke-width="1.6"/>
+<rect x="420.0" y="504.0" width="280.3" height="38.0" rx="6" fill="#f1f5f9" stroke="#64748b" stroke-width="1.5"/>
+<text x="560.2" y="528.0" font-family="DejaVu Sans" font-size="13" font-weight="bold" text-anchor="middle" fill="#1f2937">ffmpeg version</text>
+<rect x="736.3" y="506.0" width="777.4" height="34.0" rx="8" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.5"/>
+<line x1="700.3" y1="523.0" x2="734.3" y2="523.0" stroke="#475569" stroke-width="1.6" marker-end="url(#head)"/>
+<rect x="744.3" y="510.0" width="194.2" height="26.0" rx="12" fill="#e2e8f0" stroke="#64748b" stroke-width="1.2"/>
+<text x="841.4" y="527.5" font-family="DejaVu Sans" font-size="13" font-weight="normal" text-anchor="middle" fill="#334155">4.4 to 5.0, with -vsync</text>
+<rect x="946.5" y="510.0" width="216.4" height="26.0" rx="12" fill="#e2e8f0" stroke="#64748b" stroke-width="1.2"/>
+<text x="1054.7" y="527.5" font-family="DejaVu Sans" font-size="13" font-weight="normal" text-anchor="middle" fill="#334155">5.1 to 6.0, with -fps_mode</text>
+<rect x="1170.9" y="510.0" width="334.8" height="26.0" rx="12" fill="#e2e8f0" stroke="#64748b" stroke-width="1.2"/>
+<text x="1338.3" y="527.5" font-family="DejaVu Sans" font-size="13" font-weight="normal" text-anchor="middle" fill="#334155">6.1 or newer, also with -r 30 on the input</text>
+<line x1="310.0" y1="571.0" x2="420.0" y2="571.0" stroke="#94a3b8" stroke-width="1.6"/>
+<rect x="420.0" y="552.0" width="280.3" height="38.0" rx="6" fill="#f1f5f9" stroke="#64748b" stroke-width="1.5"/>
+<text x="560.2" y="576.0" font-family="DejaVu Sans" font-size="13" font-weight="bold" text-anchor="middle" fill="#1f2937">adb on the PC</text>
+<rect x="736.3" y="554.0" width="826.8" height="34.0" rx="8" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.5"/>
+<line x1="700.3" y1="571.0" x2="734.3" y2="571.0" stroke="#475569" stroke-width="1.6" marker-end="url(#head)"/>
+<rect x="744.3" y="558.0" width="312.6" height="26.0" rx="12" fill="#e2e8f0" stroke="#64748b" stroke-width="1.2"/>
+<text x="900.6" y="575.5" font-family="DejaVu Sans" font-size="13" font-weight="normal" text-anchor="middle" fill="#334155">The SDK's platform-tools, first on PATH</text>
+<rect x="1064.9" y="558.0" width="490.2" height="26.0" rx="12" fill="#e2e8f0" stroke="#64748b" stroke-width="1.2"/>
+<text x="1310.0" y="575.5" font-family="DejaVu Sans" font-size="13" font-weight="normal" text-anchor="middle" fill="#334155">An older system adb as well, which stops the newer adb's server</text>
+<line x1="310.0" y1="633.0" x2="420.0" y2="633.0" stroke="#94a3b8" stroke-width="1.6"/>
+<rect x="420.0" y="614.0" width="280.3" height="38.0" rx="6" fill="#f1f5f9" stroke="#64748b" stroke-width="1.5"/>
+<text x="560.2" y="638.0" font-family="DejaVu Sans" font-size="13" font-weight="bold" text-anchor="middle" fill="#1f2937">Receiver settings</text>
+<rect x="736.3" y="600.0" width="498.8" height="66.0" rx="8" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.5"/>
+<line x1="700.3" y1="633.0" x2="734.3" y2="633.0" stroke="#475569" stroke-width="1.6" marker-end="url(#head)"/>
+<rect x="744.3" y="604.0" width="386.6" height="26.0" rx="12" fill="#e2e8f0" stroke="#64748b" stroke-width="1.2"/>
+<text x="937.6" y="621.5" font-family="DejaVu Sans" font-size="13" font-weight="normal" text-anchor="middle" fill="#334155">The defaults, ports 5000 to 5003 and /dev/video10</text>
+<rect x="744.3" y="636.0" width="482.8" height="26.0" rx="12" fill="#e2e8f0" stroke="#64748b" stroke-width="1.2"/>
+<text x="985.7" y="653.5" font-family="DejaVu Sans" font-size="13" font-weight="normal" text-anchor="middle" fill="#334155">PORT, AUDIO_PORT, SPEAKER_PORT, DEBUG_PORT or VIDEO_NR changed</text>
+<rect x="40.0" y="360.0" width="270.0" height="306.0" rx="8" fill="#e0e7ff" stroke="#3730a3" stroke-width="2"/>
+<text x="175.0" y="518.0" font-family="DejaVu Sans" font-size="14" font-weight="bold" text-anchor="middle" fill="#1e1b4b">Ready the PC</text>
+<line x1="310.0" y1="741.0" x2="420.0" y2="741.0" stroke="#94a3b8" stroke-width="1.6"/>
+<rect x="420.0" y="722.0" width="280.3" height="38.0" rx="6" fill="#ffffff" stroke="#3730a3" stroke-width="1.5"/>
+<text x="560.2" y="746.0" font-family="DejaVu Sans" font-size="13" font-weight="bold" text-anchor="middle" fill="#1f2937">Where the phone connects (7)</text>
+<rect x="736.3" y="724.0" width="368.0" height="34.0" rx="8" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.5"/>
+<line x1="700.3" y1="741.0" x2="734.3" y2="741.0" stroke="#475569" stroke-width="1.6" marker-end="url(#head)"/>
+<rect x="744.3" y="728.0" width="120.2" height="26.0" rx="12" fill="#dbeafe" stroke="#2563eb" stroke-width="1.2"/>
+<text x="804.4" y="745.5" font-family="DejaVu Sans" font-size="13" font-weight="normal" text-anchor="middle" fill="#1e3a8a">USB cable (5)</text>
+<rect x="872.5" y="728.0" width="223.8" height="26.0" rx="12" fill="#dbeafe" stroke="#2563eb" stroke-width="1.2"/>
+<text x="984.4" y="745.5" font-family="DejaVu Sans" font-size="13" font-weight="normal" text-anchor="middle" fill="#1e3a8a">WiFi, by the phone's IP (2)</text>
+<line x1="310.0" y1="803.0" x2="420.0" y2="803.0" stroke="#94a3b8" stroke-width="1.6"/>
+<rect x="420.0" y="784.0" width="280.3" height="38.0" rx="6" fill="#ffffff" stroke="#3730a3" stroke-width="1.5"/>
+<text x="560.2" y="808.0" font-family="DejaVu Sans" font-size="13" font-weight="bold" text-anchor="middle" fill="#1f2937">Webcam device at start (4)</text>
+<rect x="736.3" y="770.0" width="656.6" height="66.0" rx="8" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.5"/>
+<line x1="700.3" y1="803.0" x2="734.3" y2="803.0" stroke="#475569" stroke-width="1.6" marker-end="url(#head)"/>
+<rect x="744.3" y="774.0" width="268.2" height="26.0" rx="12" fill="#dbeafe" stroke="#2563eb" stroke-width="1.2"/>
+<text x="878.4" y="791.5" font-family="DejaVu Sans" font-size="13" font-weight="normal" text-anchor="middle" fill="#1e3a8a">No v4l2loopback module loaded (1)</text>
+<rect x="1020.5" y="774.0" width="364.4" height="26.0" rx="12" fill="#dbeafe" stroke="#2563eb" stroke-width="1.2"/>
+<text x="1202.7" y="791.5" font-family="DejaVu Sans" font-size="13" font-weight="normal" text-anchor="middle" fill="#1e3a8a">The module loaded with the CleanCam device (1)</text>
+<rect x="744.3" y="806.0" width="431.0" height="26.0" rx="12" fill="#dbeafe" stroke="#2563eb" stroke-width="1.2"/>
+<text x="959.8" y="823.5" font-family="DejaVu Sans" font-size="13" font-weight="normal" text-anchor="middle" fill="#1e3a8a">The module loaded by another app without the device (2)</text>
+<rect x="40.0" y="722.0" width="270.0" height="114.0" rx="8" fill="#e0e7ff" stroke="#3730a3" stroke-width="2"/>
+<text x="175.0" y="784.0" font-family="DejaVu Sans" font-size="14" font-weight="bold" text-anchor="middle" fill="#1e1b4b">Start the receiver</text>
+<line x1="310.0" y1="911.0" x2="420.0" y2="911.0" stroke="#94a3b8" stroke-width="1.6"/>
+<rect x="420.0" y="892.0" width="280.3" height="38.0" rx="6" fill="#ffffff" stroke="#3730a3" stroke-width="1.5"/>
+<text x="560.2" y="916.0" font-family="DejaVu Sans" font-size="13" font-weight="bold" text-anchor="middle" fill="#1f2937">Camera access (6)</text>
+<rect x="736.3" y="894.0" width="451.8" height="34.0" rx="8" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.5"/>
+<line x1="700.3" y1="911.0" x2="734.3" y2="911.0" stroke="#475569" stroke-width="1.6" marker-end="url(#head)"/>
+<rect x="744.3" y="898.0" width="105.4" height="26.0" rx="12" fill="#dbeafe" stroke="#2563eb" stroke-width="1.2"/>
+<text x="797.0" y="915.5" font-family="DejaVu Sans" font-size="13" font-weight="normal" text-anchor="middle" fill="#1e3a8a">Allowed (1)</text>
+<rect x="857.7" y="898.0" width="216.4" height="26.0" rx="12" fill="#dbeafe" stroke="#2563eb" stroke-width="1.2"/>
+<text x="965.9" y="915.5" font-family="DejaVu Sans" font-size="13" font-weight="normal" text-anchor="middle" fill="#1e3a8a">Allowed only this time (2)</text>
+<rect x="1082.1" y="898.0" width="98.0" height="26.0" rx="12" fill="#dbeafe" stroke="#2563eb" stroke-width="1.2"/>
+<text x="1131.1" y="915.5" font-family="DejaVu Sans" font-size="13" font-weight="normal" text-anchor="middle" fill="#1e3a8a">Denied (3)</text>
+<line x1="310.0" y1="959.0" x2="420.0" y2="959.0" stroke="#94a3b8" stroke-width="1.6"/>
+<rect x="420.0" y="940.0" width="280.3" height="38.0" rx="6" fill="#ffffff" stroke="#3730a3" stroke-width="1.5"/>
+<text x="560.2" y="964.0" font-family="DejaVu Sans" font-size="13" font-weight="bold" text-anchor="middle" fill="#1f2937">Microphone access (3)</text>
+<rect x="736.3" y="942.0" width="451.8" height="34.0" rx="8" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.5"/>
+<line x1="700.3" y1="959.0" x2="734.3" y2="959.0" stroke="#475569" stroke-width="1.6" marker-end="url(#head)"/>
+<rect x="744.3" y="946.0" width="105.4" height="26.0" rx="12" fill="#dbeafe" stroke="#2563eb" stroke-width="1.2"/>
+<text x="797.0" y="963.5" font-family="DejaVu Sans" font-size="13" font-weight="normal" text-anchor="middle" fill="#1e3a8a">Allowed (1)</text>
+<rect x="857.7" y="946.0" width="216.4" height="26.0" rx="12" fill="#dbeafe" stroke="#2563eb" stroke-width="1.2"/>
+<text x="965.9" y="963.5" font-family="DejaVu Sans" font-size="13" font-weight="normal" text-anchor="middle" fill="#1e3a8a">Allowed only this time (1)</text>
+<rect x="1082.1" y="946.0" width="98.0" height="26.0" rx="12" fill="#dbeafe" stroke="#2563eb" stroke-width="1.2"/>
+<text x="1131.1" y="963.5" font-family="DejaVu Sans" font-size="13" font-weight="normal" text-anchor="middle" fill="#1e3a8a">Denied (1)</text>
+<rect x="40.0" y="892.0" width="270.0" height="86.0" rx="8" fill="#e0e7ff" stroke="#3730a3" stroke-width="2"/>
+<text x="175.0" y="940.0" font-family="DejaVu Sans" font-size="14" font-weight="bold" text-anchor="middle" fill="#1e1b4b">Open the app</text>
+<line x1="310.0" y1="1053.0" x2="420.0" y2="1053.0" stroke="#94a3b8" stroke-width="1.6"/>
+<rect x="420.0" y="1034.0" width="280.3" height="38.0" rx="6" fill="#ffffff" stroke="#3730a3" stroke-width="1.5"/>
+<text x="560.2" y="1058.0" font-family="DejaVu Sans" font-size="13" font-weight="bold" text-anchor="middle" fill="#1f2937">Video viewers (5)</text>
+<rect x="736.3" y="1036.0" width="296.4" height="34.0" rx="8" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.5"/>
+<line x1="700.3" y1="1053.0" x2="734.3" y2="1053.0" stroke="#475569" stroke-width="1.6" marker-end="url(#head)"/>
+<rect x="744.3" y="1040.0" width="83.2" height="26.0" rx="12" fill="#dbeafe" stroke="#2563eb" stroke-width="1.2"/>
+<text x="785.9" y="1057.5" font-family="DejaVu Sans" font-size="13" font-weight="normal" text-anchor="middle" fill="#1e3a8a">None (2)</text>
+<rect x="835.5" y="1040.0" width="75.8" height="26.0" rx="12" fill="#dbeafe" stroke="#2563eb" stroke-width="1.2"/>
+<text x="873.4" y="1057.5" font-family="DejaVu Sans" font-size="13" font-weight="normal" text-anchor="middle" fill="#1e3a8a">One (2)</text>
+<rect x="919.3" y="1040.0" width="105.4" height="26.0" rx="12" fill="#dbeafe" stroke="#2563eb" stroke-width="1.2"/>
+<text x="972.0" y="1057.5" font-family="DejaVu Sans" font-size="13" font-weight="normal" text-anchor="middle" fill="#1e3a8a">Several (1)</text>
+<line x1="310.0" y1="1101.0" x2="420.0" y2="1101.0" stroke="#94a3b8" stroke-width="1.6"/>
+<rect x="420.0" y="1082.0" width="280.3" height="38.0" rx="6" fill="#ffffff" stroke="#3730a3" stroke-width="1.5"/>
+<text x="560.2" y="1106.0" font-family="DejaVu Sans" font-size="13" font-weight="bold" text-anchor="middle" fill="#1f2937">Link throughput (5)</text>
+<rect x="736.3" y="1084.0" width="466.6" height="34.0" rx="8" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.5"/>
+<line x1="700.3" y1="1101.0" x2="734.3" y2="1101.0" stroke="#475569" stroke-width="1.6" marker-end="url(#head)"/>
+<rect x="744.3" y="1088.0" width="112.8" height="26.0" rx="12" fill="#dbeafe" stroke="#2563eb" stroke-width="1.2"/>
+<text x="800.7" y="1105.5" font-family="DejaVu Sans" font-size="13" font-weight="normal" text-anchor="middle" fill="#1e3a8a">Keeps up (1)</text>
+<rect x="865.1" y="1088.0" width="142.4" height="26.0" rx="12" fill="#dbeafe" stroke="#2563eb" stroke-width="1.2"/>
+<text x="936.3" y="1105.5" font-family="DejaVu Sans" font-size="13" font-weight="normal" text-anchor="middle" fill="#1e3a8a">Falls behind (3)</text>
+<rect x="1015.5" y="1088.0" width="179.4" height="26.0" rx="12" fill="#dbeafe" stroke="#2563eb" stroke-width="1.2"/>
+<text x="1105.2" y="1105.5" font-family="DejaVu Sans" font-size="13" font-weight="normal" text-anchor="middle" fill="#1e3a8a">Stalls one viewer (1)</text>
+<rect x="40.0" y="1034.0" width="270.0" height="86.0" rx="8" fill="#e0e7ff" stroke="#3730a3" stroke-width="2"/>
+<text x="175.0" y="1082.0" font-family="DejaVu Sans" font-size="14" font-weight="bold" text-anchor="middle" fill="#1e1b4b">Stream to the PC</text>
+<line x1="310.0" y1="1195.0" x2="420.0" y2="1195.0" stroke="#94a3b8" stroke-width="1.6"/>
+<rect x="420.0" y="1176.0" width="280.3" height="38.0" rx="6" fill="#ffffff" stroke="#3730a3" stroke-width="1.5"/>
+<text x="560.2" y="1200.0" font-family="DejaVu Sans" font-size="13" font-weight="bold" text-anchor="middle" fill="#1f2937">Sound check (4)</text>
+<rect x="736.3" y="1178.0" width="508.6" height="34.0" rx="8" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.5"/>
+<line x1="700.3" y1="1195.0" x2="734.3" y2="1195.0" stroke="#475569" stroke-width="1.6" marker-end="url(#head)"/>
+<rect x="744.3" y="1182.0" width="201.6" height="26.0" rx="12" fill="#dbeafe" stroke="#2563eb" stroke-width="1.2"/>
+<text x="845.1" y="1199.5" font-family="DejaVu Sans" font-size="13" font-weight="normal" text-anchor="middle" fill="#1e3a8a">Record and play back (3)</text>
+<rect x="953.9" y="1182.0" width="283.0" height="26.0" rx="12" fill="#dbeafe" stroke="#2563eb" stroke-width="1.2"/>
+<text x="1095.4" y="1199.5" font-family="DejaVu Sans" font-size="13" font-weight="normal" text-anchor="middle" fill="#1e3a8a">Play an earlier recording again (1)</text>
+<rect x="40.0" y="1176.0" width="270.0" height="38.0" rx="8" fill="#e0e7ff" stroke="#3730a3" stroke-width="2"/>
+<text x="175.0" y="1200.0" font-family="DejaVu Sans" font-size="14" font-weight="bold" text-anchor="middle" fill="#1e1b4b">Check the sound</text>
+<line x1="310.0" y1="1289.0" x2="420.0" y2="1289.0" stroke="#94a3b8" stroke-width="1.6"/>
+<rect x="420.0" y="1270.0" width="280.3" height="38.0" rx="6" fill="#ffffff" stroke="#3730a3" stroke-width="1.5"/>
+<text x="560.2" y="1294.0" font-family="DejaVu Sans" font-size="13" font-weight="bold" text-anchor="middle" fill="#1f2937">CleanCam device in use (13)</text>
+<rect x="736.3" y="1272.0" width="363.0" height="34.0" rx="8" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.5"/>
+<line x1="700.3" y1="1289.0" x2="734.3" y2="1289.0" stroke="#475569" stroke-width="1.6" marker-end="url(#head)"/>
+<rect x="744.3" y="1276.0" width="98.0" height="26.0" rx="12" fill="#dbeafe" stroke="#2563eb" stroke-width="1.2"/>
+<text x="793.3" y="1293.5" font-family="DejaVu Sans" font-size="13" font-weight="normal" text-anchor="middle" fill="#1e3a8a">Camera (2)</text>
+<rect x="850.3" y="1276.0" width="127.6" height="26.0" rx="12" fill="#dbeafe" stroke="#2563eb" stroke-width="1.2"/>
+<text x="914.1" y="1293.5" font-family="DejaVu Sans" font-size="13" font-weight="normal" text-anchor="middle" fill="#1e3a8a">Microphone (3)</text>
+<rect x="985.9" y="1276.0" width="105.4" height="26.0" rx="12" fill="#dbeafe" stroke="#2563eb" stroke-width="1.2"/>
+<text x="1038.6" y="1293.5" font-family="DejaVu Sans" font-size="13" font-weight="normal" text-anchor="middle" fill="#1e3a8a">Speaker (8)</text>
+<rect x="40.0" y="1270.0" width="270.0" height="38.0" rx="8" fill="#e0e7ff" stroke="#3730a3" stroke-width="2"/>
+<text x="175.0" y="1294.0" font-family="DejaVu Sans" font-size="14" font-weight="bold" text-anchor="middle" fill="#1e1b4b">Use the stream in a video app</text>
+<line x1="310.0" y1="1383.0" x2="420.0" y2="1383.0" stroke="#94a3b8" stroke-width="1.6"/>
+<rect x="420.0" y="1364.0" width="280.3" height="38.0" rx="6" fill="#ffffff" stroke="#3730a3" stroke-width="1.5"/>
+<text x="560.2" y="1388.0" font-family="DejaVu Sans" font-size="13" font-weight="bold" text-anchor="middle" fill="#1f2937">Phone orientation (6)</text>
+<rect x="736.3" y="1366.0" width="444.4" height="34.0" rx="8" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.5"/>
+<line x1="700.3" y1="1383.0" x2="734.3" y2="1383.0" stroke="#475569" stroke-width="1.6" marker-end="url(#head)"/>
+<rect x="744.3" y="1370.0" width="112.8" height="26.0" rx="12" fill="#dbeafe" stroke="#2563eb" stroke-width="1.2"/>
+<text x="800.7" y="1387.5" font-family="DejaVu Sans" font-size="13" font-weight="normal" text-anchor="middle" fill="#1e3a8a">Sideways (2)</text>
+<rect x="865.1" y="1370.0" width="105.4" height="26.0" rx="12" fill="#dbeafe" stroke="#2563eb" stroke-width="1.2"/>
+<text x="917.8" y="1387.5" font-family="DejaVu Sans" font-size="13" font-weight="normal" text-anchor="middle" fill="#1e3a8a">Upright (2)</text>
+<rect x="978.5" y="1370.0" width="194.2" height="26.0" rx="12" fill="#dbeafe" stroke="#2563eb" stroke-width="1.2"/>
+<text x="1075.6" y="1387.5" font-family="DejaVu Sans" font-size="13" font-weight="normal" text-anchor="middle" fill="#1e3a8a">Flat or upside down (2)</text>
+<line x1="310.0" y1="1431.0" x2="420.0" y2="1431.0" stroke="#94a3b8" stroke-width="1.6"/>
+<rect x="420.0" y="1412.0" width="280.3" height="38.0" rx="6" fill="#ffffff" stroke="#3730a3" stroke-width="1.5"/>
+<text x="560.2" y="1436.0" font-family="DejaVu Sans" font-size="13" font-weight="bold" text-anchor="middle" fill="#1f2937">Zoom (5)</text>
+<rect x="736.3" y="1414.0" width="242.2" height="34.0" rx="8" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.5"/>
+<line x1="700.3" y1="1431.0" x2="734.3" y2="1431.0" stroke="#475569" stroke-width="1.6" marker-end="url(#head)"/>
+<rect x="744.3" y="1418.0" width="98.0" height="26.0" rx="12" fill="#dbeafe" stroke="#2563eb" stroke-width="1.2"/>
+<text x="793.3" y="1435.5" font-family="DejaVu Sans" font-size="13" font-weight="normal" text-anchor="middle" fill="#1e3a8a">Slider (3)</text>
+<rect x="850.3" y="1418.0" width="120.2" height="26.0" rx="12" fill="#dbeafe" stroke="#2563eb" stroke-width="1.2"/>
+<text x="910.4" y="1435.5" font-family="DejaVu Sans" font-size="13" font-weight="normal" text-anchor="middle" fill="#1e3a8a">Lens chip (2)</text>
+<line x1="310.0" y1="1479.0" x2="420.0" y2="1479.0" stroke="#94a3b8" stroke-width="1.6"/>
+<rect x="420.0" y="1460.0" width="280.3" height="38.0" rx="6" fill="#ffffff" stroke="#3730a3" stroke-width="1.5"/>
+<text x="560.2" y="1484.0" font-family="DejaVu Sans" font-size="13" font-weight="bold" text-anchor="middle" fill="#1f2937">Focus target (11)</text>
+<rect x="736.3" y="1462.0" width="355.6" height="34.0" rx="8" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.5"/>
+<line x1="700.3" y1="1479.0" x2="734.3" y2="1479.0" stroke="#475569" stroke-width="1.6" marker-end="url(#head)"/>
+<rect x="744.3" y="1466.0" width="83.2" height="26.0" rx="12" fill="#dbeafe" stroke="#2563eb" stroke-width="1.2"/>
+<text x="785.9" y="1483.5" font-family="DejaVu Sans" font-size="13" font-weight="normal" text-anchor="middle" fill="#1e3a8a">Face (5)</text>
+<rect x="835.5" y="1466.0" width="142.4" height="26.0" rx="12" fill="#dbeafe" stroke="#2563eb" stroke-width="1.2"/>
+<text x="906.7" y="1483.5" font-family="DejaVu Sans" font-size="13" font-weight="normal" text-anchor="middle" fill="#1e3a8a">Tapped point (3)</text>
+<rect x="985.9" y="1466.0" width="98.0" height="26.0" rx="12" fill="#dbeafe" stroke="#2563eb" stroke-width="1.2"/>
+<text x="1034.9" y="1483.5" font-family="DejaVu Sans" font-size="13" font-weight="normal" text-anchor="middle" fill="#1e3a8a">Center (3)</text>
+<line x1="310.0" y1="1527.0" x2="420.0" y2="1527.0" stroke="#94a3b8" stroke-width="1.6"/>
+<rect x="420.0" y="1508.0" width="280.3" height="38.0" rx="6" fill="#ffffff" stroke="#3730a3" stroke-width="1.5"/>
+<text x="560.2" y="1532.0" font-family="DejaVu Sans" font-size="13" font-weight="bold" text-anchor="middle" fill="#1f2937">Picture lock (4)</text>
+<rect x="736.3" y="1510.0" width="234.8" height="34.0" rx="8" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.5"/>
+<line x1="700.3" y1="1527.0" x2="734.3" y2="1527.0" stroke="#475569" stroke-width="1.6" marker-end="url(#head)"/>
+<rect x="744.3" y="1514.0" width="98.0" height="26.0" rx="12" fill="#dbeafe" stroke="#2563eb" stroke-width="1.2"/>
+<text x="793.3" y="1531.5" font-family="DejaVu Sans" font-size="13" font-weight="normal" text-anchor="middle" fill="#1e3a8a">Locked (2)</text>
+<rect x="850.3" y="1514.0" width="112.8" height="26.0" rx="12" fill="#dbeafe" stroke="#2563eb" stroke-width="1.2"/>
+<text x="906.7" y="1531.5" font-family="DejaVu Sans" font-size="13" font-weight="normal" text-anchor="middle" fill="#1e3a8a">Unlocked (2)</text>
+<line x1="310.0" y1="1575.0" x2="420.0" y2="1575.0" stroke="#94a3b8" stroke-width="1.6"/>
+<rect x="420.0" y="1556.0" width="280.3" height="38.0" rx="6" fill="#ffffff" stroke="#3730a3" stroke-width="1.5"/>
+<text x="560.2" y="1580.0" font-family="DejaVu Sans" font-size="13" font-weight="bold" text-anchor="middle" fill="#1f2937">Microphone mute (2)</text>
+<rect x="736.3" y="1558.0" width="220.0" height="34.0" rx="8" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.5"/>
+<line x1="700.3" y1="1575.0" x2="734.3" y2="1575.0" stroke="#475569" stroke-width="1.6" marker-end="url(#head)"/>
+<rect x="744.3" y="1562.0" width="90.6" height="26.0" rx="12" fill="#dbeafe" stroke="#2563eb" stroke-width="1.2"/>
+<text x="789.6" y="1579.5" font-family="DejaVu Sans" font-size="13" font-weight="normal" text-anchor="middle" fill="#1e3a8a">Muted (1)</text>
+<rect x="842.9" y="1562.0" width="105.4" height="26.0" rx="12" fill="#dbeafe" stroke="#2563eb" stroke-width="1.2"/>
+<text x="895.6" y="1579.5" font-family="DejaVu Sans" font-size="13" font-weight="normal" text-anchor="middle" fill="#1e3a8a">Unmuted (1)</text>
+<line x1="310.0" y1="1623.0" x2="420.0" y2="1623.0" stroke="#94a3b8" stroke-width="1.6"/>
+<rect x="420.0" y="1604.0" width="280.3" height="38.0" rx="6" fill="#ffffff" stroke="#3730a3" stroke-width="1.5"/>
+<text x="560.2" y="1628.0" font-family="DejaVu Sans" font-size="13" font-weight="bold" text-anchor="middle" fill="#1f2937">Screen (4)</text>
+<rect x="736.3" y="1606.0" width="168.2" height="34.0" rx="8" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.5"/>
+<line x1="700.3" y1="1623.0" x2="734.3" y2="1623.0" stroke="#475569" stroke-width="1.6" marker-end="url(#head)"/>
+<rect x="744.3" y="1610.0" width="75.8" height="26.0" rx="12" fill="#dbeafe" stroke="#2563eb" stroke-width="1.2"/>
+<text x="782.2" y="1627.5" font-family="DejaVu Sans" font-size="13" font-weight="normal" text-anchor="middle" fill="#1e3a8a">Off (1)</text>
+<rect x="828.1" y="1610.0" width="68.4" height="26.0" rx="12" fill="#dbeafe" stroke="#2563eb" stroke-width="1.2"/>
+<text x="862.3" y="1627.5" font-family="DejaVu Sans" font-size="13" font-weight="normal" text-anchor="middle" fill="#1e3a8a">On (3)</text>
+<rect x="40.0" y="1364.0" width="270.0" height="278.0" rx="8" fill="#e0e7ff" stroke="#3730a3" stroke-width="2"/>
+<text x="175.0" y="1508.0" font-family="DejaVu Sans" font-size="14" font-weight="bold" text-anchor="middle" fill="#1e1b4b">Control the picture</text>
+<line x1="310.0" y1="1717.0" x2="420.0" y2="1717.0" stroke="#94a3b8" stroke-width="1.6"/>
+<rect x="420.0" y="1698.0" width="280.3" height="38.0" rx="6" fill="#ffffff" stroke="#3730a3" stroke-width="1.5"/>
+<text x="560.2" y="1722.0" font-family="DejaVu Sans" font-size="13" font-weight="bold" text-anchor="middle" fill="#1f2937">Preset (13)</text>
+<rect x="736.3" y="1700.0" width="478.8" height="34.0" rx="8" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.5"/>
+<line x1="700.3" y1="1717.0" x2="734.3" y2="1717.0" stroke="#475569" stroke-width="1.6" marker-end="url(#head)"/>
+<rect x="744.3" y="1704.0" width="83.2" height="26.0" rx="12" fill="#dbeafe" stroke="#2563eb" stroke-width="1.2"/>
+<text x="785.9" y="1721.5" font-family="DejaVu Sans" font-size="13" font-weight="normal" text-anchor="middle" fill="#1e3a8a">Call (2)</text>
+<rect x="835.5" y="1704.0" width="120.2" height="26.0" rx="12" fill="#dbeafe" stroke="#2563eb" stroke-width="1.2"/>
+<text x="895.6" y="1721.5" font-family="DejaVu Sans" font-size="13" font-weight="normal" text-anchor="middle" fill="#1e3a8a">Low light (2)</text>
+<rect x="963.7" y="1704.0" width="75.8" height="26.0" rx="12" fill="#dbeafe" stroke="#2563eb" stroke-width="1.2"/>
+<text x="1001.6" y="1721.5" font-family="DejaVu Sans" font-size="13" font-weight="normal" text-anchor="middle" fill="#1e3a8a">OBS (2)</text>
+<rect x="1047.5" y="1704.0" width="83.2" height="26.0" rx="12" fill="#dbeafe" stroke="#2563eb" stroke-width="1.2"/>
+<text x="1089.1" y="1721.5" font-family="DejaVu Sans" font-size="13" font-weight="normal" text-anchor="middle" fill="#1e3a8a">WiFi (4)</text>
+<rect x="1138.7" y="1704.0" width="68.4" height="26.0" rx="12" fill="#dbeafe" stroke="#2563eb" stroke-width="1.2"/>
+<text x="1172.9" y="1721.5" font-family="DejaVu Sans" font-size="13" font-weight="normal" text-anchor="middle" fill="#1e3a8a">4K (3)</text>
+<line x1="310.0" y1="1765.0" x2="420.0" y2="1765.0" stroke="#94a3b8" stroke-width="1.6"/>
+<rect x="420.0" y="1746.0" width="280.3" height="38.0" rx="6" fill="#ffffff" stroke="#3730a3" stroke-width="1.5"/>
+<text x="560.2" y="1770.0" font-family="DejaVu Sans" font-size="13" font-weight="bold" text-anchor="middle" fill="#1f2937">Lens (6)</text>
+<rect x="736.3" y="1748.0" width="417.2" height="34.0" rx="8" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.5"/>
+<line x1="700.3" y1="1765.0" x2="734.3" y2="1765.0" stroke="#475569" stroke-width="1.6" marker-end="url(#head)"/>
+<rect x="744.3" y="1752.0" width="83.2" height="26.0" rx="12" fill="#dbeafe" stroke="#2563eb" stroke-width="1.2"/>
+<text x="785.9" y="1769.5" font-family="DejaVu Sans" font-size="13" font-weight="normal" text-anchor="middle" fill="#1e3a8a">Auto (2)</text>
+<rect x="835.5" y="1752.0" width="127.6" height="26.0" rx="12" fill="#dbeafe" stroke="#2563eb" stroke-width="1.2"/>
+<text x="899.3" y="1769.5" font-family="DejaVu Sans" font-size="13" font-weight="normal" text-anchor="middle" fill="#1e3a8a">Ultra wide (1)</text>
+<rect x="971.1" y="1752.0" width="83.2" height="26.0" rx="12" fill="#dbeafe" stroke="#2563eb" stroke-width="1.2"/>
+<text x="1012.7" y="1769.5" font-family="DejaVu Sans" font-size="13" font-weight="normal" text-anchor="middle" fill="#1e3a8a">Wide (1)</text>
+<rect x="1062.3" y="1752.0" width="83.2" height="26.0" rx="12" fill="#dbeafe" stroke="#2563eb" stroke-width="1.2"/>
+<text x="1103.9" y="1769.5" font-family="DejaVu Sans" font-size="13" font-weight="normal" text-anchor="middle" fill="#1e3a8a">Tele (2)</text>
+<line x1="310.0" y1="1813.0" x2="420.0" y2="1813.0" stroke="#94a3b8" stroke-width="1.6"/>
+<rect x="420.0" y="1794.0" width="280.3" height="38.0" rx="6" fill="#ffffff" stroke="#3730a3" stroke-width="1.5"/>
+<text x="560.2" y="1818.0" font-family="DejaVu Sans" font-size="13" font-weight="bold" text-anchor="middle" fill="#1f2937">Stabilization (9)</text>
+<rect x="736.3" y="1796.0" width="432.0" height="34.0" rx="8" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.5"/>
+<line x1="700.3" y1="1813.0" x2="734.3" y2="1813.0" stroke="#475569" stroke-width="1.6" marker-end="url(#head)"/>
+<rect x="744.3" y="1800.0" width="83.2" height="26.0" rx="12" fill="#dbeafe" stroke="#2563eb" stroke-width="1.2"/>
+<text x="785.9" y="1817.5" font-family="DejaVu Sans" font-size="13" font-weight="normal" text-anchor="middle" fill="#1e3a8a">Auto (5)</text>
+<rect x="835.5" y="1800.0" width="75.8" height="26.0" rx="12" fill="#dbeafe" stroke="#2563eb" stroke-width="1.2"/>
+<text x="873.4" y="1817.5" font-family="DejaVu Sans" font-size="13" font-weight="normal" text-anchor="middle" fill="#1e3a8a">Off (1)</text>
+<rect x="919.3" y="1800.0" width="112.8" height="26.0" rx="12" fill="#dbeafe" stroke="#2563eb" stroke-width="1.2"/>
+<text x="975.7" y="1817.5" font-family="DejaVu Sans" font-size="13" font-weight="normal" text-anchor="middle" fill="#1e3a8a">Standard (1)</text>
+<rect x="1040.1" y="1800.0" width="120.2" height="26.0" rx="12" fill="#dbeafe" stroke="#2563eb" stroke-width="1.2"/>
+<text x="1100.2" y="1817.5" font-family="DejaVu Sans" font-size="13" font-weight="normal" text-anchor="middle" fill="#1e3a8a">Cinematic (2)</text>
+<line x1="310.0" y1="1861.0" x2="420.0" y2="1861.0" stroke="#94a3b8" stroke-width="1.6"/>
+<rect x="420.0" y="1842.0" width="280.3" height="38.0" rx="6" fill="#ffffff" stroke="#3730a3" stroke-width="1.5"/>
+<text x="560.2" y="1866.0" font-family="DejaVu Sans" font-size="13" font-weight="bold" text-anchor="middle" fill="#1f2937">Exposure (3)</text>
+<rect x="736.3" y="1844.0" width="212.6" height="34.0" rx="8" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.5"/>
+<line x1="700.3" y1="1861.0" x2="734.3" y2="1861.0" stroke="#475569" stroke-width="1.6" marker-end="url(#head)"/>
+<rect x="744.3" y="1848.0" width="83.2" height="26.0" rx="12" fill="#dbeafe" stroke="#2563eb" stroke-width="1.2"/>
+<text x="785.9" y="1865.5" font-family="DejaVu Sans" font-size="13" font-weight="normal" text-anchor="middle" fill="#1e3a8a">0 EV (1)</text>
+<rect x="835.5" y="1848.0" width="105.4" height="26.0" rx="12" fill="#dbeafe" stroke="#2563eb" stroke-width="1.2"/>
+<text x="888.2" y="1865.5" font-family="DejaVu Sans" font-size="13" font-weight="normal" text-anchor="middle" fill="#1e3a8a">Shifted (2)</text>
+<line x1="310.0" y1="1909.0" x2="420.0" y2="1909.0" stroke="#94a3b8" stroke-width="1.6"/>
+<rect x="420.0" y="1890.0" width="280.3" height="38.0" rx="6" fill="#ffffff" stroke="#3730a3" stroke-width="1.5"/>
+<text x="560.2" y="1914.0" font-family="DejaVu Sans" font-size="13" font-weight="bold" text-anchor="middle" fill="#1f2937">White balance (8)</text>
+<rect x="736.3" y="1892.0" width="197.8" height="34.0" rx="8" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.5"/>
+<line x1="700.3" y1="1909.0" x2="734.3" y2="1909.0" stroke="#475569" stroke-width="1.6" marker-end="url(#head)"/>
+<rect x="744.3" y="1896.0" width="83.2" height="26.0" rx="12" fill="#dbeafe" stroke="#2563eb" stroke-width="1.2"/>
+<text x="785.9" y="1913.5" font-family="DejaVu Sans" font-size="13" font-weight="normal" text-anchor="middle" fill="#1e3a8a">Auto (3)</text>
+<rect x="835.5" y="1896.0" width="90.6" height="26.0" rx="12" fill="#dbeafe" stroke="#2563eb" stroke-width="1.2"/>
+<text x="880.8" y="1913.5" font-family="DejaVu Sans" font-size="13" font-weight="normal" text-anchor="middle" fill="#1e3a8a">Fixed (5)</text>
+<line x1="310.0" y1="1957.0" x2="420.0" y2="1957.0" stroke="#94a3b8" stroke-width="1.6"/>
+<rect x="420.0" y="1938.0" width="280.3" height="38.0" rx="6" fill="#ffffff" stroke="#3730a3" stroke-width="1.5"/>
+<text x="560.2" y="1962.0" font-family="DejaVu Sans" font-size="13" font-weight="bold" text-anchor="middle" fill="#1f2937">Near focus (2)</text>
+<rect x="736.3" y="1940.0" width="168.2" height="34.0" rx="8" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.5"/>
+<line x1="700.3" y1="1957.0" x2="734.3" y2="1957.0" stroke="#475569" stroke-width="1.6" marker-end="url(#head)"/>
+<rect x="744.3" y="1944.0" width="68.4" height="26.0" rx="12" fill="#dbeafe" stroke="#2563eb" stroke-width="1.2"/>
+<text x="778.5" y="1961.5" font-family="DejaVu Sans" font-size="13" font-weight="normal" text-anchor="middle" fill="#1e3a8a">On (1)</text>
+<rect x="820.7" y="1944.0" width="75.8" height="26.0" rx="12" fill="#dbeafe" stroke="#2563eb" stroke-width="1.2"/>
+<text x="858.6" y="1961.5" font-family="DejaVu Sans" font-size="13" font-weight="normal" text-anchor="middle" fill="#1e3a8a">Off (1)</text>
+<line x1="310.0" y1="2005.0" x2="420.0" y2="2005.0" stroke="#94a3b8" stroke-width="1.6"/>
+<rect x="420.0" y="1986.0" width="280.3" height="38.0" rx="6" fill="#ffffff" stroke="#3730a3" stroke-width="1.5"/>
+<text x="560.2" y="2010.0" font-family="DejaVu Sans" font-size="13" font-weight="bold" text-anchor="middle" fill="#1f2937">Max bitrate (5)</text>
+<rect x="736.3" y="1988.0" width="227.4" height="34.0" rx="8" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.5"/>
+<line x1="700.3" y1="2005.0" x2="734.3" y2="2005.0" stroke="#475569" stroke-width="1.6" marker-end="url(#head)"/>
+<rect x="744.3" y="1992.0" width="112.8" height="26.0" rx="12" fill="#dbeafe" stroke="#2563eb" stroke-width="1.2"/>
+<text x="800.7" y="2009.5" font-family="DejaVu Sans" font-size="13" font-weight="normal" text-anchor="middle" fill="#1e3a8a">No limit (1)</text>
+<rect x="865.1" y="1992.0" width="90.6" height="26.0" rx="12" fill="#dbeafe" stroke="#2563eb" stroke-width="1.2"/>
+<text x="910.4" y="2009.5" font-family="DejaVu Sans" font-size="13" font-weight="normal" text-anchor="middle" fill="#1e3a8a">A cap (4)</text>
+<rect x="40.0" y="1698.0" width="270.0" height="326.0" rx="8" fill="#e0e7ff" stroke="#3730a3" stroke-width="2"/>
+<text x="175.0" y="1866.0" font-family="DejaVu Sans" font-size="14" font-weight="bold" text-anchor="middle" fill="#1e1b4b">Change the settings</text>
+<line x1="310.0" y1="2099.0" x2="420.0" y2="2099.0" stroke="#94a3b8" stroke-width="1.6"/>
+<rect x="420.0" y="2080.0" width="280.3" height="38.0" rx="6" fill="#ffffff" stroke="#3730a3" stroke-width="1.5"/>
+<text x="560.2" y="2104.0" font-family="DejaVu Sans" font-size="13" font-weight="bold" text-anchor="middle" fill="#1f2937">Power and heat (7)</text>
+<rect x="736.3" y="2082.0" width="528.2" height="34.0" rx="8" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.5"/>
+<line x1="700.3" y1="2099.0" x2="734.3" y2="2099.0" stroke="#475569" stroke-width="1.6" marker-end="url(#head)"/>
+<rect x="744.3" y="2086.0" width="179.4" height="26.0" rx="12" fill="#dbeafe" stroke="#2563eb" stroke-width="1.2"/>
+<text x="834.0" y="2103.5" font-family="DejaVu Sans" font-size="13" font-weight="normal" text-anchor="middle" fill="#1e3a8a">Charging and cool (2)</text>
+<rect x="931.7" y="2086.0" width="127.6" height="26.0" rx="12" fill="#dbeafe" stroke="#2563eb" stroke-width="1.2"/>
+<text x="995.5" y="2103.5" font-family="DejaVu Sans" font-size="13" font-weight="normal" text-anchor="middle" fill="#1e3a8a">On battery (2)</text>
+<rect x="1067.3" y="2086.0" width="75.8" height="26.0" rx="12" fill="#dbeafe" stroke="#2563eb" stroke-width="1.2"/>
+<text x="1105.2" y="2103.5" font-family="DejaVu Sans" font-size="13" font-weight="normal" text-anchor="middle" fill="#1e3a8a">Hot (2)</text>
+<rect x="1151.1" y="2086.0" width="105.4" height="26.0" rx="12" fill="#dbeafe" stroke="#2563eb" stroke-width="1.2"/>
+<text x="1203.8" y="2103.5" font-family="DejaVu Sans" font-size="13" font-weight="normal" text-anchor="middle" fill="#1e3a8a">Too hot (1)</text>
+<rect x="40.0" y="2080.0" width="270.0" height="38.0" rx="8" fill="#e0e7ff" stroke="#3730a3" stroke-width="2"/>
+<text x="175.0" y="2104.0" font-family="DejaVu Sans" font-size="14" font-weight="bold" text-anchor="middle" fill="#1e1b4b">Run on battery or heat</text>
+<line x1="310.0" y1="2193.0" x2="420.0" y2="2193.0" stroke="#94a3b8" stroke-width="1.6"/>
+<rect x="420.0" y="2174.0" width="280.3" height="38.0" rx="6" fill="#ffffff" stroke="#3730a3" stroke-width="1.5"/>
+<text x="560.2" y="2198.0" font-family="DejaVu Sans" font-size="13" font-weight="bold" text-anchor="middle" fill="#1f2937">App on screen (6)</text>
+<rect x="736.3" y="2176.0" width="644.2" height="34.0" rx="8" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.5"/>
+<line x1="700.3" y1="2193.0" x2="734.3" y2="2193.0" stroke="#475569" stroke-width="1.6" marker-end="url(#head)"/>
+<rect x="744.3" y="2180.0" width="238.6" height="26.0" rx="12" fill="#dbeafe" stroke="#2563eb" stroke-width="1.2"/>
+<text x="863.6" y="2197.5" font-family="DejaVu Sans" font-size="13" font-weight="normal" text-anchor="middle" fill="#1e3a8a">Covered by a system panel (1)</text>
+<rect x="990.9" y="2180.0" width="179.4" height="26.0" rx="12" fill="#dbeafe" stroke="#2563eb" stroke-width="1.2"/>
+<text x="1080.6" y="2197.5" font-family="DejaVu Sans" font-size="13" font-weight="normal" text-anchor="middle" fill="#1e3a8a">In the background (3)</text>
+<rect x="1178.3" y="2180.0" width="194.2" height="26.0" rx="12" fill="#dbeafe" stroke="#2563eb" stroke-width="1.2"/>
+<text x="1275.4" y="2197.5" font-family="DejaVu Sans" font-size="13" font-weight="normal" text-anchor="middle" fill="#1e3a8a">Closed and reopened (2)</text>
+<rect x="40.0" y="2174.0" width="270.0" height="38.0" rx="8" fill="#e0e7ff" stroke="#3730a3" stroke-width="2"/>
+<text x="175.0" y="2198.0" font-family="DejaVu Sans" font-size="14" font-weight="bold" text-anchor="middle" fill="#1e1b4b">Leave the app</text>
+<line x1="310.0" y1="2287.0" x2="420.0" y2="2287.0" stroke="#94a3b8" stroke-width="1.6"/>
+<rect x="420.0" y="2268.0" width="280.3" height="38.0" rx="6" fill="#ffffff" stroke="#3730a3" stroke-width="1.5"/>
+<text x="560.2" y="2292.0" font-family="DejaVu Sans" font-size="13" font-weight="bold" text-anchor="middle" fill="#1f2937">Receiver stop (3)</text>
+<rect x="736.3" y="2270.0" width="114.0" height="34.0" rx="8" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.5"/>
+<line x1="700.3" y1="2287.0" x2="734.3" y2="2287.0" stroke="#475569" stroke-width="1.6" marker-end="url(#head)"/>
+<rect x="744.3" y="2274.0" width="98.0" height="26.0" rx="12" fill="#dbeafe" stroke="#2563eb" stroke-width="1.2"/>
+<text x="793.3" y="2291.5" font-family="DejaVu Sans" font-size="13" font-weight="normal" text-anchor="middle" fill="#1e3a8a">Ctrl-C (3)</text>
+<rect x="40.0" y="2268.0" width="270.0" height="38.0" rx="8" fill="#e0e7ff" stroke="#3730a3" stroke-width="2"/>
+<text x="175.0" y="2292.0" font-family="DejaVu Sans" font-size="14" font-weight="bold" text-anchor="middle" fill="#1e1b4b">Stop the receiver</text>
+<line x1="175.0" y1="304.0" x2="175.0" y2="358.0" stroke="#3730a3" stroke-width="1.6" marker-end="url(#trunk)"/>
+<text x="185.0" y="336.0" font-family="DejaVu Sans" font-size="12" font-weight="normal" text-anchor="start" fill="#3730a3">then</text>
+<line x1="175.0" y1="666.0" x2="175.0" y2="720.0" stroke="#3730a3" stroke-width="1.6" marker-end="url(#trunk)"/>
+<text x="185.0" y="698.0" font-family="DejaVu Sans" font-size="12" font-weight="normal" text-anchor="start" fill="#3730a3">each call</text>
+<line x1="175.0" y1="836.0" x2="175.0" y2="890.0" stroke="#3730a3" stroke-width="1.6" marker-end="url(#trunk)"/>
+<text x="185.0" y="868.0" font-family="DejaVu Sans" font-size="12" font-weight="normal" text-anchor="start" fill="#3730a3">then</text>
+<line x1="175.0" y1="978.0" x2="175.0" y2="1032.0" stroke="#3730a3" stroke-width="1.6" marker-end="url(#trunk)"/>
+<text x="185.0" y="1010.0" font-family="DejaVu Sans" font-size="12" font-weight="normal" text-anchor="start" fill="#3730a3">receiver connects</text>
+<line x1="175.0" y1="1120.0" x2="175.0" y2="1174.0" stroke="#3730a3" stroke-width="1.6" marker-end="url(#trunk)"/>
+<text x="185.0" y="1152.0" font-family="DejaVu Sans" font-size="12" font-weight="normal" text-anchor="start" fill="#3730a3">optional</text>
+<line x1="175.0" y1="1214.0" x2="175.0" y2="1268.0" stroke="#3730a3" stroke-width="1.6" marker-end="url(#trunk)"/>
+<text x="185.0" y="1246.0" font-family="DejaVu Sans" font-size="12" font-weight="normal" text-anchor="start" fill="#3730a3">then</text>
+<line x1="175.0" y1="1308.0" x2="175.0" y2="1362.0" stroke="#3730a3" stroke-width="1.6" marker-end="url(#trunk)"/>
+<text x="185.0" y="1340.0" font-family="DejaVu Sans" font-size="12" font-weight="normal" text-anchor="start" fill="#3730a3">during the call</text>
+<line x1="175.0" y1="1642.0" x2="175.0" y2="1696.0" stroke="#3730a3" stroke-width="1.6" marker-end="url(#trunk)"/>
+<text x="185.0" y="1674.0" font-family="DejaVu Sans" font-size="12" font-weight="normal" text-anchor="start" fill="#3730a3">settings button</text>
+<line x1="175.0" y1="2024.0" x2="175.0" y2="2078.0" stroke="#3730a3" stroke-width="1.6" marker-end="url(#trunk)"/>
+<text x="185.0" y="2056.0" font-family="DejaVu Sans" font-size="12" font-weight="normal" text-anchor="start" fill="#3730a3">off the charger or hot</text>
+<line x1="175.0" y1="2118.0" x2="175.0" y2="2172.0" stroke="#3730a3" stroke-width="1.6" marker-end="url(#trunk)"/>
+<text x="185.0" y="2150.0" font-family="DejaVu Sans" font-size="12" font-weight="normal" text-anchor="start" fill="#3730a3">leaves the screen</text>
+<line x1="175.0" y1="2212.0" x2="175.0" y2="2266.0" stroke="#3730a3" stroke-width="1.6" marker-end="url(#trunk)"/>
+<text x="185.0" y="2244.0" font-family="DejaVu Sans" font-size="12" font-weight="normal" text-anchor="start" fill="#3730a3">Ctrl-C</text>
+<text x="40.0" y="2376.0" font-family="DejaVu Sans" font-size="18" font-weight="bold" text-anchor="start" fill="#111827">Maintainer</text>
+<line x1="310.0" y1="2419.0" x2="420.0" y2="2419.0" stroke="#94a3b8" stroke-width="1.6"/>
+<rect x="420.0" y="2400.0" width="280.3" height="38.0" rx="6" fill="#fffbeb" stroke="#b45309" stroke-width="1.5" stroke-dasharray="6 4"/>
+<text x="560.2" y="2424.0" font-family="DejaVu Sans" font-size="13" font-weight="bold" text-anchor="middle" fill="#1f2937">Which code changes</text>
+<rect x="736.3" y="2402.0" width="397.6" height="34.0" rx="8" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.5"/>
+<line x1="700.3" y1="2419.0" x2="734.3" y2="2419.0" stroke="#475569" stroke-width="1.6" marker-end="url(#head)"/>
+<rect x="744.3" y="2406.0" width="238.6" height="26.0" rx="12" fill="#fef3c7" stroke="#b45309" stroke-width="1.2"/>
+<text x="863.6" y="2423.5" font-family="DejaVu Sans" font-size="13" font-weight="normal" text-anchor="middle" fill="#78350f">The Android app's Kotlin code</text>
+<rect x="990.9" y="2406.0" width="135.0" height="26.0" rx="12" fill="#fef3c7" stroke="#b45309" stroke-width="1.2"/>
+<text x="1058.4" y="2423.5" font-family="DejaVu Sans" font-size="13" font-weight="normal" text-anchor="middle" fill="#78350f">The PC receiver</text>
+<rect x="40.0" y="2400.0" width="270.0" height="38.0" rx="8" fill="#e0e7ff" stroke="#3730a3" stroke-width="2"/>
+<text x="175.0" y="2424.0" font-family="DejaVu Sans" font-size="14" font-weight="bold" text-anchor="middle" fill="#1e1b4b">Change the app</text>
+<line x1="310.0" y1="2513.0" x2="420.0" y2="2513.0" stroke="#94a3b8" stroke-width="1.6"/>
+<rect x="420.0" y="2494.0" width="280.3" height="38.0" rx="6" fill="#fffbeb" stroke="#b45309" stroke-width="1.5" stroke-dasharray="6 4"/>
+<text x="560.2" y="2518.0" font-family="DejaVu Sans" font-size="13" font-weight="bold" text-anchor="middle" fill="#1f2937">JDK</text>
+<rect x="736.3" y="2496.0" width="493.8" height="34.0" rx="8" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.5"/>
+<line x1="700.3" y1="2513.0" x2="734.3" y2="2513.0" stroke="#475569" stroke-width="1.6" marker-end="url(#head)"/>
+<rect x="744.3" y="2500.0" width="149.8" height="26.0" rx="12" fill="#fef3c7" stroke="#b45309" stroke-width="1.2"/>
+<text x="819.2" y="2517.5" font-family="DejaVu Sans" font-size="13" font-weight="normal" text-anchor="middle" fill="#78350f">JDK 17 with javac</text>
+<rect x="902.1" y="2500.0" width="320.0" height="26.0" rx="12" fill="#fef3c7" stroke="#b45309" stroke-width="1.2"/>
+<text x="1062.1" y="2517.5" font-family="DejaVu Sans" font-size="13" font-weight="normal" text-anchor="middle" fill="#78350f">A Java runtime only, which can't compile</text>
+<line x1="310.0" y1="2561.0" x2="420.0" y2="2561.0" stroke="#94a3b8" stroke-width="1.6"/>
+<rect x="420.0" y="2542.0" width="280.3" height="38.0" rx="6" fill="#fffbeb" stroke="#b45309" stroke-width="1.5" stroke-dasharray="6 4"/>
+<text x="560.2" y="2566.0" font-family="DejaVu Sans" font-size="13" font-weight="bold" text-anchor="middle" fill="#1f2937">Android SDK</text>
+<rect x="736.3" y="2544.0" width="730.6" height="34.0" rx="8" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.5"/>
+<line x1="700.3" y1="2561.0" x2="734.3" y2="2561.0" stroke="#475569" stroke-width="1.6" marker-end="url(#head)"/>
+<rect x="744.3" y="2548.0" width="556.8" height="26.0" rx="12" fill="#fef3c7" stroke="#b45309" stroke-width="1.2"/>
+<text x="1022.7" y="2565.5" font-family="DejaVu Sans" font-size="13" font-weight="normal" text-anchor="middle" fill="#78350f">Platform android-37.0 and build-tools 36.0.0, with the licenses accepted</text>
+<rect x="1309.1" y="2548.0" width="149.8" height="26.0" rx="12" fill="#fef3c7" stroke="#b45309" stroke-width="1.2"/>
+<text x="1384.0" y="2565.5" font-family="DejaVu Sans" font-size="13" font-weight="normal" text-anchor="middle" fill="#78350f">A package missing</text>
+<line x1="310.0" y1="2609.0" x2="420.0" y2="2609.0" stroke="#94a3b8" stroke-width="1.6"/>
+<rect x="420.0" y="2590.0" width="280.3" height="38.0" rx="6" fill="#fffbeb" stroke="#b45309" stroke-width="1.5" stroke-dasharray="6 4"/>
+<text x="560.2" y="2614.0" font-family="DejaVu Sans" font-size="13" font-weight="bold" text-anchor="middle" fill="#1f2937">Gradle</text>
+<rect x="736.3" y="2592.0" width="447.0" height="34.0" rx="8" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.5"/>
+<line x1="700.3" y1="2609.0" x2="734.3" y2="2609.0" stroke="#475569" stroke-width="1.6" marker-end="url(#head)"/>
+<rect x="744.3" y="2596.0" width="431.0" height="26.0" rx="12" fill="#fef3c7" stroke="#b45309" stroke-width="1.2"/>
+<text x="959.8" y="2613.5" font-family="DejaVu Sans" font-size="13" font-weight="normal" text-anchor="middle" fill="#78350f">The project's Gradle wrapper, Gradle 9.6.0 with AGP 9.5</text>
+<rect x="40.0" y="2494.0" width="270.0" height="134.0" rx="8" fill="#e0e7ff" stroke="#3730a3" stroke-width="2"/>
+<text x="175.0" y="2566.0" font-family="DejaVu Sans" font-size="14" font-weight="bold" text-anchor="middle" fill="#1e1b4b">Build the APK</text>
+<line x1="310.0" y1="2717.0" x2="420.0" y2="2717.0" stroke="#94a3b8" stroke-width="1.6"/>
+<rect x="420.0" y="2698.0" width="280.3" height="38.0" rx="6" fill="#fffbeb" stroke="#b45309" stroke-width="1.5" stroke-dasharray="6 4"/>
+<text x="560.2" y="2722.0" font-family="DejaVu Sans" font-size="13" font-weight="bold" text-anchor="middle" fill="#1f2937">Debug port command</text>
+<rect x="736.3" y="2684.0" width="841.4" height="66.0" rx="8" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.5"/>
+<line x1="700.3" y1="2717.0" x2="734.3" y2="2717.0" stroke="#475569" stroke-width="1.6" marker-end="url(#head)"/>
+<rect x="744.3" y="2688.0" width="246.0" height="26.0" rx="12" fill="#fef3c7" stroke="#b45309" stroke-width="1.2"/>
+<text x="867.3" y="2705.5" font-family="DejaVu Sans" font-size="13" font-weight="normal" text-anchor="middle" fill="#78350f">bitrate N, from 1 to 100000000</text>
+<rect x="998.3" y="2688.0" width="53.6" height="26.0" rx="12" fill="#fef3c7" stroke="#b45309" stroke-width="1.2"/>
+<text x="1025.1" y="2705.5" font-family="DejaVu Sans" font-size="13" font-weight="normal" text-anchor="middle" fill="#78350f">auto</text>
+<rect x="1059.9" y="2688.0" width="83.2" height="26.0" rx="12" fill="#fef3c7" stroke="#b45309" stroke-width="1.2"/>
+<text x="1101.5" y="2705.5" font-family="DejaVu Sans" font-size="13" font-weight="normal" text-anchor="middle" fill="#78350f">keyframe</text>
+<rect x="1151.1" y="2688.0" width="105.4" height="26.0" rx="12" fill="#fef3c7" stroke="#b45309" stroke-width="1.2"/>
+<text x="1203.8" y="2705.5" font-family="DejaVu Sans" font-size="13" font-weight="normal" text-anchor="middle" fill="#78350f">preset NAME</text>
+<rect x="1264.5" y="2688.0" width="305.2" height="26.0" rx="12" fill="#fef3c7" stroke="#b45309" stroke-width="1.2"/>
+<text x="1417.1" y="2705.5" font-family="DejaVu Sans" font-size="13" font-weight="normal" text-anchor="middle" fill="#78350f">lens, stab, ev, wb, near or maxbitrate</text>
+<rect x="744.3" y="2720.0" width="364.4" height="26.0" rx="12" fill="#fef3c7" stroke="#b45309" stroke-width="1.2"/>
+<text x="926.5" y="2737.5" font-family="DejaVu Sans" font-size="13" font-weight="normal" text-anchor="middle" fill="#78350f">thermal or battery, and auto to hand them back</text>
+<rect x="1116.7" y="2720.0" width="68.4" height="26.0" rx="12" fill="#fef3c7" stroke="#b45309" stroke-width="1.2"/>
+<text x="1150.9" y="2737.5" font-family="DejaVu Sans" font-size="13" font-weight="normal" text-anchor="middle" fill="#78350f">camera</text>
+<rect x="1193.1" y="2720.0" width="297.8" height="26.0" rx="12" fill="#fef3c7" stroke="#b45309" stroke-width="1.2"/>
+<text x="1342.0" y="2737.5" font-family="DejaVu Sans" font-size="13" font-weight="normal" text-anchor="middle" fill="#78350f">Anything else, answered with ok false</text>
 <line x1="310.0" y1="2779.0" x2="420.0" y2="2779.0" stroke="#94a3b8" stroke-width="1.6"/>
-<rect x="420.0" y="2760.0" width="255.9" height="38.0" rx="6" fill="#fffbeb" stroke="#b45309" stroke-width="1.5" stroke-dasharray="6 4"/>
-<text x="548.0" y="2784.0" font-family="DejaVu Sans" font-size="13" font-weight="bold" text-anchor="middle" fill="#1f2937">Main app build</text>
-<rect x="711.9" y="2762.0" width="343.4" height="34.0" rx="8" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.5"/>
-<line x1="675.9" y1="2779.0" x2="709.9" y2="2779.0" stroke="#475569" stroke-width="1.6" marker-end="url(#head)"/>
-<rect x="719.9" y="2766.0" width="327.4" height="26.0" rx="12" fill="#fef3c7" stroke="#b45309" stroke-width="1.2"/>
-<text x="883.6" y="2783.5" font-family="DejaVu Sans" font-size="13" font-weight="normal" text-anchor="middle" fill="#78350f">XcodeGen and xcodebuild on a macOS runner</text>
+<rect x="420.0" y="2760.0" width="280.3" height="38.0" rx="6" fill="#fffbeb" stroke="#b45309" stroke-width="1.5" stroke-dasharray="6 4"/>
+<text x="560.2" y="2784.0" font-family="DejaVu Sans" font-size="13" font-weight="bold" text-anchor="middle" fill="#1f2937">Debug client input</text>
+<rect x="736.3" y="2762.0" width="619.6" height="34.0" rx="8" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.5"/>
+<line x1="700.3" y1="2779.0" x2="734.3" y2="2779.0" stroke="#475569" stroke-width="1.6" marker-end="url(#head)"/>
+<rect x="744.3" y="2766.0" width="209.0" height="26.0" rx="12" fill="#fef3c7" stroke="#b45309" stroke-width="1.2"/>
+<text x="848.8" y="2783.5" font-family="DejaVu Sans" font-size="13" font-weight="normal" text-anchor="middle" fill="#78350f">Lines ending in a newline</text>
+<rect x="961.3" y="2766.0" width="386.6" height="26.0" rx="12" fill="#fef3c7" stroke="#b45309" stroke-width="1.2"/>
+<text x="1154.6" y="2783.5" font-family="DejaVu Sans" font-size="13" font-weight="normal" text-anchor="middle" fill="#78350f">Over 1024 bytes with no newline, which is dropped</text>
 <line x1="310.0" y1="2827.0" x2="420.0" y2="2827.0" stroke="#94a3b8" stroke-width="1.6"/>
-<rect x="420.0" y="2808.0" width="255.9" height="38.0" rx="6" fill="#fffbeb" stroke="#b45309" stroke-width="1.5" stroke-dasharray="6 4"/>
-<text x="548.0" y="2832.0" font-family="DejaVu Sans" font-size="13" font-weight="bold" text-anchor="middle" fill="#1f2937">Legacy app build</text>
-<rect x="711.9" y="2810.0" width="789.8" height="34.0" rx="8" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.5"/>
-<line x1="675.9" y1="2827.0" x2="709.9" y2="2827.0" stroke="#475569" stroke-width="1.6" marker-end="url(#head)"/>
-<rect x="719.9" y="2814.0" width="253.4" height="26.0" rx="12" fill="#fef3c7" stroke="#b45309" stroke-width="1.2"/>
-<text x="846.6" y="2831.5" font-family="DejaVu Sans" font-size="13" font-weight="normal" text-anchor="middle" fill="#78350f">tools/build-legacy.sh on the PC</text>
-<rect x="981.3" y="2814.0" width="512.4" height="26.0" rx="12" fill="#fef3c7" stroke="#b45309" stroke-width="1.2"/>
-<text x="1237.5" y="2831.5" font-family="DejaVu Sans" font-size="13" font-weight="normal" text-anchor="middle" fill="#78350f">tools/build-legacy.sh on a Linux runner, with the toolchain cached</text>
-<line x1="310.0" y1="2889.0" x2="420.0" y2="2889.0" stroke="#94a3b8" stroke-width="1.6"/>
-<rect x="420.0" y="2870.0" width="255.9" height="38.0" rx="6" fill="#fffbeb" stroke="#b45309" stroke-width="1.5" stroke-dasharray="6 4"/>
-<text x="548.0" y="2894.0" font-family="DejaVu Sans" font-size="13" font-weight="bold" text-anchor="middle" fill="#1f2937">Legacy toolchain</text>
-<rect x="711.9" y="2856.0" width="553.0" height="66.0" rx="8" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.5"/>
-<line x1="675.9" y1="2889.0" x2="709.9" y2="2889.0" stroke="#475569" stroke-width="1.6" marker-end="url(#head)"/>
-<rect x="719.9" y="2860.0" width="238.6" height="26.0" rx="12" fill="#fef3c7" stroke="#b45309" stroke-width="1.2"/>
-<text x="839.2" y="2877.5" font-family="DejaVu Sans" font-size="13" font-weight="normal" text-anchor="middle" fill="#78350f">Already in build/legacy-tools</text>
-<rect x="966.5" y="2860.0" width="290.4" height="26.0" rx="12" fill="#fef3c7" stroke="#b45309" stroke-width="1.2"/>
-<text x="1111.7" y="2877.5" font-family="DejaVu Sans" font-size="13" font-weight="normal" text-anchor="middle" fill="#78350f">Downloaded, and its checksum matches</text>
-<rect x="719.9" y="2892.0" width="445.8" height="26.0" rx="12" fill="#fef3c7" stroke="#b45309" stroke-width="1.2"/>
-<text x="942.8" y="2909.5" font-family="DejaVu Sans" font-size="13" font-weight="normal" text-anchor="middle" fill="#78350f">Downloaded, and its checksum fails, which stops the build</text>
-<line x1="310.0" y1="2951.0" x2="420.0" y2="2951.0" stroke="#94a3b8" stroke-width="1.6"/>
-<rect x="420.0" y="2932.0" width="255.9" height="38.0" rx="6" fill="#fffbeb" stroke="#b45309" stroke-width="1.5" stroke-dasharray="6 4"/>
-<text x="548.0" y="2956.0" font-family="DejaVu Sans" font-size="13" font-weight="bold" text-anchor="middle" fill="#1f2937">Container runtime</text>
-<rect x="711.9" y="2934.0" width="414.8" height="34.0" rx="8" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.5"/>
-<line x1="675.9" y1="2951.0" x2="709.9" y2="2951.0" stroke="#475569" stroke-width="1.6" marker-end="url(#head)"/>
-<rect x="719.9" y="2938.0" width="68.4" height="26.0" rx="12" fill="#fef3c7" stroke="#b45309" stroke-width="1.2"/>
-<text x="754.1" y="2955.5" font-family="DejaVu Sans" font-size="13" font-weight="normal" text-anchor="middle" fill="#78350f">podman</text>
-<rect x="796.3" y="2938.0" width="68.4" height="26.0" rx="12" fill="#fef3c7" stroke="#b45309" stroke-width="1.2"/>
-<text x="830.5" y="2955.5" font-family="DejaVu Sans" font-size="13" font-weight="normal" text-anchor="middle" fill="#78350f">docker</text>
-<rect x="872.7" y="2938.0" width="246.0" height="26.0" rx="12" fill="#fef3c7" stroke="#b45309" stroke-width="1.2"/>
-<text x="995.7" y="2955.5" font-family="DejaVu Sans" font-size="13" font-weight="normal" text-anchor="middle" fill="#78350f">Neither, which stops the build</text>
-<line x1="310.0" y1="2999.0" x2="420.0" y2="2999.0" stroke="#94a3b8" stroke-width="1.6"/>
-<rect x="420.0" y="2980.0" width="255.9" height="38.0" rx="6" fill="#fffbeb" stroke="#b45309" stroke-width="1.5" stroke-dasharray="6 4"/>
-<text x="548.0" y="3004.0" font-family="DejaVu Sans" font-size="13" font-weight="bold" text-anchor="middle" fill="#1f2937">Legacy binary check</text>
-<rect x="711.9" y="2982.0" width="508.6" height="34.0" rx="8" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.5"/>
-<line x1="675.9" y1="2999.0" x2="709.9" y2="2999.0" stroke="#475569" stroke-width="1.6" marker-end="url(#head)"/>
-<rect x="719.9" y="2986.0" width="172.0" height="26.0" rx="12" fill="#fef3c7" stroke="#b45309" stroke-width="1.2"/>
-<text x="805.9" y="3003.5" font-family="DejaVu Sans" font-size="13" font-weight="normal" text-anchor="middle" fill="#78350f">Holds no build paths</text>
-<rect x="899.9" y="2986.0" width="312.6" height="26.0" rx="12" fill="#fef3c7" stroke="#b45309" stroke-width="1.2"/>
-<text x="1056.2" y="3003.5" font-family="DejaVu Sans" font-size="13" font-weight="normal" text-anchor="middle" fill="#78350f">Holds a build path, which fails the job</text>
-<rect x="40.0" y="2712.0" width="270.0" height="306.0" rx="8" fill="#e0e7ff" stroke="#3730a3" stroke-width="2"/>
-<text x="175.0" y="2870.0" font-family="DejaVu Sans" font-size="14" font-weight="bold" text-anchor="middle" fill="#1e1b4b">Build the IPAs</text>
-<line x1="310.0" y1="3107.0" x2="420.0" y2="3107.0" stroke="#94a3b8" stroke-width="1.6"/>
-<rect x="420.0" y="3088.0" width="255.9" height="38.0" rx="6" fill="#fffbeb" stroke="#b45309" stroke-width="1.5" stroke-dasharray="6 4"/>
-<text x="548.0" y="3112.0" font-family="DejaVu Sans" font-size="13" font-weight="bold" text-anchor="middle" fill="#1f2937">Debug port command</text>
-<rect x="711.9" y="3074.0" width="841.4" height="66.0" rx="8" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.5"/>
-<line x1="675.9" y1="3107.0" x2="709.9" y2="3107.0" stroke="#475569" stroke-width="1.6" marker-end="url(#head)"/>
-<rect x="719.9" y="3078.0" width="246.0" height="26.0" rx="12" fill="#fef3c7" stroke="#b45309" stroke-width="1.2"/>
-<text x="842.9" y="3095.5" font-family="DejaVu Sans" font-size="13" font-weight="normal" text-anchor="middle" fill="#78350f">bitrate N, from 1 to 100000000</text>
-<rect x="973.9" y="3078.0" width="53.6" height="26.0" rx="12" fill="#fef3c7" stroke="#b45309" stroke-width="1.2"/>
-<text x="1000.7" y="3095.5" font-family="DejaVu Sans" font-size="13" font-weight="normal" text-anchor="middle" fill="#78350f">auto</text>
-<rect x="1035.5" y="3078.0" width="83.2" height="26.0" rx="12" fill="#fef3c7" stroke="#b45309" stroke-width="1.2"/>
-<text x="1077.1" y="3095.5" font-family="DejaVu Sans" font-size="13" font-weight="normal" text-anchor="middle" fill="#78350f">keyframe</text>
-<rect x="1126.7" y="3078.0" width="105.4" height="26.0" rx="12" fill="#fef3c7" stroke="#b45309" stroke-width="1.2"/>
-<text x="1179.4" y="3095.5" font-family="DejaVu Sans" font-size="13" font-weight="normal" text-anchor="middle" fill="#78350f">preset NAME</text>
-<rect x="1240.1" y="3078.0" width="305.2" height="26.0" rx="12" fill="#fef3c7" stroke="#b45309" stroke-width="1.2"/>
-<text x="1392.7" y="3095.5" font-family="DejaVu Sans" font-size="13" font-weight="normal" text-anchor="middle" fill="#78350f">lens, stab, ev, wb, near or maxbitrate</text>
-<rect x="719.9" y="3110.0" width="364.4" height="26.0" rx="12" fill="#fef3c7" stroke="#b45309" stroke-width="1.2"/>
-<text x="902.1" y="3127.5" font-family="DejaVu Sans" font-size="13" font-weight="normal" text-anchor="middle" fill="#78350f">thermal or battery, and auto to hand them back</text>
-<rect x="1092.3" y="3110.0" width="68.4" height="26.0" rx="12" fill="#fef3c7" stroke="#b45309" stroke-width="1.2"/>
-<text x="1126.5" y="3127.5" font-family="DejaVu Sans" font-size="13" font-weight="normal" text-anchor="middle" fill="#78350f">camera</text>
-<rect x="1168.7" y="3110.0" width="297.8" height="26.0" rx="12" fill="#fef3c7" stroke="#b45309" stroke-width="1.2"/>
-<text x="1317.6" y="3127.5" font-family="DejaVu Sans" font-size="13" font-weight="normal" text-anchor="middle" fill="#78350f">Anything else, answered with ok false</text>
-<line x1="310.0" y1="3169.0" x2="420.0" y2="3169.0" stroke="#94a3b8" stroke-width="1.6"/>
-<rect x="420.0" y="3150.0" width="255.9" height="38.0" rx="6" fill="#fffbeb" stroke="#b45309" stroke-width="1.5" stroke-dasharray="6 4"/>
-<text x="548.0" y="3174.0" font-family="DejaVu Sans" font-size="13" font-weight="bold" text-anchor="middle" fill="#1f2937">Debug client input</text>
-<rect x="711.9" y="3152.0" width="619.6" height="34.0" rx="8" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.5"/>
-<line x1="675.9" y1="3169.0" x2="709.9" y2="3169.0" stroke="#475569" stroke-width="1.6" marker-end="url(#head)"/>
-<rect x="719.9" y="3156.0" width="209.0" height="26.0" rx="12" fill="#fef3c7" stroke="#b45309" stroke-width="1.2"/>
-<text x="824.4" y="3173.5" font-family="DejaVu Sans" font-size="13" font-weight="normal" text-anchor="middle" fill="#78350f">Lines ending in a newline</text>
-<rect x="936.9" y="3156.0" width="386.6" height="26.0" rx="12" fill="#fef3c7" stroke="#b45309" stroke-width="1.2"/>
-<text x="1130.2" y="3173.5" font-family="DejaVu Sans" font-size="13" font-weight="normal" text-anchor="middle" fill="#78350f">Over 1024 bytes with no newline, which is dropped</text>
-<line x1="310.0" y1="3217.0" x2="420.0" y2="3217.0" stroke="#94a3b8" stroke-width="1.6"/>
-<rect x="420.0" y="3198.0" width="255.9" height="38.0" rx="6" fill="#fffbeb" stroke="#b45309" stroke-width="1.5" stroke-dasharray="6 4"/>
-<text x="548.0" y="3222.0" font-family="DejaVu Sans" font-size="13" font-weight="bold" text-anchor="middle" fill="#1f2937">Test scene</text>
-<rect x="711.9" y="3200.0" width="442.0" height="34.0" rx="8" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.5"/>
-<line x1="675.9" y1="3217.0" x2="709.9" y2="3217.0" stroke="#475569" stroke-width="1.6" marker-end="url(#head)"/>
-<rect x="719.9" y="3204.0" width="305.2" height="26.0" rx="12" fill="#fef3c7" stroke="#b45309" stroke-width="1.2"/>
-<text x="872.5" y="3221.5" font-family="DejaVu Sans" font-size="13" font-weight="normal" text-anchor="middle" fill="#78350f">tools/test-pattern.html at full screen</text>
-<rect x="1033.1" y="3204.0" width="112.8" height="26.0" rx="12" fill="#fef3c7" stroke="#b45309" stroke-width="1.2"/>
-<text x="1089.5" y="3221.5" font-family="DejaVu Sans" font-size="13" font-weight="normal" text-anchor="middle" fill="#78350f">A live scene</text>
-<rect x="40.0" y="3074.0" width="270.0" height="162.0" rx="8" fill="#e0e7ff" stroke="#3730a3" stroke-width="2"/>
-<text x="175.0" y="3160.0" font-family="DejaVu Sans" font-size="14" font-weight="bold" text-anchor="middle" fill="#1e1b4b">Debug the stream</text>
-<line x1="310.0" y1="3325.0" x2="420.0" y2="3325.0" stroke="#94a3b8" stroke-width="1.6"/>
-<rect x="420.0" y="3306.0" width="255.9" height="38.0" rx="6" fill="#fffbeb" stroke="#b45309" stroke-width="1.5" stroke-dasharray="6 4"/>
-<text x="548.0" y="3330.0" font-family="DejaVu Sans" font-size="13" font-weight="bold" text-anchor="middle" fill="#1f2937">Release trigger</text>
-<rect x="711.9" y="3292.0" width="461.8" height="66.0" rx="8" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.5"/>
-<line x1="675.9" y1="3325.0" x2="709.9" y2="3325.0" stroke="#475569" stroke-width="1.6" marker-end="url(#head)"/>
-<rect x="719.9" y="3296.0" width="445.8" height="26.0" rx="12" fill="#fef3c7" stroke="#b45309" stroke-width="1.2"/>
-<text x="942.8" y="3313.5" font-family="DejaVu Sans" font-size="13" font-weight="normal" text-anchor="middle" fill="#78350f">A v* tag, which attaches both IPAs and their SHA-256 sums</text>
-<rect x="719.9" y="3328.0" width="416.2" height="26.0" rx="12" fill="#fef3c7" stroke="#b45309" stroke-width="1.2"/>
-<text x="928.0" y="3345.5" font-family="DejaVu Sans" font-size="13" font-weight="normal" text-anchor="middle" fill="#78350f">Any other push, which keeps the IPAs as run artifacts</text>
-<line x1="310.0" y1="3387.0" x2="420.0" y2="3387.0" stroke="#94a3b8" stroke-width="1.6"/>
-<rect x="420.0" y="3368.0" width="255.9" height="38.0" rx="6" fill="#fffbeb" stroke="#b45309" stroke-width="1.5" stroke-dasharray="6 4"/>
-<text x="548.0" y="3392.0" font-family="DejaVu Sans" font-size="13" font-weight="bold" text-anchor="middle" fill="#1f2937">Version</text>
-<rect x="711.9" y="3370.0" width="461.8" height="34.0" rx="8" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.5"/>
-<line x1="675.9" y1="3387.0" x2="709.9" y2="3387.0" stroke="#475569" stroke-width="1.6" marker-end="url(#head)"/>
-<rect x="719.9" y="3374.0" width="445.8" height="26.0" rx="12" fill="#fef3c7" stroke="#b45309" stroke-width="1.2"/>
-<text x="942.8" y="3391.5" font-family="DejaVu Sans" font-size="13" font-weight="normal" text-anchor="middle" fill="#78350f">Raised in project.yml and CleanCamLegacy/Info.plist first</text>
-<rect x="40.0" y="3292.0" width="270.0" height="114.0" rx="8" fill="#e0e7ff" stroke="#3730a3" stroke-width="2"/>
-<text x="175.0" y="3354.0" font-family="DejaVu Sans" font-size="14" font-weight="bold" text-anchor="middle" fill="#1e1b4b">Release</text>
-<line x1="175.0" y1="2656.0" x2="175.0" y2="2710.0" stroke="#3730a3" stroke-width="1.6" marker-end="url(#trunk)"/>
-<text x="185.0" y="2688.0" font-family="DejaVu Sans" font-size="12" font-weight="normal" text-anchor="start" fill="#3730a3">push</text>
-<line x1="175.0" y1="3018.0" x2="175.0" y2="3072.0" stroke="#3730a3" stroke-width="1.6" marker-end="url(#trunk)"/>
-<text x="185.0" y="3050.0" font-family="DejaVu Sans" font-size="12" font-weight="normal" text-anchor="start" fill="#3730a3">then</text>
-<line x1="175.0" y1="3236.0" x2="175.0" y2="3290.0" stroke="#3730a3" stroke-width="1.6" marker-end="url(#trunk)"/>
-<text x="185.0" y="3268.0" font-family="DejaVu Sans" font-size="12" font-weight="normal" text-anchor="start" fill="#3730a3">v* tag</text>
-<rect x="40.0" y="3476.0" width="90.0" height="28.0" rx="6" fill="#ffffff" stroke="#3730a3" stroke-width="1.5"/>
-<text x="85.0" y="3495.0" font-family="DejaVu Sans" font-size="13" font-weight="bold" text-anchor="middle" fill="#1f2937">user</text>
-<rect x="144.0" y="3476.0" width="90.0" height="28.0" rx="6" fill="#f1f5f9" stroke="#64748b" stroke-width="1.5"/>
-<text x="189.0" y="3495.0" font-family="DejaVu Sans" font-size="13" font-weight="bold" text-anchor="middle" fill="#1f2937">setup</text>
-<rect x="248.0" y="3476.0" width="90.0" height="28.0" rx="6" fill="#fffbeb" stroke="#b45309" stroke-width="1.5" stroke-dasharray="6 4"/>
-<text x="293.0" y="3495.0" font-family="DejaVu Sans" font-size="13" font-weight="bold" text-anchor="middle" fill="#1f2937">build</text>
-<text x="362.0" y="3495.0" font-family="DejaVu Sans" font-size="12" font-weight="normal" text-anchor="start" fill="#64748b">(n) = case names on a user branch; setup and build branches hold none.</text>
+<rect x="420.0" y="2808.0" width="280.3" height="38.0" rx="6" fill="#fffbeb" stroke="#b45309" stroke-width="1.5" stroke-dasharray="6 4"/>
+<text x="560.2" y="2832.0" font-family="DejaVu Sans" font-size="13" font-weight="bold" text-anchor="middle" fill="#1f2937">Test scene</text>
+<rect x="736.3" y="2810.0" width="442.0" height="34.0" rx="8" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.5"/>
+<line x1="700.3" y1="2827.0" x2="734.3" y2="2827.0" stroke="#475569" stroke-width="1.6" marker-end="url(#head)"/>
+<rect x="744.3" y="2814.0" width="305.2" height="26.0" rx="12" fill="#fef3c7" stroke="#b45309" stroke-width="1.2"/>
+<text x="896.9" y="2831.5" font-family="DejaVu Sans" font-size="13" font-weight="normal" text-anchor="middle" fill="#78350f">tools/test-pattern.html at full screen</text>
+<rect x="1057.5" y="2814.0" width="112.8" height="26.0" rx="12" fill="#fef3c7" stroke="#b45309" stroke-width="1.2"/>
+<text x="1113.9" y="2831.5" font-family="DejaVu Sans" font-size="13" font-weight="normal" text-anchor="middle" fill="#78350f">A live scene</text>
+<rect x="40.0" y="2684.0" width="270.0" height="162.0" rx="8" fill="#e0e7ff" stroke="#3730a3" stroke-width="2"/>
+<text x="175.0" y="2770.0" font-family="DejaVu Sans" font-size="14" font-weight="bold" text-anchor="middle" fill="#1e1b4b">Debug the stream</text>
+<line x1="310.0" y1="2921.0" x2="420.0" y2="2921.0" stroke="#94a3b8" stroke-width="1.6"/>
+<rect x="420.0" y="2902.0" width="280.3" height="38.0" rx="6" fill="#fffbeb" stroke="#b45309" stroke-width="1.5" stroke-dasharray="6 4"/>
+<text x="560.2" y="2926.0" font-family="DejaVu Sans" font-size="13" font-weight="bold" text-anchor="middle" fill="#1f2937">Release trigger</text>
+<rect x="736.3" y="2904.0" width="849.0" height="34.0" rx="8" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.5"/>
+<line x1="700.3" y1="2921.0" x2="734.3" y2="2921.0" stroke="#475569" stroke-width="1.6" marker-end="url(#head)"/>
+<rect x="744.3" y="2908.0" width="408.8" height="26.0" rx="12" fill="#fef3c7" stroke="#b45309" stroke-width="1.2"/>
+<text x="948.7" y="2925.5" font-family="DejaVu Sans" font-size="13" font-weight="normal" text-anchor="middle" fill="#78350f">A v* tag, which attaches the APK and its SHA-256 sum</text>
+<rect x="1161.1" y="2908.0" width="416.2" height="26.0" rx="12" fill="#fef3c7" stroke="#b45309" stroke-width="1.2"/>
+<text x="1369.2" y="2925.5" font-family="DejaVu Sans" font-size="13" font-weight="normal" text-anchor="middle" fill="#78350f">Any other push, which keeps the APK as a run artifact</text>
+<line x1="310.0" y1="2969.0" x2="420.0" y2="2969.0" stroke="#94a3b8" stroke-width="1.6"/>
+<rect x="420.0" y="2950.0" width="280.3" height="38.0" rx="6" fill="#fffbeb" stroke="#b45309" stroke-width="1.5" stroke-dasharray="6 4"/>
+<text x="560.2" y="2974.0" font-family="DejaVu Sans" font-size="13" font-weight="bold" text-anchor="middle" fill="#1f2937">Version</text>
+<rect x="736.3" y="2952.0" width="395.2" height="34.0" rx="8" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.5"/>
+<line x1="700.3" y1="2969.0" x2="734.3" y2="2969.0" stroke="#475569" stroke-width="1.6" marker-end="url(#head)"/>
+<rect x="744.3" y="2956.0" width="379.2" height="26.0" rx="12" fill="#fef3c7" stroke="#b45309" stroke-width="1.2"/>
+<text x="933.9" y="2973.5" font-family="DejaVu Sans" font-size="13" font-weight="normal" text-anchor="middle" fill="#78350f">versionName raised in the app's build file first</text>
+<rect x="40.0" y="2902.0" width="270.0" height="86.0" rx="8" fill="#e0e7ff" stroke="#3730a3" stroke-width="2"/>
+<text x="175.0" y="2950.0" font-family="DejaVu Sans" font-size="14" font-weight="bold" text-anchor="middle" fill="#1e1b4b">Release</text>
+<line x1="175.0" y1="2438.0" x2="175.0" y2="2492.0" stroke="#3730a3" stroke-width="1.6" marker-end="url(#trunk)"/>
+<text x="185.0" y="2470.0" font-family="DejaVu Sans" font-size="12" font-weight="normal" text-anchor="start" fill="#3730a3">then</text>
+<line x1="175.0" y1="2628.0" x2="175.0" y2="2682.0" stroke="#3730a3" stroke-width="1.6" marker-end="url(#trunk)"/>
+<text x="185.0" y="2660.0" font-family="DejaVu Sans" font-size="12" font-weight="normal" text-anchor="start" fill="#3730a3">then</text>
+<line x1="175.0" y1="2846.0" x2="175.0" y2="2900.0" stroke="#3730a3" stroke-width="1.6" marker-end="url(#trunk)"/>
+<text x="185.0" y="2878.0" font-family="DejaVu Sans" font-size="12" font-weight="normal" text-anchor="start" fill="#3730a3">v* tag</text>
+<rect x="40.0" y="3058.0" width="90.0" height="28.0" rx="6" fill="#ffffff" stroke="#3730a3" stroke-width="1.5"/>
+<text x="85.0" y="3077.0" font-family="DejaVu Sans" font-size="13" font-weight="bold" text-anchor="middle" fill="#1f2937">user</text>
+<rect x="144.0" y="3058.0" width="90.0" height="28.0" rx="6" fill="#f1f5f9" stroke="#64748b" stroke-width="1.5"/>
+<text x="189.0" y="3077.0" font-family="DejaVu Sans" font-size="13" font-weight="bold" text-anchor="middle" fill="#1f2937">setup</text>
+<rect x="248.0" y="3058.0" width="90.0" height="28.0" rx="6" fill="#fffbeb" stroke="#b45309" stroke-width="1.5" stroke-dasharray="6 4"/>
+<text x="293.0" y="3077.0" font-family="DejaVu Sans" font-size="13" font-weight="bold" text-anchor="middle" fill="#1f2937">build</text>
+<text x="362.0" y="3077.0" font-family="DejaVu Sans" font-size="12" font-weight="normal" text-anchor="start" fill="#64748b">(n) = case names on a user branch; setup and build branches hold none.</text>
 </svg>

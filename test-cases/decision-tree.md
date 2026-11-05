@@ -1,23 +1,16 @@
 ## Call user
 
 - Install the app on the phone
-  - Which app the phone runs [setup]
-    - CleanCam, on iOS 15 or later
-    - CleanCamLegacy, on a 32-bit phone on iOS 10
-  - Where the IPA comes from [setup]
-    - The latest release
-    - A Build workflow run's artifact
-    - tools/build-legacy.sh on the PC
-  - How plumesign runs [setup]
-    - Natively, on glibc 2.38 or later
-    - In podman or docker, on an older glibc
-    - Not found, which stops with a hint
-  - Apple ID session [setup]
-    - Logged in
-    - Logged out or expired, so log in with the password and 2FA code
-  - Trust on the phone [setup]
-    - Developer Mode, then trust the developer, on iOS 16 or later
-    - Trust the developer only, on iOS 15 or iOS 10
+  - USB debugging on the phone [setup]
+    - On, with this PC allowed
+    - On, with this PC not yet allowed, so adb lists the phone as unauthorized
+    - Off, so adb lists no phone
+  - PC access to the phone over USB [setup]
+    - A udev rule tags Google's devices for uaccess
+    - No rule, so adb reports no permissions
+  - How the app gets on the phone [setup]
+    - Gradle's installDebug over adb
+    - adb install of a downloaded APK
   - Back camera [setup]
     - Several lenses, switched by a multi-lens camera
     - One lens
@@ -37,9 +30,9 @@
     - 4.4 to 5.0, with -vsync
     - 5.1 to 6.0, with -fps_mode
     - 6.1 or newer, also with -r 30 on the input
-  - Where iproxy runs [setup]
-    - On the host
-    - In a podman or docker container
+  - adb on the PC [setup]
+    - The SDK's platform-tools, first on PATH
+    - An older system adb as well, which stops the newer adb's server
   - Receiver settings [setup]
     - The defaults, ports 5000 to 5003 and /dev/video10
     - PORT, AUDIO_PORT, SPEAKER_PORT, DEBUG_PORT or VIDEO_NR changed
@@ -48,9 +41,9 @@
     - USB cable
       - Start the receiver with the phone on USB
       - Start the receiver with the app closed and the phone on USB
-      - Start the receiver with no iproxy, podman or docker and the phone on USB
-      - Start the receiver with iproxy in a container and the phone on USB
-      - Replug the phone with iproxy in a container and the receiver running
+      - Start the receiver with no adb and the phone on USB
+      - Start the receiver with USB debugging unauthorized and the phone on USB
+      - Replug the phone with the receiver running
     - WiFi, by the phone's IP
       - Start the receiver with the phone's IP on WiFi
       - Start the receiver with the app closed and the phone on WiFi
@@ -66,12 +59,18 @@
   - Camera access [user]
     - Allowed
       - Open the app with camera access allowed
+    - Allowed only this time
+      - Open the app with camera access allowed only this time
+      - Reopen the app with camera access allowed only this time before
     - Denied
       - Open the app with camera access denied
       - Open the app with camera access denied and the receiver connected
+      - Open the app with camera access denied twice
   - Microphone access [user]
     - Allowed
       - Open the app with microphone access allowed
+    - Allowed only this time
+      - Open the app with microphone access allowed only this time
     - Denied
       - Open the app with microphone access denied
 - receiver connects → Stream to the PC
@@ -117,7 +116,7 @@
       - Pause and resume the call's sound with the CleanCam speaker picked
       - Send the speaker sound with a sample split across two packets
       - Play the call's sound with no python3 on the PC and the CleanCam speaker picked
-      - Plug headphones into the phone with the CleanCam speaker playing
+      - Connect Bluetooth headphones to the phone with the CleanCam speaker playing
       - Take a phone call with the CleanCam speaker playing
 - during the call → Control the picture
   - Phone orientation [user]
@@ -171,7 +170,7 @@
     - On
       - Tap the screen with the screen off
       - Leave the app with the screen off
-      - Leave the phone untouched with the app open past the auto-lock time
+      - Leave the phone untouched with the app open past the screen timeout
 - settings button → Change the settings
   - Preset [user]
     - Call
@@ -263,7 +262,7 @@
 - leaves the screen → Leave the app
   - App on screen [user]
     - Covered by a system panel
-      - Open the control center with the stream running
+      - Pull down the notification shade with the stream running
     - In the background
       - Lock the phone with the stream running
       - Switch to another app with the stream running
@@ -276,40 +275,23 @@
     - Ctrl-C
       - Stop the receiver with PipeWire as the sound server
       - Stop the receiver with PulseAudio as the sound server
-      - Stop the receiver with iproxy in a container
-- on day 7 → Renew the signature
-  - Signature [setup]
-    - Within 7 days, so renew early to restart the clock
-    - Expired, so the app won't open and the receiver waits
-    - Session expired, so log in again before signing
+      - Stop the receiver with adb forwarding the ports
 
 ## Maintainer
 
 - Change the app
   - Which code changes [build]
-    - CleanCam's Swift code, within iOS 15
-    - CleanCamLegacy's Objective-C code, within iOS 10
-    - Both, porting a Swift change to CleanCamLegacy
-- push → Build the IPAs
-  - Build trigger [build]
-    - A push or a pull request
-    - A manual workflow dispatch
-  - Main app build [build]
-    - XcodeGen and xcodebuild on a macOS runner
-  - Legacy app build [build]
-    - tools/build-legacy.sh on the PC
-    - tools/build-legacy.sh on a Linux runner, with the toolchain cached
-  - Legacy toolchain [build]
-    - Already in build/legacy-tools
-    - Downloaded, and its checksum matches
-    - Downloaded, and its checksum fails, which stops the build
-  - Container runtime [build]
-    - podman
-    - docker
-    - Neither, which stops the build
-  - Legacy binary check [build]
-    - Holds no build paths
-    - Holds a build path, which fails the job
+    - The Android app's Kotlin code
+    - The PC receiver
+- then → Build the APK
+  - JDK [build]
+    - JDK 17 with javac
+    - A Java runtime only, which can't compile
+  - Android SDK [build]
+    - Platform android-37.0 and build-tools 36.0.0, with the licenses accepted
+    - A package missing
+  - Gradle [build]
+    - The project's Gradle wrapper, Gradle 9.6.0 with AGP 9.5
 - then → Debug the stream
   - Debug port command [build]
     - bitrate N, from 1 to 100000000
@@ -328,7 +310,7 @@
     - A live scene
 - v* tag → Release
   - Release trigger [build]
-    - A v* tag, which attaches both IPAs and their SHA-256 sums
-    - Any other push, which keeps the IPAs as run artifacts
+    - A v* tag, which attaches the APK and its SHA-256 sum
+    - Any other push, which keeps the APK as a run artifact
   - Version [build]
-    - Raised in project.yml and CleanCamLegacy/Info.plist first
+    - versionName raised in the app's build file first
