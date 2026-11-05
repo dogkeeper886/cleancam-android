@@ -11,9 +11,10 @@
   - How the app gets on the phone [setup]
     - Gradle's installDebug over adb
     - adb install of a downloaded APK
+  - Phone [setup]
+    - Pixel 8 on Android 17 (API 37), with H.264 and HEVC encoders
   - Back camera [setup]
-    - Several lenses, switched by a multi-lens camera
-    - One lens
+    - Wide and ultra-wide lenses in one logical camera, zooming 0.55x to 8x, at 30 fps at most with auto exposure
 - then → Ready the PC
   - Sound server [setup]
     - PipeWire with pw-cli
@@ -135,8 +136,7 @@
       - Drag the zoom slider with the zoom past the lossless range
       - Drag the zoom slider with the zoom at its top
     - Lens chip
-      - Tap a lens chip with the Auto lens on a several-lens phone
-      - Open the app with a one-lens phone
+      - Tap a lens chip with the Auto lens
   - Focus target [user]
     - Face
       - Show a face with no tap held
@@ -180,27 +180,21 @@
       - Stream the video with the room dark and the Low light preset
       - Stream the video with the room bright and the Low light preset
     - OBS
-      - Pick the OBS preset with a 60 fps camera mode
       - Pick the OBS preset with no 60 fps camera mode
     - WiFi
       - Pick the WiFi preset with an HEVC encoder and the receiver connected
-      - Pick the WiFi preset with no HEVC encoder
       - Pick the WiFi preset with a GPU that lacks HEVC
       - Leave the WiFi preset with a GPU that lacks HEVC
     - 4K
       - Pick the 4K preset with the video app open
-      - Pick the 4K preset with no 4K camera mode
       - Leave the 4K preset with the video app open
   - Lens [user]
     - Auto
-      - Pick the Auto lens with a several-lens phone
-      - Open the settings with a one-lens phone
+      - Pick the Auto lens with a lens held
     - Ultra wide
       - Hold the ultra-wide lens with the stream running
     - Wide
       - Hold the wide lens with the stream running
-    - Tele
-      - Hold the tele lens with the stream running
       - Hold another lens with a tapped point held
   - Stabilization [user]
     - Auto
@@ -225,13 +219,12 @@
   - White balance [user]
     - Auto
       - Turn auto white balance on with one lens held and a fixed white balance
-      - Open the white balance with the Auto lens on a several-lens phone
+      - Open the white balance with the Auto lens
       - Pick the Auto lens with a fixed white balance
     - Fixed
       - Turn auto white balance off with one lens held
       - Fix the white balance with 2500 K and one lens held
       - Fix the white balance with 8000 K and one lens held
-      - Fix the white balance with a one-lens phone
       - Hold one lens again with a fixed white balance kept
   - Near focus [user]
     - On
@@ -248,9 +241,10 @@
       - Cap the bitrate with 10 Mbps and the phone too hot
 - off the charger or hot → Run on battery or heat
   - Power and heat [user]
-    - Charging and cool
-      - Stream the video with the phone charging and cool
-      - Stream the video with the phone warm but not hot and charging
+    - Plugged in and cool
+      - Stream the video with the phone plugged in and cool
+      - Stream the video with the phone plugged in but not charging
+      - Stream the video with the phone warm but not hot and plugged in
     - On battery
       - Unplug the phone with the OBS preset
       - Plug the phone back in with the last heat change under a minute ago

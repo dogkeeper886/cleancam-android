@@ -22,14 +22,14 @@ Set up a Linux PC to build CleanCam for Android from source and reach the Pixel:
 10. Download Gradle 9.6.0, the lowest AGP 9.5 takes, into the step 4 folder: `curl -fLO https://services.gradle.org/distributions/gradle-9.6.0-bin.zip`.
 11. Check the download with `echo "bbaeb2fef8710818cf0e261201dab964c572f92b942812df0c3620d62a529a01  gradle-9.6.0-bin.zip" | sha256sum -c -`.
 12. Unpack it to `~/.local/opt`, which makes `~/.local/opt/gradle-9.6.0`.
-13. Ask the user to add the udev rule from their own terminal, since it changes the system for everyone who logs in later: `printf '%s\n' '# Lets the logged-in user reach Google devices, such as a Pixel, over adb and fastboot without root.' 'SUBSYSTEM=="usb", ATTR{idVendor}=="18d1", TAG+="uaccess"' | sudo tee /etc/udev/rules.d/51-android.rules && sudo udevadm control --reload-rules && sudo udevadm trigger --subsystem-match=usb`; `uaccess` grants the phone to the seat's user, where an older guide's `MODE="0666"` grants it to every user.
-14. Ask the user to put the SDK and Gradle on `PATH` from their own terminal, ahead of the distribution's adb, since EPEL's android-tools adb 33 and the SDK's adb 37 stop each other's server: `printf '\n# Android SDK for cleancam-android; its adb comes before /usr/bin/adb.\nexport ANDROID_HOME="$HOME/Android/Sdk"\nexport PATH="$ANDROID_HOME/platform-tools:$ANDROID_HOME/cmdline-tools/latest/bin:$HOME/.local/opt/gradle-9.6.0/bin:$PATH"\n' >> ~/.bashrc`.
-15. Stop a server the older adb started with `/usr/bin/adb kill-server`.
-16. Confirm the tools in a new shell with `bash -ic 'command -v adb; adb version; sdkmanager --list_installed; gradle --version'`; `adb` resolves to `~/Android/Sdk/platform-tools/adb`.
-17. Ask the user to plug the Pixel into a port on the PC itself, since the kernel can drop it on a hub port with `Cannot enable. Maybe the USB cable is bad?` in `dmesg`.
-18. Confirm the kernel sees the phone with `lsusb | grep 18d1`.
-19. Ask the user to turn on Developer options by tapping Settings → About phone → Build number seven times.
-20. Ask the user to turn on USB debugging in Settings → System → Developer options.
-21. Ask the user to tap Allow on the phone's "Allow USB debugging?" prompt, with "Always allow from this computer" checked.
-22. Confirm `adb devices -l` lists the Pixel as `device`; `unauthorized` means the phone still shows step 21's prompt, and `no permissions` means the user has to replug the phone after step 13.
-23. Record the Pixel's model and Android version with `adb shell getprop ro.product.model` and `adb shell getprop ro.build.version.sdk`, since the 4K, 60 fps, HEVC and lens cases depend on them.
+13. Ask the user to run `.claude/skills/developing-cleancam-android/one-time-setup.sh` from their own terminal, since it changes the system for later sessions: it adds a udev rule that grants Google's USB devices to the seat's user, puts the SDK and Gradle on `PATH` ahead of EPEL's adb 33, whose server stops the SDK's adb 37, and stops the older adb's server.
+14. Confirm the tools in a new shell with `bash -ic 'command -v adb; adb version; sdkmanager --list_installed; gradle --version'`; `adb` resolves to `~/Android/Sdk/platform-tools/adb`.
+15. Ask the user to plug the Pixel into a port on the PC itself, since the kernel can drop it on a hub port with `Cannot enable. Maybe the USB cable is bad?` in `dmesg`.
+16. Confirm the kernel sees the phone with `lsusb | grep 18d1`.
+17. Ask the user to turn on Developer options by tapping Settings → About phone → Build number seven times.
+18. Ask the user to turn on USB debugging in Settings → System → Developer options.
+19. Ask the user to tap Allow on the phone's "Allow USB debugging?" prompt, with "Always allow from this computer" checked.
+20. Confirm `adb devices -l` lists the Pixel as `device`; `unauthorized` means the phone still shows step 19's prompt, and `no permissions` means the user has to replug the phone after step 13.
+21. Record the phone's model and Android version with `adb shell getprop ro.product.model` and `adb shell getprop ro.build.version.sdk`, since the test cases' Phone decision names them.
+22. Record the back camera's lenses, focal lengths and auto-exposure frame rates with `adb shell dumpsys media.camera | grep -A3 -E 'android\.(lens\.facing|lens\.info\.availableFocalLengths|control\.aeAvailableTargetFpsRanges|logicalMultiCamera\.physicalIds) \('`, since they decide which preset and lens cases apply: a Pixel 8 tops out at 30 fps with auto exposure and has no tele lens.
+23. Record the phone's H.264 and HEVC encoders with `adb shell 'cat /vendor/etc/media_codecs*.xml' | grep -oE 'name="c2\.[^"]*(h264|avc|hevc)\.encoder"' | sort -u`, since the WiFi preset sends HEVC where the phone encodes it.

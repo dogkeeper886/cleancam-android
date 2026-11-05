@@ -64,8 +64,7 @@
   - Drag the zoom slider with the zoom inside the lossless range
   - Drag the zoom slider with the zoom past the lossless range
   - Drag the zoom slider with the zoom at its top
-  - Tap a lens chip with the Auto lens on a several-lens phone
-  - Open the app with a one-lens phone
+  - Tap a lens chip with the Auto lens
 - Focus target
   - Show a face with no tap held
   - Show two faces with no tap held
@@ -96,21 +95,16 @@
   - Stream the video with the room dark and the Call preset
   - Stream the video with the room dark and the Low light preset
   - Stream the video with the room bright and the Low light preset
-  - Pick the OBS preset with a 60 fps camera mode
   - Pick the OBS preset with no 60 fps camera mode
   - Pick the WiFi preset with an HEVC encoder and the receiver connected
-  - Pick the WiFi preset with no HEVC encoder
   - Pick the WiFi preset with a GPU that lacks HEVC
   - Leave the WiFi preset with a GPU that lacks HEVC
   - Pick the 4K preset with the video app open
-  - Pick the 4K preset with no 4K camera mode
   - Leave the 4K preset with the video app open
 - Lens
-  - Pick the Auto lens with a several-lens phone
-  - Open the settings with a one-lens phone
+  - Pick the Auto lens with a lens held
   - Hold the ultra-wide lens with the stream running
   - Hold the wide lens with the stream running
-  - Hold the tele lens with the stream running
   - Hold another lens with a tapped point held
 - Stabilization
   - Hold the phone still with Auto stabilization for 5 s
@@ -128,12 +122,11 @@
   - Shift the exposure with -2 EV, the bottom of the slider
 - White balance
   - Turn auto white balance on with one lens held and a fixed white balance
-  - Open the white balance with the Auto lens on a several-lens phone
+  - Open the white balance with the Auto lens
   - Pick the Auto lens with a fixed white balance
   - Turn auto white balance off with one lens held
   - Fix the white balance with 2500 K and one lens held
   - Fix the white balance with 8000 K and one lens held
-  - Fix the white balance with a one-lens phone
   - Hold one lens again with a fixed white balance kept
 - Near focus
   - Turn near focus on with a subject close to the camera
@@ -145,8 +138,9 @@
   - Cap the bitrate with 20 Mbps and the 4K preset
   - Cap the bitrate with 10 Mbps and the phone too hot
 - Power and heat
-  - Stream the video with the phone charging and cool
-  - Stream the video with the phone warm but not hot and charging
+  - Stream the video with the phone plugged in and cool
+  - Stream the video with the phone plugged in but not charging
+  - Stream the video with the phone warm but not hot and plugged in
   - Unplug the phone with the OBS preset
   - Plug the phone back in with the last heat change under a minute ago
   - Heat the phone with the 4K preset
