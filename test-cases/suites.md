@@ -95,7 +95,7 @@
   - Stream the video with the room dark and the Call preset
   - Stream the video with the room dark and the Low light preset
   - Stream the video with the room bright and the Low light preset
-  - Pick the OBS preset with no 60 fps camera mode
+  - Pick the OBS preset with a 60 fps camera mode
   - Pick the WiFi preset with an HEVC encoder and the receiver connected
   - Pick the WiFi preset with a GPU that lacks HEVC
   - Leave the WiFi preset with a GPU that lacks HEVC
