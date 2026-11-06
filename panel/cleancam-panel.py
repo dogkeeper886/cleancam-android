@@ -2,8 +2,10 @@
 """
 The CleanCam control panel: a page at http://127.0.0.1:5080 that starts and stops the receiver and the phone's app,
 shows the stream, and changes the app's settings through its debug port, over the USB cable with adb.
-  cleancam-panel.py               serves the page and opens it in the browser; a second start only opens the page
-  cleancam-panel.py --no-browser  serves the page only
+The CleanCam icon runs it, the user's one way in: each start starts the receiver unless it runs, and opens the page;
+while the panel runs, a start only asks it for the receiver and opens the page again.
+  cleancam-panel.py               as the icon does
+  cleancam-panel.py --no-browser  without opening the page
 The page and this server keep running after the browser closes, and so does the receiver.
 """
 import json
@@ -15,6 +17,7 @@ import subprocess
 import sys
 import threading
 import time
+import urllib.request
 import webbrowser
 from http.server import BaseHTTPRequestHandler, HTTPServer
 
@@ -268,10 +271,17 @@ def main():
     try:
         server = Server(("127.0.0.1", PANEL_PORT), Handler)
     except OSError:
-        # The panel already runs; the icon only opens its page.
+        # The panel already runs: it starts the receiver, so the receiver stays its own, and the page opens again.
+        request = urllib.request.Request(url + "api/receiver", data=b'{"on": true}', method="POST",
+                                         headers={"Content-Type": "application/json", "X-CleanCam": "1"})
+        try:
+            urllib.request.urlopen(request, timeout=5).close()
+        except OSError as e:
+            print("The panel at %s didn't start the receiver: %s" % (url, e), file=sys.stderr)
         if open_browser:
             webbrowser.open(url)
         return
+    start_receiver()
     for watch in (watch_phone, watch_debug):
         threading.Thread(target=watch, daemon=True).start()
     if open_browser:
