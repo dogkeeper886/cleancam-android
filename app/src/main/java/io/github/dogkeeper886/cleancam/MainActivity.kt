@@ -9,6 +9,7 @@ import android.content.res.Configuration
 import android.graphics.Color
 import android.graphics.Typeface
 import android.graphics.drawable.GradientDrawable
+import android.hardware.display.DisplayManager
 import android.media.AudioManager
 import android.os.Build
 import android.os.Bundle
@@ -53,6 +54,17 @@ class MainActivity : Activity() {
     private lateinit var screenOff: FrameLayout
     private lateinit var screenOffText: TextView
     private lateinit var orientation: OrientationEventListener
+    /**
+     * A turn from one landscape to the other changes no configuration, since the window keeps its size, so only the
+     * display reports it; the preview turned upside down there.
+     */
+    private val displayListener = object : DisplayManager.DisplayListener {
+        override fun onDisplayChanged(displayId: Int) {
+            if (displayId == display?.displayId) camera.updateDisplayRotation(displayDegrees())
+        }
+        override fun onDisplayAdded(displayId: Int) {}
+        override fun onDisplayRemoved(displayId: Int) {}
+    }
     private var isScreenOff = false
     private var askedPermissions = false
     private var zoomTracking = false
@@ -80,6 +92,7 @@ class MainActivity : Activity() {
     override fun onStart() {
         super.onStart()
         orientation.enable()
+        getSystemService(DisplayManager::class.java).registerDisplayListener(displayListener, null)
         camera.updateDisplayRotation(displayDegrees())
         val needed = listOfNotNull(
             Manifest.permission.CAMERA, Manifest.permission.RECORD_AUDIO,
@@ -102,6 +115,7 @@ class MainActivity : Activity() {
         // Give the screen its brightness back before leaving the app.
         setScreenOff(false)
         orientation.disable()
+        getSystemService(DisplayManager::class.java).unregisterDisplayListener(displayListener)
         camera.stop()
         askedPermissions = false
         super.onStop()
