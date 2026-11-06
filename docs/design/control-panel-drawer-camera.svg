@@ -1,0 +1,84 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="580" viewBox="0 0 1280 580" font-family="DejaVu Sans, sans-serif">
+  <rect x="0" y="0" width="1280" height="44" fill="#2b2b2b"/>
+  <circle cx="20" cy="22" r="6" fill="#ff5f57"/>
+  <circle cx="40" cy="22" r="6" fill="#febc2e"/>
+  <circle cx="60" cy="22" r="6" fill="#28c840"/>
+  <rect x="90" y="10" width="600" height="24" rx="12" fill="#1b1b1b"/>
+  <text x="108" y="27" font-size="13" fill="#a0a0a0">127.0.0.1:5080</text>
+  <rect x="0" y="44" width="1280" height="536" fill="#121212"/>
+  <rect x="32" y="66" width="44" height="44" rx="10" fill="#f5c518"/>
+  <circle cx="54" cy="88" r="13" fill="#121212"/><circle cx="54" cy="88" r="6" fill="#f5c518"/><circle cx="68" cy="74" r="3" fill="#121212"/>
+  <text x="92" y="98" font-size="26" fill="#ffffff" text-anchor="start" font-weight="bold">CleanCam</text>
+  <circle cx="1172" cy="88" r="20" fill="#2a2a2a"/>
+  <circle cx="1172" cy="88" r="9" fill="none" stroke="#ffffff" stroke-width="2"/>
+  <path d="M1172 79 A9 9 0 0 1 1172 97 Z" fill="#ffffff"/>
+  <circle cx="1226" cy="88" r="20" fill="#2a2a2a"/>
+  <rect x="1216" y="80.75" width="20" height="2.5" rx="1.25" fill="#ffffff"/>
+  <rect x="1216" y="86.75" width="20" height="2.5" rx="1.25" fill="#ffffff"/>
+  <rect x="1216" y="92.75" width="20" height="2.5" rx="1.25" fill="#ffffff"/>
+  <rect x="32" y="136" width="1216" height="150" rx="14" fill="#1e1e1e" stroke="#2e2e2e"/>
+  <circle cx="66" cy="186" r="8" fill="#3ddc84"/>
+  <text x="86" y="197" font-size="30" fill="#ffffff" text-anchor="start" font-weight="bold">Streaming to PC</text>
+  <text x="66" y="246" font-size="16" fill="#9e9e9e" text-anchor="start">Pixel 8 · USB</text>
+  <rect x="196" y="233" width="30" height="15" rx="3" fill="none" stroke="#9e9e9e" stroke-width="1.5"/>
+  <rect x="226.5" y="237" width="3" height="7" rx="1" fill="#9e9e9e"/>
+  <rect x="198.5" y="235.5" width="20.5" height="10" rx="1.5" fill="#3ddc84"/>
+  <text x="238" y="246" font-size="16" fill="#9e9e9e" text-anchor="start">82%</text>
+  <text x="880" y="200" font-size="34" fill="#ffffff" text-anchor="start" font-weight="bold">30</text>
+  <text x="880" y="228" font-size="13" fill="#8a8a8a" text-anchor="start">fps</text>
+  <text x="990" y="200" font-size="34" fill="#ffffff" text-anchor="start" font-weight="bold">10</text>
+  <text x="990" y="228" font-size="13" fill="#8a8a8a" text-anchor="start">Mbps</text>
+  <text x="1100" y="200" font-size="34" fill="#ffffff" text-anchor="start" font-weight="bold">1080p</text>
+  <rect x="32" y="306" width="600" height="96" rx="14" fill="#1e1e1e" stroke="#2e2e2e"/>
+  <text x="60" y="362" font-size="20" fill="#ffffff" text-anchor="start">Receiver</text>
+  <rect x="548" y="339" width="56" height="30" rx="15" fill="#f5c518"/>
+  <circle cx="589" cy="354" r="11" fill="#111111"/>
+  <rect x="648" y="306" width="600" height="96" rx="14" fill="#1e1e1e" stroke="#2e2e2e"/>
+  <text x="676" y="362" font-size="20" fill="#ffffff" text-anchor="start">Phone app</text>
+  <rect x="1164" y="339" width="56" height="30" rx="15" fill="#f5c518"/>
+  <circle cx="1205" cy="354" r="11" fill="#111111"/>
+  <rect x="32" y="422" width="1216" height="118" rx="14" fill="#1e1e1e" stroke="#2e2e2e"/>
+  <text x="60" y="452" font-size="12" fill="#8a8a8a" text-anchor="start" font-weight="bold" letter-spacing="1.2">PRESET</text>
+  <rect x="60" y="468" width="227.2" height="44" rx="8" fill="#f5c518"/>
+  <text x="173.6" y="495.4" font-size="15" fill="#111111" text-anchor="middle" font-weight="bold">Call</text>
+  <rect x="293.2" y="468" width="227.2" height="44" rx="8" fill="#2a2a2a"/>
+  <text x="406.8" y="495.4" font-size="15" fill="#dddddd" text-anchor="middle">Low light</text>
+  <rect x="526.4" y="468" width="227.2" height="44" rx="8" fill="#2a2a2a"/>
+  <text x="640" y="495.4" font-size="15" fill="#dddddd" text-anchor="middle">OBS</text>
+  <rect x="759.6" y="468" width="227.2" height="44" rx="8" fill="#2a2a2a"/>
+  <text x="873.2" y="495.4" font-size="15" fill="#dddddd" text-anchor="middle">WiFi</text>
+  <rect x="992.8" y="468" width="227.2" height="44" rx="8" fill="#2a2a2a"/>
+  <text x="1106.4" y="495.4" font-size="15" fill="#dddddd" text-anchor="middle">4K</text>
+  <rect x="0" y="44" width="860" height="536" fill="#000000" opacity="0.55"/>
+  <rect x="860" y="44" width="420" height="536" fill="#1a1a1a"/>
+  <line x1="860" y1="44" x2="860" y2="580" stroke="#2e2e2e"/>
+  <polyline points="898,82 888,92 898,102" fill="none" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="912" y="100" font-size="22" fill="#ffffff" text-anchor="start" font-weight="bold">Camera</text>
+  <path d="M1229 85 L1243 99 M1243 85 L1229 99" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round"/>
+  <text x="888" y="150" font-size="13" fill="#9e9e9e" text-anchor="start">Lens</text>
+  <rect x="888" y="162" width="117.333" height="34" rx="8" fill="#f5c518"/>
+  <text x="946.667" y="183.68" font-size="13" fill="#111111" text-anchor="middle" font-weight="bold">Auto</text>
+  <rect x="1011.33" y="162" width="117.333" height="34" rx="8" fill="#2a2a2a"/>
+  <text x="1070" y="183.68" font-size="13" fill="#dddddd" text-anchor="middle">Ultra wide</text>
+  <rect x="1134.67" y="162" width="117.333" height="34" rx="8" fill="#2a2a2a"/>
+  <text x="1193.33" y="183.68" font-size="13" fill="#dddddd" text-anchor="middle">Wide</text>
+  <text x="888" y="232" font-size="13" fill="#9e9e9e" text-anchor="start">Stabilization</text>
+  <rect x="888" y="244" width="86.5" height="34" rx="8" fill="#f5c518"/>
+  <text x="931.25" y="265.68" font-size="13" fill="#111111" text-anchor="middle" font-weight="bold">Auto</text>
+  <rect x="980.5" y="244" width="86.5" height="34" rx="8" fill="#2a2a2a"/>
+  <text x="1023.75" y="265.68" font-size="13" fill="#dddddd" text-anchor="middle">Off</text>
+  <rect x="1073" y="244" width="86.5" height="34" rx="8" fill="#2a2a2a"/>
+  <text x="1116.25" y="265.68" font-size="13" fill="#dddddd" text-anchor="middle">Standard</text>
+  <rect x="1165.5" y="244" width="86.5" height="34" rx="8" fill="#2a2a2a"/>
+  <text x="1208.75" y="265.68" font-size="13" fill="#dddddd" text-anchor="middle">Cinematic</text>
+  <text x="888" y="316" font-size="13" fill="#9e9e9e" text-anchor="start">Exposure +0.0 EV</text>
+  <rect x="888" y="332" width="364" height="4" rx="2" fill="#3a3a3a"/>
+  <rect x="888" y="332" width="182" height="4" rx="2" fill="#f5c518"/>
+  <circle cx="1070" cy="334" r="9" fill="#f5c518"/>
+  <rect x="888" y="372" width="44" height="24" rx="12" fill="#3a3a3a"/>
+  <circle cx="900" cy="384" r="8" fill="#bdbdbd"/>
+  <text x="944" y="389" font-size="15" fill="#ffffff" text-anchor="start">Near focus</text>
+  <rect x="888" y="412" width="44" height="24" rx="12" fill="#f5c518"/>
+  <circle cx="920" cy="424" r="8" fill="#111111"/>
+  <text x="944" y="429" font-size="15" fill="#ffffff" text-anchor="start">Auto white balance</text>
+</svg>
