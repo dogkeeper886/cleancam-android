@@ -32,6 +32,7 @@ import android.util.Range
 import android.util.Size
 import org.json.JSONObject
 import java.util.concurrent.Executor
+import java.util.concurrent.atomic.AtomicBoolean
 import java.util.concurrent.atomic.AtomicInteger
 import kotlin.math.abs
 import kotlin.math.hypot
@@ -41,9 +42,14 @@ import kotlin.math.roundToInt
  * Runs the back camera, shows it on the phone, and streams it as H.264, or HEVC in the WiFi preset, to whoever connects
  * to [PORT], and the microphone as raw PCM to whoever connects to [AUDIO_PORT]. Plays the raw PCM a PC sends to
  * [SPEAKER_PORT] on the loudspeaker. Reports its stream to whoever connects to [DEBUG_PORT], one JSON line a second and
- * one per event, and takes commands there.
+ * one per event, and takes commands there. Turns the app off through [onAutoOff] once the phone stays still and unused
+ * for the auto-off time.
  */
-class CameraController(private val context: Context, private val onChange: () -> Unit) : VideoEncoder.Listener {
+class CameraController(
+    private val context: Context,
+    private val onChange: () -> Unit,
+    private val onAutoOff: () -> Unit,
+) : VideoEncoder.Listener {
     /** What focus and exposure follow: a tap holds until the next tap or a reset, then faces, then the center. */
     enum class FocusTarget(val label: String) { CENTER("Center"), FACE("Face"), TAP("Tap") }
 
@@ -83,6 +89,8 @@ class CameraController(private val context: Context, private val onChange: () ->
     var canFixWhiteBalance = false; private set
     var stabilizationName = "Stab off"; private set
     var heat = HeatLevel.NONE; private set
+    /** The seconds left before the app turns itself off, in the last half minute; null before. */
+    var autoOffIn: Int? = null; private set
     private var cameraDenied = false
 
     private val encoder = VideoEncoder(this)
@@ -95,6 +103,8 @@ class CameraController(private val context: Context, private val onChange: () ->
     private val debugServer = StreamServer(DEBUG_PORT)
     private val motion = MotionDetector(context)
     private val debugInput = StringBuilder()
+    /** Set by a touch or a changed setting; the next second restarts the auto-off count. */
+    private val usedThisSecond = AtomicBoolean()
 
     // Used on the camera thread only.
     private var started = false
@@ -131,6 +141,10 @@ class CameraController(private val context: Context, private val onChange: () ->
     private var heatChangedAt = Long.MIN_VALUE / 2
     private var heatCheckScheduled = false
     private var lastResult: TotalCaptureResult? = null
+    /** The seconds the phone has stood still and unused, toward the auto-off time. */
+    private var idleSeconds = 0
+    /** Until this uptime, the receiver's last report says an app on the PC uses the CleanCam webcam or microphone. */
+    private var pcUsingUntil = 0L
 
     private val thermalListener = PowerManager.OnThermalStatusChangedListener { status ->
         thermalStatus = status
@@ -193,6 +207,7 @@ class CameraController(private val context: Context, private val onChange: () ->
     fun start() = camera.post {
         if (started) return@post
         started = true
+        idleSeconds = 0
         server.start()
         audioServer.start()
         speakerServer.start()
@@ -301,8 +316,12 @@ class CameraController(private val context: Context, private val onChange: () ->
         onChange()
     }
 
+    /** Restarts the auto-off count, for a touch on the screen. Called on any thread. */
+    fun noteUse() = usedThisSecond.set(true)
+
     /** Switches to `preset`'s camera mode and frame rates, and keeps it for the next start. Called on any thread. */
     fun setPreset(preset: Preset) {
+        noteUse()
         preset.save(prefs)
         ui { this.preset = preset }
         camera.post {
@@ -315,6 +334,7 @@ class CameraController(private val context: Context, private val onChange: () ->
 
     /** Applies the camera options and keeps them for the next start. Called on any thread. */
     fun setOptions(options: CameraOptions) {
+        noteUse()
         options.save(prefs)
         if (Looper.myLooper() == Looper.getMainLooper()) this.options = options else ui { this.options = options }
         camera.post {
@@ -763,16 +783,38 @@ class CameraController(private val context: Context, private val onChange: () ->
         val (bytes, encoded, keyframes) = encoder.takeOutput()
         val (rotation, changed) = motion.takeSecond()
         if (changed) applyAutoStabilization()
+        countIdle(rotation)
         sendDebug(mapOf(
             "event" to "second", "fps" to frames, "topFps" to encoder.frameRate, "target" to rate,
             "pinned" to encoder.isPinned, "out" to bytes * 8, "encoded" to encoded, "keyframes" to keyframes,
             "backlog" to backlog, "rotation" to (rotation * 1000).roundToInt() / 1000.0,
             "viewers" to mapOf("video" to server.clientCount, "mic" to audioServer.clientCount,
                 "speaker" to speakerServer.clientCount),
+            "idle" to mapOf("seconds" to idleSeconds, "limit" to activeOptions.autoOffMinutes * 60,
+                "pcUsing" to isPcUsing),
         ))
         ui {
             frameRate = frames
             bitRate = rate
+        }
+    }
+
+    private val isPcUsing get() = SystemClock.elapsedRealtime() < pcUsingUntil
+
+    /**
+     * Counts the seconds the phone stands still and untouched while no app on the PC uses the CleanCam webcam or
+     * microphone, and turns the app off once they reach the auto-off time. A phone on a mount in a call stands as still
+     * as a forgotten one, so only the receiver's reports tell them apart.
+     */
+    private fun countIdle(rotation: Double) {
+        val limit = activeOptions.autoOffMinutes * 60
+        val used = usedThisSecond.getAndSet(false) || rotation >= MotionDetector.STILL_PEAK || isPcUsing
+        idleSeconds = if (used || limit == 0) 0 else idleSeconds + 1
+        val left = limit - idleSeconds
+        ui { autoOffIn = if (limit > 0 && left <= AUTO_OFF_WARNING_SECONDS) left else null }
+        if (limit > 0 && left <= 0) {
+            idleSeconds = 0
+            ui { onAutoOff() }
         }
     }
 
@@ -845,13 +887,21 @@ class CameraController(private val context: Context, private val onChange: () ->
     /**
      * Runs a debug command: `bitrate N` holds the bitrate at N bits per second, `auto` hands it back to adaptation,
      * `keyframe` asks for a keyframe, and `preset NAME` switches the preset, as the settings sheet does. `lens`, `stab`,
-     * `ev`, `wb`, `near` and `maxbitrate` set a camera option as the settings sheet does; `thermal` and `battery` stand in
-     * for the phone's heat and power until `auto`; `camera` reports the camera options.
+     * `ev`, `wb`, `near`, `maxbitrate` and `autooff` set an option as the settings sheet does; `thermal` and `battery`
+     * stand in for the phone's heat and power until `auto`; `camera` reports the camera options. The receiver sends
+     * `inuse on|off`.
      */
     private fun runDebugCommand(line: String) {
         val words = line.split(" ").filter { it.isNotEmpty() }
         val value = if (words.size == 2) words[1] else ""
         val number = value.toIntOrNull()
+        // The receiver reports every 2 s whether an app on the PC uses the CleanCam webcam or microphone, too often to
+        // answer. A report lasts PC_USING_MS, so the auto-off count resumes once the receiver stops.
+        if (words.firstOrNull() == "inuse" && (value == "on" || value == "off")) {
+            pcUsingUntil = if (value == "on") SystemClock.elapsedRealtime() + PC_USING_MS else 0L
+            return
+        }
+        noteUse()
         val ok = when (words.firstOrNull()) {
             "preset" -> Preset.of(value)?.let { setPreset(it) } != null
             "bitrate" -> if (number != null && number in 1..MAX_PINNED_BIT_RATE) { encoder.pin(number); true } else false
@@ -872,6 +922,13 @@ class CameraController(private val context: Context, private val onChange: () ->
             "maxbitrate" -> when {
                 value == "off" -> { changeOptions { it.copy(maxBitRate = null) }; true }
                 number != null && number in 1..MAX_PINNED_BIT_RATE -> { changeOptions { it.copy(maxBitRate = number) }; true }
+                else -> false
+            }
+            "autooff" -> when {
+                value == "never" -> { changeOptions { it.copy(autoOffMinutes = 0) }; true }
+                number != null && number in 1..CameraOptions.MAX_AUTO_OFF_MINUTES -> {
+                    changeOptions { it.copy(autoOffMinutes = number) }; true
+                }
                 else -> false
             }
             "thermal" -> if (value == "auto" || value in THERMAL_NAMES) {
@@ -913,6 +970,10 @@ class CameraController(private val context: Context, private val onChange: () ->
         private const val FACE_MOVE = 0.1
         /** Auto stabilization, and the heat guard as the phone cools, change the camera at most once a minute. */
         private const val AUTO_CHANGE_INTERVAL_MS = 60_000L
+        /** The status counts down the last half minute before auto off. */
+        private const val AUTO_OFF_WARNING_SECONDS = 30
+        /** How long the receiver's report that the PC uses the stream lasts; it reports every 2 s. */
+        private const val PC_USING_MS = 10_000L
         /** The zoom slider reaches 10 times the wide lens. */
         private const val WIDE_ZOOM_LIMIT = 10.0
         /** The debug port's names, after iOS's thermal states, for Android's thermal statuses. */

@@ -33,6 +33,8 @@ data class CameraOptions(
     val nearFocus: Boolean = false,
     /** The highest bitrate the stream sends, or null for no limit. */
     val maxBitRate: Int? = null,
+    /** The minutes the phone stays still and unused before the app turns itself off, or 0 to stay on. */
+    val autoOffMinutes: Int = DEFAULT_AUTO_OFF_MINUTES,
 ) {
     fun save(prefs: SharedPreferences) {
         val json = JSONObject()
@@ -40,6 +42,7 @@ data class CameraOptions(
             .put("stabilization", stabilization.key)
             .put("exposureBias", exposureBias.toDouble())
             .put("nearFocus", nearFocus)
+            .put("autoOffMinutes", autoOffMinutes)
         whiteBalance?.let { json.put("whiteBalance", it) }
         maxBitRate?.let { json.put("maxBitRate", it) }
         prefs.edit().putString(PREF, json.toString()).apply()
@@ -55,6 +58,11 @@ data class CameraOptions(
         const val EXPOSURE_BIAS_LIMIT = 2f
         /** The highest bitrates the settings sheet offers. */
         val MAX_BIT_RATES = listOf(20_000_000, 10_000_000, 6_000_000, 3_000_000)
+        const val DEFAULT_AUTO_OFF_MINUTES = 5
+        /** The auto-off times the settings sheet offers, in minutes; 0 stays on. */
+        val AUTO_OFF_MINUTES = listOf(1, 5, 15, 30, 0)
+        /** The longest auto-off time the debug port's `autooff` command takes, in minutes. */
+        const val MAX_AUTO_OFF_MINUTES = 240
 
         /** The options the user picked last, or the defaults. */
         fun saved(prefs: SharedPreferences): CameraOptions = try {
@@ -66,6 +74,7 @@ data class CameraOptions(
                 whiteBalance = if (json.has("whiteBalance")) json.getInt("whiteBalance") else null,
                 nearFocus = json.optBoolean("nearFocus", false),
                 maxBitRate = if (json.has("maxBitRate")) json.getInt("maxBitRate") else null,
+                autoOffMinutes = json.optInt("autoOffMinutes", DEFAULT_AUTO_OFF_MINUTES),
             )
         } catch (e: Exception) {
             CameraOptions()

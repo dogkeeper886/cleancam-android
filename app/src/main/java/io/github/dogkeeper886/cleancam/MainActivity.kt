@@ -60,7 +60,7 @@ class MainActivity : Activity() {
         window.addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON)
         // The volume buttons set the loudness of the call's sound on the loudspeaker.
         volumeControlStream = AudioManager.STREAM_VOICE_CALL
-        camera = CameraController(applicationContext) { refresh() }
+        camera = CameraController(applicationContext, onChange = { refresh() }, onAutoOff = { finish() })
         setContentView(buildLayout())
         window.insetsController?.let {
             it.hide(WindowInsets.Type.systemBars())
@@ -104,6 +104,12 @@ class MainActivity : Activity() {
         super.onStop()
     }
 
+    /** Any touch, on the preview, a button or Screen off, restarts the auto-off count. */
+    override fun dispatchTouchEvent(event: MotionEvent): Boolean {
+        camera.noteUse()
+        return super.dispatchTouchEvent(event)
+    }
+
     override fun onWindowFocusChanged(hasFocus: Boolean) {
         super.onWindowFocusChanged(hasFocus)
         // A system panel, such as the notification shade, covers the app; the stream keeps running.
@@ -118,10 +124,11 @@ class MainActivity : Activity() {
     private fun displayDegrees() = (display?.rotation ?: 0) * 90
 
     private fun refresh() {
-        statusText.text = camera.status
+        val status = camera.autoOffIn?.let { "${camera.status} · Off in $it s" } ?: camera.status
+        statusText.text = status
         detailsText.text = camera.details
         detailsText.visibility = if (camera.details.isEmpty()) View.GONE else View.VISIBLE
-        screenOffText.text = "${camera.status} · Tap to turn the screen on"
+        screenOffText.text = "$status · Tap to turn the screen on"
 
         // Each chip jumps to a lens's zoom.
         chipsRow.removeAllViews()
@@ -354,6 +361,11 @@ class MainActivity : Activity() {
             update { it.copy(maxBitRate = rate) }
         }
         footer("On battery the camera runs at 30 fps at most. As the phone heats up, it also drops 4K, the bitrate and stabilization.")
+
+        header("Auto off")
+        choices(CameraOptions.AUTO_OFF_MINUTES, camera.options.autoOffMinutes,
+            { if (it == 0) "Never" else "After $it min" }) { minutes -> update { it.copy(autoOffMinutes = minutes) } }
+        footer("The app turns itself off once the phone stands still and untouched this long while no app on the PC uses the CleanCam webcam or microphone.")
 
         AlertDialog.Builder(this)
             .setTitle("Settings")

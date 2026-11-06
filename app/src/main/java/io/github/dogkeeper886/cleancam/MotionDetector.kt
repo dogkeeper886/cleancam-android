@@ -59,11 +59,11 @@ class MotionDetector(context: Context) : SensorEventListener {
         return second to true
     }
 
-    private companion object {
+    companion object {
         /** A second whose fastest rotation stays under this, in radians per second, counts as still: about 3° a second. */
         const val STILL_PEAK = 0.05
         /** A second whose fastest rotation passes this counts as shaking: about 9° a second, as in a hand. */
-        const val SHAKING_PEAK = 0.15
-        const val SECONDS = 5
+        private const val SHAKING_PEAK = 0.15
+        private const val SECONDS = 5
     }
 }

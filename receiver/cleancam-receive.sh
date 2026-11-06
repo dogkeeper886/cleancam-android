@@ -10,7 +10,7 @@ set -euo pipefail
 PORT=${PORT:-5000}                  # TCP port the app sends video on
 AUDIO_PORT=${AUDIO_PORT:-5001}      # TCP port the app sends microphone audio on
 SPEAKER_PORT=${SPEAKER_PORT:-5002}  # TCP port the app plays speaker audio from
-DEBUG_PORT=${DEBUG_PORT:-5003}      # TCP port of the app's debug stats and commands; the receiver only forwards it
+DEBUG_PORT=${DEBUG_PORT:-5003}      # TCP port of the app's debug stats and commands; the receiver reports to it whether PC apps use the stream
 VIDEO_NR=${VIDEO_NR:-10}            # webcam device number: /dev/video$VIDEO_NR
 VAAPI_DEVICE=${VAAPI_DEVICE-/dev/dri/renderD128}  # GPU that decodes the video through VAAPI; empty decodes on the CPU
 VIDEO=/dev/video$VIDEO_NR
@@ -170,6 +170,60 @@ if [[ $SOUND ]]; then
     sleep 1  # the app is closed or not reachable yet, or the speaker is starting; try again
   done 2>/dev/null &
 fi
+
+# Succeeds while a process other than this receiver's ffmpeg holds the webcam open: a video app, or PipeWire for one.
+webcam_in_use() {
+  local fd pid
+  while IFS= read -r fd; do
+    pid=${fd#/proc/} pid=${pid%%/*}
+    while [[ $pid && $pid != 1 && $pid != "$$" ]]; do pid=$(ps -o ppid= -p "$pid" | tr -d ' '); done
+    [[ $pid == "$$" ]] || return 0
+  done < <(find /proc/[0-9]*/fd -lname "$VIDEO" 2>/dev/null)
+  return 1
+}
+
+# Succeeds while an app records from the CleanCam microphone. Under PulseAudio, the receiver's own parec is one reader.
+mic_in_use() {
+  local mic
+  case $SOUND in
+    pipewire) [[ $'\n'$(pw-link -l 2>/dev/null) == *$'\ncleancam-mic:capture_MONO\n  |->'* ]] ;;
+    pulseaudio)
+      mic=$(pactl list short sources | awk '$2 == "cleancam-mic" {print $1}')
+      (( $(pactl list short source-outputs | awk -v mic="$mic" '$4 == mic' | wc -l) > 1 )) ;;
+    *) false ;;
+  esac
+}
+
+# Reads and drops the app's debug lines, which the receiver doesn't use. Fails once the app closes the connection.
+drain_debug() {  # FD
+  local status
+  while true; do
+    read -r -t 0.1 -u "$1" _ && continue
+    status=$?
+    return $(( status > 128 ? 0 : 1 ))  # above 128, no line waits; 1 is the connection's end
+  done
+}
+
+# Tells the app every 2 s, over its debug port, whether an app on this PC uses the CleanCam webcam or microphone. The
+# app turns itself off after its idle time only while none does, since a phone on a mount in a call stands as still
+# as a forgotten one. The app forgets a report after 10 s, so it counts again once the receiver stops.
+report_use() {
+  local debug use
+  trap '' PIPE  # a closed connection fails the echo instead of ending the loop
+  while true; do
+    if exec {debug}<>"/dev/tcp/$HOST/$DEBUG_PORT"; then
+      while true; do
+        if webcam_in_use || mic_in_use; then use=on; else use=off; fi
+        echo "inuse $use" >&"$debug" || break
+        sleep 2
+        drain_debug "$debug" || break
+      done
+      exec {debug}>&-
+    fi
+    sleep 2  # the app is closed or not reachable yet; try again
+  done 2>/dev/null
+}
+report_use &
 
 # ffmpeg 5.1 renamed -vsync to -fps_mode; older ones, such as ffmpeg 4.4 on RHEL 8, know only -vsync.
 FPS_MODE=-vsync
