@@ -12,6 +12,8 @@ import android.graphics.drawable.GradientDrawable
 import android.media.AudioManager
 import android.os.Build
 import android.os.Bundle
+import android.text.SpannableStringBuilder
+import android.text.style.ForegroundColorSpan
 import android.view.GestureDetector
 import android.view.Gravity
 import android.view.MotionEvent
@@ -125,11 +127,18 @@ class MainActivity : Activity() {
     private fun displayDegrees() = (display?.rotation ?: 0) * 90
 
     private fun refresh() {
-        val status = camera.autoOffIn?.let { "${camera.status} · Off in $it s" } ?: camera.status
+        // The app hides the system bars, and with them the phone's own battery icon.
+        val status = SpannableStringBuilder(camera.autoOffIn?.let { "${camera.status} · Off in $it s" } ?: camera.status)
+        camera.battery?.let { level ->
+            status.append(" · ")
+            val start = status.length
+            status.append(if (camera.isCharging) "Battery $level%, charging" else "Battery $level%")
+            if (level <= CameraOptions.LOW_BATTERY_WARNING) status.setSpan(ForegroundColorSpan(RED), start, status.length, 0)
+        }
         statusText.text = status
         detailsText.text = camera.details
         detailsText.visibility = if (camera.details.isEmpty()) View.GONE else View.VISIBLE
-        screenOffText.text = "$status · Tap to turn the screen on"
+        screenOffText.text = SpannableStringBuilder(status).append(" · Tap to turn the screen on")
 
         // Each chip jumps to a lens's zoom.
         chipsRow.removeAllViews()
@@ -368,6 +377,11 @@ class MainActivity : Activity() {
             { if (it == 0) "Never" else "After $it min" }) { minutes -> update { it.copy(autoOffMinutes = minutes) } }
         footer("The app turns itself off once the phone stands still and untouched this long while no app on the PC uses the CleanCam webcam or microphone.")
 
+        header("Low battery")
+        choices(CameraOptions.LOW_BATTERY_STOPS, camera.options.lowBatteryStop,
+            { if (it == 0) "Never stop" else "Stop at $it%" }) { level -> update { it.copy(lowBatteryStop = level) } }
+        footer("The battery turns red at ${CameraOptions.LOW_BATTERY_WARNING}% and the app closes at this level, plugged in or not, since a phone streaming over USB can drain while plugged in.")
+
         AlertDialog.Builder(this)
             .setTitle("Settings")
             .setView(ScrollView(this).apply { addView(content) })
@@ -404,6 +418,7 @@ class MainActivity : Activity() {
         const val WRAP = ViewGroup.LayoutParams.WRAP_CONTENT
         val GRAY = Color.rgb(90, 90, 90)
         val ORANGE = Color.rgb(230, 140, 0)
+        val RED = Color.rgb(229, 72, 77)
 
         /** A lens chip's label, such as "0.5x" or "2x". */
         fun zoomLabel(zoom: Double): String {

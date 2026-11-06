@@ -66,7 +66,11 @@
   <text x="1222" y="294" font-size="15" fill="#9e9e9e" text-anchor="end">5 min · in use</text>
   <polyline points="1234,281 1243,289 1234,297" fill="none" stroke="#9e9e9e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
   <line x1="888" y1="320" x2="1252" y2="320" stroke="#2e2e2e"/>
-  <text x="888" y="358" font-size="17" fill="#ffffff" text-anchor="start">On the phone</text>
+  <text x="888" y="358" font-size="17" fill="#ffffff" text-anchor="start">Low battery</text>
+  <text x="1222" y="358" font-size="15" fill="#9e9e9e" text-anchor="end">Stop at 10%</text>
   <polyline points="1234,345 1243,353 1234,361" fill="none" stroke="#9e9e9e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
   <line x1="888" y1="384" x2="1252" y2="384" stroke="#2e2e2e"/>
+  <text x="888" y="422" font-size="17" fill="#ffffff" text-anchor="start">On the phone</text>
+  <polyline points="1234,409 1243,417 1234,425" fill="none" stroke="#9e9e9e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="888" y1="448" x2="1252" y2="448" stroke="#2e2e2e"/>
 </svg>

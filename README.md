@@ -19,6 +19,7 @@ The app streams the back camera's frames instead of the screen, so the PC receiv
 - **Screen off:** blacks out the phone at its lowest brightness while the stream keeps running. Tap the screen to bring it back.
 - **Orientation:** the stream follows the phone upright or sideways. Upright frames get black bars, so the webcam keeps its 16:9 size.
 - **Battery:** the app encodes only while a PC watches.
+- **Low battery:** the status line shows the battery, which the app's hidden system bars would otherwise hide, in red at 15% or below. At 10% the app closes, plugged in or not, since a phone streaming over a PC's USB port can drain while plugged in; the settings sheet sets 5, 10 or 15%, or Never.
 - **Auto off:** the app turns itself off once the phone stands still and untouched for 5 minutes while no app on the PC uses the CleanCam webcam or microphone, as the receiver reports. A phone on a mount in a call stands as still as a forgotten one, so the receiver's report keeps it on through the call. The settings sheet sets 1, 5, 15 or 30 minutes, or Never, and the status counts down the last 30 s.
 - **Status:** a second line names the preset, the size, HEVC when it streams it, the frame rate, the bitrate, the lens, the stabilization, each changed option, the heat guard while it acts, and what focus follows, such as `Call · 1080p · 30 fps · 10.0 Mbps · Wide · Stab off · Center`.
 
@@ -67,7 +68,7 @@ It adds CleanCam to the desktop's app list, and loads the CleanCam webcam at eve
 ![The control panel: the stream's state with the Pixel 8 and its battery, 30 fps, 10 Mbps and 1080p, the Receiver and Phone app switches, and the presets, with buttons for the theme and the settings drawer.](docs/design/png/control-panel.png)
 
 - **Main page:** the stream's state, the phone and its battery, the frame rate, the bitrate and the size, the Receiver and Phone app switches, and the preset.
-- **Drawer:** ☰ lists Camera, Max bitrate, Auto off and On the phone, with Mute, Lock and Screen off, and opens each in its own layer.
+- **Drawer:** ☰ lists Camera, Max bitrate, Auto off, Low battery and On the phone, with Mute, Lock and Screen off, and opens each in its own layer.
 - **Theme:** ◐ switches between light and dark; the page starts in the PC's own setting.
 - **Keeps running:** closing the browser leaves the panel and the receiver running. A click on the icon opens the same page, and starts the receiver again after the Receiver switch stopped it.
 - **Keep CleanCam open:** Android stops the camera when the app leaves the screen. Use Screen off instead of locking the phone.
@@ -87,7 +88,7 @@ receiver/cleancam-receive.sh 192.0.2.7  # the receiver alone, phone on the same 
 
 - **USB:** the receiver forwards ports 5000 to 5003 with `adb forward`, sets them again after a replug, and removes them when it stops. Set `ANDROID_SERIAL` to pick one of several phones.
 - **Check the sound:** `tools/mic-check.sh` records 5 s from the CleanCam microphone and plays it on the CleanCam speaker, so the phone plays back what its microphone heard.
-- **Debug the stream:** `nc 127.0.0.1 5003` prints one JSON line a second: the frame rate, the target bitrate, the bits sent, the keyframes, the backlog, the viewers per port, the auto-off count, and Mute, Lock and Screen off, plus a line for each event. Keep `nc`'s input open, since the app drops a client that closes its sending side. Type `bitrate N`, `auto`, `keyframe`, `preset call|lowlight|obs|wifi|4k`, `lens auto|ultrawide|wide`, `stab auto|off|standard|cinematic`, `ev -2..2`, `wb auto|2500..8000`, `near on|off`, `maxbitrate off|N`, `autooff never|N` in minutes, `mute on|off`, `lock on|off`, `screen on|off`, `thermal nominal|fair|serious|critical|auto`, `battery unplugged|charging|auto`, or `camera`. The receiver sends `inuse on|off`.
+- **Debug the stream:** `nc 127.0.0.1 5003` prints one JSON line a second: the frame rate, the target bitrate, the bits sent, the keyframes, the backlog, the viewers per port, the auto-off count, Mute, Lock and Screen off, and the battery, plus a line for each event. Keep `nc`'s input open, since the app drops a client that closes its sending side. Type `bitrate N`, `auto`, `keyframe`, `preset call|lowlight|obs|wifi|4k`, `lens auto|ultrawide|wide`, `stab auto|off|standard|cinematic`, `ev -2..2`, `wb auto|2500..8000`, `near on|off`, `maxbitrate off|N`, `autooff never|N` in minutes, `lowbattery never|N` in percent up to 15, `mute on|off`, `lock on|off`, `screen on|off`, `thermal nominal|fair|serious|critical|auto`, `battery unplugged|charging|auto`, or `camera`. The receiver sends `inuse on|off`.
 
 The receiver reads these settings from the environment:
 
@@ -117,5 +118,6 @@ These ran on a Pixel 8 on Android 17 over the USB cable, with a Rocky Linux 9.8 
 | Debug port | the `second`, `mode` and `camera` lines, and the `preset` and `camera` commands |
 | Auto off | closes at the set time with the phone still and nothing using the stream; stays on while a PC app reads the webcam or records from the microphone, and while the phone moves |
 | Control panel | the Receiver and Phone app switches, the five presets, the drawer's settings, and Mute, Lock and Screen off |
+| Low battery | with the level faked by `adb shell dumpsys battery set level`: red at 14% on the phone and the panel, the app closed at 10% while plugged in, and again at once when opened at 10%; it stays on with Never |
 
 **Still to check:** streaming over WiFi, the speaker's sound and the echo canceller by ear, the microphone's loudness with speech, the settings sheet by hand, the heat guard under real heat, a PC on PulseAudio, a tap restarting the auto-off count, and the icon after a reboot.
