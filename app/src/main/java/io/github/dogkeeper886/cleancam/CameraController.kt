@@ -49,6 +49,8 @@ class CameraController(
     private val context: Context,
     private val onChange: () -> Unit,
     private val onAutoOff: () -> Unit,
+    /** Turns Screen off on or off, for the debug port's `screen` command; called on the main thread. */
+    private val onScreenOff: (Boolean) -> Unit,
 ) : VideoEncoder.Listener {
     /** What focus and exposure follow: a tap holds until the next tap or a reset, then faces, then the center. */
     enum class FocusTarget(val label: String) { CENTER("Center"), FACE("Face"), TAP("Tap") }
@@ -792,6 +794,8 @@ class CameraController(
                 "speaker" to speakerServer.clientCount),
             "idle" to mapOf("seconds" to idleSeconds, "limit" to activeOptions.autoOffMinutes * 60,
                 "pcUsing" to isPcUsing),
+            "phone" to mapOf("muted" to !callAudio.micEnabled, "locked" to locked,
+                "screenOff" to !renderer.previewEnabled),
         ))
         ui {
             frameRate = frames
@@ -888,8 +892,8 @@ class CameraController(
      * Runs a debug command: `bitrate N` holds the bitrate at N bits per second, `auto` hands it back to adaptation,
      * `keyframe` asks for a keyframe, and `preset NAME` switches the preset, as the settings sheet does. `lens`, `stab`,
      * `ev`, `wb`, `near`, `maxbitrate` and `autooff` set an option as the settings sheet does; `thermal` and `battery`
-     * stand in for the phone's heat and power until `auto`; `camera` reports the camera options. The receiver sends
-     * `inuse on|off`.
+     * stand in for the phone's heat and power until `auto`; `camera` reports the camera options. `mute`, `lock` and
+     * `screen` press the phone's buttons. The receiver sends `inuse on|off`.
      */
     private fun runDebugCommand(line: String) {
         val words = line.split(" ").filter { it.isNotEmpty() }
@@ -942,6 +946,15 @@ class CameraController(
                 true
             } else false
             "camera" -> if (words.size == 1) { reportCamera("command"); true } else false
+            "mute" -> if (value == "on" || value == "off") {
+                main.post { if (isMicOn == (value == "on")) toggleMic() }
+                true
+            } else false
+            "lock" -> if (value == "on" || value == "off") {
+                main.post { if (isLocked != (value == "on")) toggleLock() }
+                true
+            } else false
+            "screen" -> if (value == "on" || value == "off") { main.post { onScreenOff(value == "off") }; true } else false
             else -> false
         }
         sendDebug(mapOf("event" to "command", "command" to line, "ok" to ok))

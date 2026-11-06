@@ -60,7 +60,8 @@ class MainActivity : Activity() {
         window.addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON)
         // The volume buttons set the loudness of the call's sound on the loudspeaker.
         volumeControlStream = AudioManager.STREAM_VOICE_CALL
-        camera = CameraController(applicationContext, onChange = { refresh() }, onAutoOff = { finish() })
+        camera = CameraController(applicationContext, onChange = { refresh() }, onAutoOff = { finish() },
+            onScreenOff = { setScreenOff(it) })
         setContentView(buildLayout())
         window.insetsController?.let {
             it.hide(WindowInsets.Type.systemBars())
