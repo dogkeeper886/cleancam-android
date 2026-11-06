@@ -8,6 +8,8 @@ import android.os.Bundle
 import android.os.Handler
 import android.os.HandlerThread
 import android.view.Surface
+import java.util.concurrent.CountDownLatch
+import java.util.concurrent.TimeUnit
 import java.util.concurrent.atomic.AtomicInteger
 import java.util.concurrent.atomic.AtomicLong
 
@@ -216,9 +218,16 @@ class VideoEncoder(private val listener: Listener) {
     }
 
     private fun releaseCodec() {
-        codec?.let {
-            try { it.stop() } catch (_: Exception) {}
-            it.release()
+        codec?.let { old ->
+            // The codec's callbacks run on the encoder's thread, and one may be copying an output buffer whose memory
+            // release() frees: a preset switch crashed there. Released on that thread, the codec waits for the copy.
+            val released = CountDownLatch(1)
+            handler.post {
+                try { old.stop() } catch (_: Exception) {}
+                old.release()
+                released.countDown()
+            }
+            released.await(RELEASE_WAIT_S, TimeUnit.SECONDS)
         }
         codec = null
         surface?.release()
@@ -258,6 +267,8 @@ class VideoEncoder(private val listener: Listener) {
         private const val STEP = 0.2
         /** The lowest share of the target the bitrate steps down to. */
         private const val FLOOR_SHARE = 0.2
+        /** How long a release waits for the encoder's thread before it goes on. */
+        private const val RELEASE_WAIT_S = 3L
 
         fun codecName(mime: String) = if (mime == MediaFormat.MIMETYPE_VIDEO_HEVC) "hevc" else "h264"
 
