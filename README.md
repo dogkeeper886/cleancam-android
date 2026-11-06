@@ -69,7 +69,7 @@ Open CleanCam on the phone; its status changes to "Streaming to PC". Then pick "
 - **Keep CleanCam open:** Android stops the camera when the app leaves the screen. Use Screen off instead of locking the phone.
 - **Auto off:** every 2 s, the receiver tells the app over the debug port whether an app on the PC holds the CleanCam webcam open or records from the CleanCam microphone. The app counts toward auto off only while none does, and again 10 s after the receiver stops.
 - **Check the sound:** `tools/mic-check.sh` records 5 s from the CleanCam microphone and plays it on the CleanCam speaker, so the phone plays back what its microphone heard.
-- **Debug the stream:** `nc 127.0.0.1 5003` prints one JSON line a second: the frame rate, the target bitrate, the bits sent, the keyframes, the backlog, the viewers per port and the auto-off count, plus a line for each event. Keep `nc`'s input open, since the app drops a client that closes its sending side. Type `bitrate N`, `auto`, `keyframe`, `preset call|lowlight|obs|wifi|4k`, `lens auto|ultrawide|wide`, `stab auto|off|standard|cinematic`, `ev -2..2`, `wb auto|2500..8000`, `near on|off`, `maxbitrate off|N`, `autooff never|N` in minutes, `thermal nominal|fair|serious|critical|auto`, `battery unplugged|charging|auto`, or `camera`.
+- **Debug the stream:** `nc 127.0.0.1 5003` prints one JSON line a second: the frame rate, the target bitrate, the bits sent, the keyframes, the backlog, the viewers per port, the auto-off count, and Mute, Lock and Screen off, plus a line for each event. Keep `nc`'s input open, since the app drops a client that closes its sending side. Type `bitrate N`, `auto`, `keyframe`, `preset call|lowlight|obs|wifi|4k`, `lens auto|ultrawide|wide`, `stab auto|off|standard|cinematic`, `ev -2..2`, `wb auto|2500..8000`, `near on|off`, `maxbitrate off|N`, `autooff never|N` in minutes, `mute on|off`, `lock on|off`, `screen on|off`, `thermal nominal|fair|serious|critical|auto`, `battery unplugged|charging|auto`, or `camera`.
 
 The receiver reads these settings from the environment:
 
@@ -79,6 +79,25 @@ The receiver reads these settings from the environment:
 | `VIDEO_NR` | the webcam device number, `/dev/video<N>` | `10` |
 | `VAAPI_DEVICE` | the GPU that decodes the video; empty decodes on the CPU | `/dev/dri/renderD128` |
 | `ANDROID_SERIAL` | the phone adb forwards to, when several are connected | the only phone |
+
+## Control from the PC
+
+A phone on a mount as a webcam sits out of reach, and the receiver runs in a terminal. The control panel, a page at `http://127.0.0.1:5080`, starts and stops the receiver and the app, shows the stream, and changes the app's settings from the PC. Add its icon to the desktop's app list once:
+
+```sh
+panel/install-icon.sh
+```
+
+Then click CleanCam in the app list, or run `panel/cleancam-panel.py`; either opens the page in the browser.
+
+![The control panel: the stream's state with the Pixel 8 and its battery, 30 fps, 10 Mbps and 1080p, the Receiver and Phone app switches, and the presets, with buttons for the theme and the settings drawer.](docs/design/png/control-panel.png)
+
+- **Main page:** the stream's state, the phone and its battery, the frame rate, the bitrate and the size, the Receiver and Phone app switches, and the preset.
+- **Drawer:** ☰ lists Camera, Max bitrate, Auto off and On the phone, with Mute, Lock and Screen off, and opens each in its own layer.
+- **Theme:** ◐ switches between light and dark; the page starts in the PC's own setting.
+- **Keeps running:** closing the browser leaves the panel and the receiver running, and the icon opens the same page again.
+- **After a reboot:** the receiver adds the webcam with sudo, which asks for a password in a terminal. Run `receiver/cleancam-receive.sh` once in a terminal and stop it, and the panel starts it from then on; until then the panel shows sudo's message under Receiver.
+- **USB only:** the panel reaches the phone through adb.
 
 ## Test cases
 
