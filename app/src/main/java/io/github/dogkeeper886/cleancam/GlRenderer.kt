@@ -17,6 +17,8 @@ import java.nio.ByteBuffer
 import java.nio.ByteOrder
 import java.nio.FloatBuffer
 import java.util.concurrent.CountDownLatch
+import kotlin.math.atan2
+import kotlin.math.roundToInt
 
 /**
  * Draws the camera's one stream twice: on the preview, upright for the screen, and into the encoder's input surface,
@@ -43,7 +45,7 @@ class GlRenderer(private val onFrame: () -> Unit) {
     private val vertices: FloatBuffer = floatBuffer(8)
     private val texCoords: FloatBuffer = floatBuffer(8).apply { put(floatArrayOf(0f, 0f, 1f, 0f, 0f, 1f, 1f, 1f)); position(0) }
 
-    /** Clockwise degrees that turn the camera's image upright on the screen, and in the stream. */
+    /** Clockwise degrees that turn the camera sensor's image upright on the screen, and in the stream. */
     @Volatile var previewRotation = 90
     @Volatile var encoderRotation = 90
     @Volatile var previewEnabled = true
@@ -118,9 +120,19 @@ class GlRenderer(private val onFrame: () -> Unit) {
         return Target(surface, egl, width, height)
     }
 
+    /**
+     * Clockwise degrees the camera already turns its buffers by, through the texture matrix: a Pixel 8 turns them by
+     * its sensor's 90°, which the rotations above count too, so turning by them alone turned the picture 90° too far.
+     */
+    @Volatile var bufferTurn = 0
+        private set
+
     private fun drawFrame() {
         input.updateTexImage()
         input.getTransformMatrix(textureMatrix)
+        // The matrix flips the buffer upright and turns it: its top-left 2x2 is [cos a, -sin a; -sin a, -cos a].
+        val degrees = Math.toDegrees(atan2(-textureMatrix[1].toDouble(), textureMatrix[0].toDouble()))
+        bufferTurn = ((degrees / 90).roundToInt() * 90 + 360) % 360
         val timestamp = input.timestamp
         onFrame()
         // Each target draws and swaps while it is current.
@@ -150,11 +162,12 @@ class GlRenderer(private val onFrame: () -> Unit) {
         val (scaleX, scaleY) = fit(rotation, target.width, target.height)
         vertices.position(0)
         vertices.put(floatArrayOf(-scaleX, -scaleY, scaleX, -scaleY, -scaleX, scaleY, scaleX, scaleY)).position(0)
-        // A screen point samples the image turned back by the clockwise rotation, around the image's center.
+        // A screen point samples the image turned back by the clockwise rotation, around the image's center; the
+        // texture matrix turns the buffer by bufferTurn, so this turns it by the rest.
         val turn = FloatArray(16)
         Matrix.setIdentityM(turn, 0)
         Matrix.translateM(turn, 0, 0.5f, 0.5f, 0f)
-        Matrix.rotateM(turn, 0, rotation.toFloat(), 0f, 0f, 1f)
+        Matrix.rotateM(turn, 0, (rotation - bufferTurn).toFloat(), 0f, 0f, 1f)
         Matrix.translateM(turn, 0, -0.5f, -0.5f, 0f)
         val matrix = FloatArray(16)
         Matrix.multiplyMM(matrix, 0, textureMatrix, 0, turn, 0)

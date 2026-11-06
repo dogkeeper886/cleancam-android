@@ -120,6 +120,7 @@ class CameraController(
     private var activeArray = Rect(0, 0, 4000, 3000)
     private var sensorOrientation = 90
     private var deviceOrientation = 0
+    private var displayRotation = 0
     private var lensCameras: List<LensCamera> = emptyList()
     private var lensByPhysicalId: Map<String, Lens> = emptyMap()
     private var zoomRange = 1.0..1.0
@@ -278,6 +279,7 @@ class CameraController(
 
     /** Keeps the preview upright for the screen's rotation: 0, 90, 180 or 270 degrees. */
     fun updateDisplayRotation(degrees: Int) = camera.post {
+        displayRotation = degrees
         renderer.previewRotation = (sensorOrientation - degrees + 360) % 360
     }
 
@@ -813,6 +815,9 @@ class CameraController(
                 "screenOff" to !renderer.previewEnabled),
             "battery" to mapOf("level" to batteryPercent, "charging" to batteryCharging,
                 "stopAt" to activeOptions.lowBatteryStop),
+            "orientation" to mapOf("device" to deviceOrientation, "display" to displayRotation,
+                "sensor" to sensorOrientation, "preview" to renderer.previewRotation,
+                "stream" to renderer.encoderRotation, "buffer" to renderer.bufferTurn),
         ))
         ui {
             frameRate = frames
