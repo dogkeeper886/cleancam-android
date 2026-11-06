@@ -14,7 +14,7 @@
   - Phone [setup]
     - Pixel 8 on Android 17 (API 37), with H.264 and HEVC encoders
   - Back camera [setup]
-    - Wide and ultra-wide lenses in one logical camera, zooming 0.55x to 8x, at 30 fps at most with auto exposure
+    - Wide and ultra-wide lenses in one logical camera, zooming 0.55x to 8x, at 60 fps at most with auto exposure
 - then → Ready the PC
   - Sound server [setup]
     - PipeWire with pw-cli
@@ -180,7 +180,7 @@
       - Stream the video with the room dark and the Low light preset
       - Stream the video with the room bright and the Low light preset
     - OBS
-      - Pick the OBS preset with no 60 fps camera mode
+      - Pick the OBS preset with a 60 fps camera mode
     - WiFi
       - Pick the WiFi preset with an HEVC encoder and the receiver connected
       - Pick the WiFi preset with a GPU that lacks HEVC

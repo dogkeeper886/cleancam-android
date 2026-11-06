@@ -45,7 +45,7 @@
 <rect x="736.3" y="316.0" width="831.8" height="34.0" rx="8" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.5"/>
 <line x1="700.3" y1="333.0" x2="734.3" y2="333.0" stroke="#475569" stroke-width="1.6" marker-end="url(#head)"/>
 <rect x="744.3" y="320.0" width="815.8" height="26.0" rx="12" fill="#e2e8f0" stroke="#64748b" stroke-width="1.2"/>
-<text x="1152.2" y="337.5" font-family="DejaVu Sans" font-size="13" font-weight="normal" text-anchor="middle" fill="#334155">Wide and ultra-wide lenses in one logical camera, zooming 0.55x to 8x, at 30 fps at most with auto exposure</text>
+<text x="1152.2" y="337.5" font-family="DejaVu Sans" font-size="13" font-weight="normal" text-anchor="middle" fill="#334155">Wide and ultra-wide lenses in one logical camera, zooming 0.55x to 8x, at 60 fps at most with auto exposure</text>
 <rect x="40.0" y="94.0" width="270.0" height="258.0" rx="8" fill="#e0e7ff" stroke="#3730a3" stroke-width="2"/>
 <text x="175.0" y="228.0" font-family="DejaVu Sans" font-size="14" font-weight="bold" text-anchor="middle" fill="#1e1b4b">Install the app on the phone</text>
 <line x1="310.0" y1="427.0" x2="420.0" y2="427.0" stroke="#94a3b8" stroke-width="1.6"/>

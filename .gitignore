@@ -1,1 +1,5 @@
 .sessions/
+.gradle/
+build/
+local.properties
+*.apk
