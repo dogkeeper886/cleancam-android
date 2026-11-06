@@ -101,7 +101,7 @@ The receiver reads these settings from the environment:
 
 ## Test cases
 
-`test-cases/` holds 135 cases in 24 suites that the app has to pass on the Pixel 8, drawn from CleanCam's code and adapted to Android: [`suites.md`](test-cases/suites.md) lists them, and [`decision-tree.png`](test-cases/decision-tree.png) shows the session they come from.
+`test-cases/` held 135 cases in 24 suites that the app has to pass on the Pixel 8, drawn from CleanCam's code and adapted to Android. A tested case leaves the list, and a struck-through case is built but still untested: 112 cases remain, all built. [`suites.md`](test-cases/suites.md) lists them, and [`decision-tree.png`](test-cases/decision-tree.png) shows the session they come from.
 
 ## Tested
 
