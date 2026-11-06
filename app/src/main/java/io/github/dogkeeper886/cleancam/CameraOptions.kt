@@ -35,6 +35,8 @@ data class CameraOptions(
     val maxBitRate: Int? = null,
     /** The minutes the phone stays still and unused before the app turns itself off, or 0 to stay on. */
     val autoOffMinutes: Int = DEFAULT_AUTO_OFF_MINUTES,
+    /** The battery level, in percent, at which the app turns itself off, plugged in or not, or 0 to stay on. */
+    val lowBatteryStop: Int = DEFAULT_LOW_BATTERY_STOP,
 ) {
     fun save(prefs: SharedPreferences) {
         val json = JSONObject()
@@ -43,6 +45,7 @@ data class CameraOptions(
             .put("exposureBias", exposureBias.toDouble())
             .put("nearFocus", nearFocus)
             .put("autoOffMinutes", autoOffMinutes)
+            .put("lowBatteryStop", lowBatteryStop)
         whiteBalance?.let { json.put("whiteBalance", it) }
         maxBitRate?.let { json.put("maxBitRate", it) }
         prefs.edit().putString(PREF, json.toString()).apply()
@@ -63,6 +66,11 @@ data class CameraOptions(
         val AUTO_OFF_MINUTES = listOf(1, 5, 15, 30, 0)
         /** The longest auto-off time the debug port's `autooff` command takes, in minutes. */
         const val MAX_AUTO_OFF_MINUTES = 240
+        /** At this battery level or below, the battery shows in red. */
+        const val LOW_BATTERY_WARNING = 15
+        const val DEFAULT_LOW_BATTERY_STOP = 10
+        /** The low-battery levels the settings sheet offers, in percent; 0 stays on. None passes the warning. */
+        val LOW_BATTERY_STOPS = listOf(5, 10, 15, 0)
 
         /** The options the user picked last, or the defaults. */
         fun saved(prefs: SharedPreferences): CameraOptions = try {
@@ -75,6 +83,7 @@ data class CameraOptions(
                 nearFocus = json.optBoolean("nearFocus", false),
                 maxBitRate = if (json.has("maxBitRate")) json.getInt("maxBitRate") else null,
                 autoOffMinutes = json.optInt("autoOffMinutes", DEFAULT_AUTO_OFF_MINUTES),
+                lowBatteryStop = json.optInt("lowBatteryStop", DEFAULT_LOW_BATTERY_STOP),
             )
         } catch (e: Exception) {
             CameraOptions()

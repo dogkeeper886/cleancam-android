@@ -48,6 +48,7 @@ import kotlin.math.roundToInt
 class CameraController(
     private val context: Context,
     private val onChange: () -> Unit,
+    /** Closes the app, for auto off and at the low-battery level; called on the main thread. */
     private val onAutoOff: () -> Unit,
     /** Turns Screen off on or off, for the debug port's `screen` command; called on the main thread. */
     private val onScreenOff: (Boolean) -> Unit,
@@ -93,6 +94,9 @@ class CameraController(
     var heat = HeatLevel.NONE; private set
     /** The seconds left before the app turns itself off, in the last half minute; null before. */
     var autoOffIn: Int? = null; private set
+    /** The battery level in percent, once Android reports it, and whether it charges. */
+    var battery: Int? = null; private set
+    var isCharging = false; private set
     private var cameraDenied = false
 
     private val encoder = VideoEncoder(this)
@@ -147,6 +151,9 @@ class CameraController(
     private var idleSeconds = 0
     /** Until this uptime, the receiver's last report says an app on the PC uses the CleanCam webcam or microphone. */
     private var pcUsingUntil = 0L
+    private var batteryPercent: Int? = null
+    private var batteryCharging = false
+    private var stoppedForBattery = false
 
     private val thermalListener = PowerManager.OnThermalStatusChangedListener { status ->
         thermalStatus = status
@@ -155,7 +162,13 @@ class CameraController(
     private val batteryReceiver = object : BroadcastReceiver() {
         override fun onReceive(context: Context, intent: Intent) {
             pluggedIn = intent.getIntExtra(BatteryManager.EXTRA_PLUGGED, 0) != 0
+            val level = intent.getIntExtra(BatteryManager.EXTRA_LEVEL, -1)
+            val scale = intent.getIntExtra(BatteryManager.EXTRA_SCALE, 100)
+            batteryPercent = if (level >= 0 && scale > 0) level * 100 / scale else null
+            val status = intent.getIntExtra(BatteryManager.EXTRA_STATUS, -1)
+            batteryCharging = status == BatteryManager.BATTERY_STATUS_CHARGING || status == BatteryManager.BATTERY_STATUS_FULL
             updateHeat()
+            checkBattery()
         }
     }
     private val tick = object : Runnable {
@@ -210,6 +223,7 @@ class CameraController(
         if (started) return@post
         started = true
         idleSeconds = 0
+        stoppedForBattery = false
         server.start()
         audioServer.start()
         speakerServer.start()
@@ -348,6 +362,7 @@ class CameraController(
             applyBitRateLimit()
             applyRequest()
             reportCamera("options")
+            checkBattery()
         }
     }
 
@@ -796,6 +811,8 @@ class CameraController(
                 "pcUsing" to isPcUsing),
             "phone" to mapOf("muted" to !callAudio.micEnabled, "locked" to locked,
                 "screenOff" to !renderer.previewEnabled),
+            "battery" to mapOf("level" to batteryPercent, "charging" to batteryCharging,
+                "stopAt" to activeOptions.lowBatteryStop),
         ))
         ui {
             frameRate = frames
@@ -804,6 +821,24 @@ class CameraController(
     }
 
     private val isPcUsing get() = SystemClock.elapsedRealtime() < pcUsingUntil
+
+    /**
+     * Shows the battery level, and turns the app off at the low-battery level, plugged in or not: on a PC's USB port a
+     * streaming phone can report "not charging", or charge slower than it drains, and run flat while plugged in.
+     */
+    private fun checkBattery() {
+        val level = batteryPercent ?: return
+        val charging = batteryCharging
+        ui {
+            battery = level
+            isCharging = charging
+        }
+        val stopAt = activeOptions.lowBatteryStop
+        if (stopAt == 0 || level > stopAt || stoppedForBattery) return
+        stoppedForBattery = true
+        sendDebug(mapOf("event" to "lowBattery", "level" to level, "stopAt" to stopAt))
+        ui { onAutoOff() }
+    }
 
     /**
      * Counts the seconds the phone stands still and untouched while no app on the PC uses the CleanCam webcam or
@@ -891,7 +926,7 @@ class CameraController(
     /**
      * Runs a debug command: `bitrate N` holds the bitrate at N bits per second, `auto` hands it back to adaptation,
      * `keyframe` asks for a keyframe, and `preset NAME` switches the preset, as the settings sheet does. `lens`, `stab`,
-     * `ev`, `wb`, `near`, `maxbitrate` and `autooff` set an option as the settings sheet does; `thermal` and `battery`
+     * `ev`, `wb`, `near`, `maxbitrate`, `autooff` and `lowbattery` set an option as the settings sheet does; `thermal` and `battery`
      * stand in for the phone's heat and power until `auto`; `camera` reports the camera options. `mute`, `lock` and
      * `screen` press the phone's buttons. The receiver sends `inuse on|off`.
      */
@@ -926,6 +961,13 @@ class CameraController(
             "maxbitrate" -> when {
                 value == "off" -> { changeOptions { it.copy(maxBitRate = null) }; true }
                 number != null && number in 1..MAX_PINNED_BIT_RATE -> { changeOptions { it.copy(maxBitRate = number) }; true }
+                else -> false
+            }
+            "lowbattery" -> when {
+                value == "never" -> { changeOptions { it.copy(lowBatteryStop = 0) }; true }
+                number != null && number in 1..CameraOptions.LOW_BATTERY_WARNING -> {
+                    changeOptions { it.copy(lowBatteryStop = number) }; true
+                }
                 else -> false
             }
             "autooff" -> when {

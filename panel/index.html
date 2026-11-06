@@ -145,6 +145,7 @@
     <button class="row" data-open="camera">Camera<span class="value" id="v-camera"></span>›</button>
     <button class="row" data-open="bitrate">Max bitrate<span class="value" id="v-bitrate"></span>›</button>
     <button class="row" data-open="autooff">Auto off<span class="value" id="v-autooff"></span>›</button>
+    <button class="row" data-open="lowbattery">Low battery<span class="value" id="v-lowbattery"></span>›</button>
     <button class="row" data-open="phone">On the phone<span class="value" id="v-phone"></span>›</button>
   </div>
   <div class="layer" data-layer="camera" hidden>
@@ -173,6 +174,11 @@
     <h2><button class="bare back" aria-label="Back">‹</button>Auto off<button class="bare close" aria-label="Close">✕</button></h2>
     <div class="segs" id="autooff"></div>
     <div class="note" id="autooff-note"></div>
+  </div>
+  <div class="layer" data-layer="lowbattery" hidden>
+    <h2><button class="bare back" aria-label="Back">‹</button>Low battery<button class="bare close" aria-label="Close">✕</button></h2>
+    <div class="segs" id="lowbattery"></div>
+    <div class="note">Red at 15%. The app closes at this level, plugged in or not.</div>
   </div>
   <div class="layer" data-layer="phone" hidden>
     <h2><button class="bare back" aria-label="Back">‹</button>On the phone<button class="bare close" aria-label="Close">✕</button></h2>
@@ -256,6 +262,7 @@ segs("maxbitrate", [["off", "No limit"], ["20000000", "20 Mbps"], ["10000000", "
   ["3000000", "3 Mbps"]], (v) => `maxbitrate ${v}`);
 segs("autooff", [["1", "1 min"], ["5", "5 min"], ["15", "15 min"], ["30", "30 min"], ["never", "Never"]],
   (v) => `autooff ${v}`);
+segs("lowbattery", [["5", "5%"], ["10", "10%"], ["15", "15%"], ["never", "Never"]], (v) => `lowbattery ${v}`);
 
 $("receiver").onclick = () => post("/api/receiver", { on: !checked("receiver") });
 $("app").onclick = () => post("/api/app", { on: !checked("app") });
@@ -270,16 +277,22 @@ $("wb").oninput = () => { $("wb-label").textContent = `White balance ${$("wb").v
 $("wb").onchange = () => send(`wb ${$("wb").value}`);
 
 const LENSES = { auto: "Auto lens", ultrawide: "Ultra wide", wide: "Wide", tele: "Tele" };
+const LOW_BATTERY_WARNING = 15;
 const minutes = (s) => `${Math.floor(s / 60)}:${String(s % 60).padStart(2, "0")}`;
 
 function render() {
   const { phone, app, second, mode, camera, receiver } = state;
   const streaming = app && second && second.viewers.video > 0;
   const idle = second && second.idle;
+  // The app's own report while it runs, and adb's otherwise.
+  const appBattery = second && second.battery && second.battery.level != null ? second.battery : null;
+  const battery = appBattery || (phone === "device" && state.battery);
   let status, dot;
   if (!phone) [status, dot] = ["Panel not running", ""];
   else if (phone === "none") [status, dot] = ["Phone not connected", ""];
   else if (phone === "unauthorized") [status, dot] = ["Allow USB debugging", "orange"];
+  else if (!app && battery && state.lowBatteryStop && battery.level <= state.lowBatteryStop)
+    [status, dot] = ["Battery too low for CleanCam", "orange"];
   else if (!app) [status, dot] = [state.keyguard ? "Unlock the phone" : "CleanCam is closed", ""];
   else if (streaming) [status, dot] = ["Streaming to PC", "green"];
   else [status, dot] = ["Waiting for the receiver", "yellow"];
@@ -289,13 +302,13 @@ function render() {
   let phoneText = phone === "device" ? `${state.model || "Phone"} · USB` : "";
   if (idle && idle.limit > 0 && idle.limit - idle.seconds <= 30) phoneText += ` · Off in ${idle.limit - idle.seconds} s`;
   $("phone").textContent = phoneText;
-  const battery = phone === "device" && state.battery;
   $("battery").hidden = !battery;
   if (battery) {
     $("battery-fill").setAttribute("width", String(24 * battery.level / 100));
-    $("battery-fill").setAttribute("fill", battery.level <= 20 && !battery.charging ? "#e5484d" : "#3ddc84");
+    $("battery-fill").setAttribute("fill", battery.level <= LOW_BATTERY_WARNING ? "#e5484d" : "#3ddc84");
     $("battery-bolt").style.display = battery.charging ? "" : "none";
     $("battery-level").textContent = `${battery.level}%`;
+    $("battery-level").style.color = battery.level <= LOW_BATTERY_WARNING ? "#e5484d" : "";
   }
 
   $("fps").textContent = app && second ? second.fps : "–";
@@ -340,6 +353,10 @@ function render() {
     idle.pcUsing ? "A PC app uses the webcam or microphone, so the app stays on." :
     idle.seconds > 0 ? `Still and unused for ${minutes(idle.seconds)}; off at ${limit}:00.` :
     "Counts while the phone is still and untouched and no PC app uses it.";
+
+  const stopAt = appBattery ? appBattery.stopAt : null;
+  $("v-lowbattery").textContent = stopAt === null ? "" : stopAt ? `Stop at ${stopAt}%` : "Never";
+  pick("lowbattery", stopAt === null ? "" : stopAt ? stopAt : "never", stopAt !== null);
 
   const p = second && second.phone;
   setSwitch("mute", !!(p && p.muted), !!p);

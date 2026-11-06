@@ -65,13 +65,14 @@ class State:
         self.second_at = 0.0
         self.debug = None  # the debug port's connection, for commands
         self.receiver = None  # the receiver this server started, until it is stopped on purpose
+        self.low_battery_stop = None  # the app's low-battery level, kept after it closes, to tell why it closes
 
     def snapshot(self):
         with self.lock:
             app = time.monotonic() - self.second_at < APP_QUIET_S
             return {
                 "phone": self.phone, "model": self.model, "battery": self.battery, "keyguard": self.keyguard,
-                "app": app, "receiver": receiver_state(),
+                "app": app, "receiver": receiver_state(), "lowBatteryStop": self.low_battery_stop,
                 "second": self.events.get("second") if app else None,
                 "mode": self.events.get("mode") if app else None,
                 "camera": self.events.get("camera") if app else None,
@@ -136,6 +137,11 @@ def watch_debug():
             except ValueError:
                 continue
             kind = event.get("event")
+            # The `second` line carries the low-battery level, and the `lowBattery` event the level that closed the app.
+            stop_at = (event.get("battery") or {}).get("stopAt") if kind == "second" else event.get("stopAt")
+            if kind in ("second", "lowBattery") and stop_at is not None:
+                with state.lock:
+                    state.low_battery_stop = stop_at
             if kind in ("second", "mode", "camera"):
                 with state.lock:
                     state.events[kind] = event
