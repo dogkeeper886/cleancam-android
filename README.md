@@ -19,6 +19,7 @@ The app streams the back camera's frames instead of the screen, so the PC receiv
 - **Screen off:** blacks out the phone at its lowest brightness while the stream keeps running. Tap the screen to bring it back.
 - **Orientation:** the stream follows the phone upright or sideways. Upright frames get black bars, so the webcam keeps its 16:9 size.
 - **Battery:** the app encodes only while a PC watches.
+- **Auto off:** the app turns itself off once the phone stands still and untouched for 5 minutes while no app on the PC uses the CleanCam webcam or microphone, as the receiver reports. A phone on a mount in a call stands as still as a forgotten one, so the receiver's report keeps it on through the call. The settings sheet sets 1, 5, 15 or 30 minutes, or Never, and the status counts down the last 30 s.
 - **Status:** a second line names the preset, the size, HEVC when it streams it, the frame rate, the bitrate, the lens, the stabilization, each changed option, the heat guard while it acts, and what focus follows, such as `Call · 1080p · 30 fps · 10.0 Mbps · Wide · Stab off · Center`.
 
 | Preset | For | Frame rate on a Pixel 8 | Size | Codec | Bitrate |
@@ -66,8 +67,9 @@ Open CleanCam on the phone; its status changes to "Streaming to PC". Then pick "
 
 - **USB:** the receiver forwards ports 5000 to 5003 with `adb forward`, sets them again after a replug, and removes them on Ctrl-C. Set `ANDROID_SERIAL` to pick one of several phones.
 - **Keep CleanCam open:** Android stops the camera when the app leaves the screen. Use Screen off instead of locking the phone.
+- **Auto off:** every 2 s, the receiver tells the app over the debug port whether an app on the PC holds the CleanCam webcam open or records from the CleanCam microphone. The app counts toward auto off only while none does, and again 10 s after the receiver stops.
 - **Check the sound:** `tools/mic-check.sh` records 5 s from the CleanCam microphone and plays it on the CleanCam speaker, so the phone plays back what its microphone heard.
-- **Debug the stream:** `nc 127.0.0.1 5003` prints one JSON line a second: the frame rate, the target bitrate, the bits sent, the keyframes, the backlog and the viewers per port, plus a line for each event. Keep `nc`'s input open, since the app drops a client that closes its sending side. Type `bitrate N`, `auto`, `keyframe`, `preset call|lowlight|obs|wifi|4k`, `lens auto|ultrawide|wide`, `stab auto|off|standard|cinematic`, `ev -2..2`, `wb auto|2500..8000`, `near on|off`, `maxbitrate off|N`, `thermal nominal|fair|serious|critical|auto`, `battery unplugged|charging|auto`, or `camera`.
+- **Debug the stream:** `nc 127.0.0.1 5003` prints one JSON line a second: the frame rate, the target bitrate, the bits sent, the keyframes, the backlog, the viewers per port and the auto-off count, plus a line for each event. Keep `nc`'s input open, since the app drops a client that closes its sending side. Type `bitrate N`, `auto`, `keyframe`, `preset call|lowlight|obs|wifi|4k`, `lens auto|ultrawide|wide`, `stab auto|off|standard|cinematic`, `ev -2..2`, `wb auto|2500..8000`, `near on|off`, `maxbitrate off|N`, `autooff never|N` in minutes, `thermal nominal|fair|serious|critical|auto`, `battery unplugged|charging|auto`, or `camera`.
 
 The receiver reads these settings from the environment:
 
