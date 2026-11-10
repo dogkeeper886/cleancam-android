@@ -2,8 +2,8 @@
 """
 The CleanCam control panel: a page at http://127.0.0.1:5080 that starts and stops the receiver and the phone's app,
 shows the stream, and changes the app's settings through its debug port, over the USB cable with adb.
-The CleanCam icon runs it, the user's one way in: each start starts the receiver unless it runs, and opens the page;
-while the panel runs, a start only asks it for the receiver and opens the page again.
+The CleanCam Android icon runs it, the user's one way in: each start starts the receiver unless it runs, and opens
+the page; while the panel runs, a start only asks it for the receiver and opens the page again.
   cleancam-panel.py               as the icon does
   cleancam-panel.py --no-browser  without opening the page
 The page and this server keep running after the browser closes, and so does the receiver.
