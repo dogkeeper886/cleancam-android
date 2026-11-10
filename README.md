@@ -57,13 +57,13 @@ The app needs **Android 13 or later**. A debug build stays installed and opens u
 
 ## Use it on the PC
 
-A phone on a mount as a webcam sits out of reach of its own screen. The CleanCam icon is the PC's one way in: a click starts the receiver, which turns the stream into the "CleanCam" webcam, microphone and speaker, and opens the control panel, a page at `http://127.0.0.1:5080` that turns the app on and off and changes its settings. Install it once; it asks for the sudo password:
+A phone on a mount as a webcam sits out of reach of its own screen. The CleanCam Android icon is the PC's one way in: a click starts the receiver, which turns the stream into the "CleanCam" webcam, microphone and speaker, and opens the control panel, a page at `http://127.0.0.1:5080` that turns the app on and off and changes its settings. Install it once; it asks for the sudo password:
 
 ```sh
 panel/install.sh
 ```
 
-It adds CleanCam to the desktop's app list, and loads the CleanCam webcam at every boot, so the icon starts the receiver without a password. Then click CleanCam, turn on Phone app, and pick "CleanCam" as the camera, the microphone and the speaker in the video app.
+It adds CleanCam Android and CleanCam Android WiFi to the desktop's app list, and loads the CleanCam webcam at every boot, so the icons start the receiver without a password. Then click CleanCam Android, turn on Phone app, and pick "CleanCam" as the camera, the microphone and the speaker in the video app.
 
 ![The control panel: the stream's state with the Pixel 8 and its battery, 30 fps, 10 Mbps and 1080p, the Receiver and Phone app switches, and the presets, with buttons for the theme and the settings drawer.](docs/design/png/control-panel.png)
 
@@ -73,12 +73,13 @@ It adds CleanCam to the desktop's app list, and loads the CleanCam webcam at eve
 - **Keeps running:** closing the browser leaves the panel and the receiver running. A click on the icon opens the same page, and starts the receiver again after the Receiver switch stopped it.
 - **Keep CleanCam open:** Android stops the camera when the app leaves the screen. Use Screen off instead of locking the phone.
 - **Auto off:** every 2 s, the receiver tells the app whether an app on the PC holds the CleanCam webcam open or records from the CleanCam microphone. The app counts toward auto off only while none does, and again 10 s after the receiver stops.
-- **USB only:** the panel and the receiver reach the phone through adb, so plug the phone into a port on the PC itself. Streaming over WiFi has no way in from the icon yet.
+- **USB:** the panel and the receiver reach the phone through adb, so plug the phone into a port on the PC itself.
+- **WiFi:** CleanCam Android WiFi asks in a terminal for the phone's IP, which Settings → Network & internet → Internet shows under the network's gear, and runs the receiver to it without the panel, so open CleanCam on the phone and pick its preset there. It offers the last IP, and stops while another receiver runs, since both would write the same webcam.
 - **Needs:** adb, ffmpeg, the v4l2loopback kernel module, with `v4l2loopback-ctl` when OBS loaded the module first, PipeWire with `pw-cli` or PulseAudio with `pactl` and `parec`, and `python3`.
 
 ## For developers
 
-The icon runs `panel/cleancam-panel.py`, and the panel runs `receiver/cleancam-receive.sh`, CleanCam's receiver with `adb forward` in place of iproxy. A developer runs them directly to test a change; a user starts both from the icon alone.
+The CleanCam Android icon runs `panel/cleancam-panel.py`, and the panel runs `receiver/cleancam-receive.sh`, CleanCam's receiver with `adb forward` in place of iproxy. The WiFi icon runs `panel/cleancam-wifi.sh`, which runs the receiver with the phone's IP. A developer runs them directly to test a change; a user starts both from the icons alone.
 
 ```sh
 panel/cleancam-panel.py --no-browser    # the panel, without opening the page
